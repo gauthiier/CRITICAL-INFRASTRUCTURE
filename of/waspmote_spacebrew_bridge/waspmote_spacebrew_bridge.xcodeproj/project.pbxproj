@@ -16,6 +16,7 @@
 		B5F6FF34184A6F0E0063881D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F6FF2F184A6F0E0063881D /* main.cpp */; };
 		B5F6FF35184A6F0E0063881D /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F6FF30184A6F0E0063881D /* testApp.cpp */; };
 		B5F6FF36184A6F0E0063881D /* WaspFrameParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F6FF32184A6F0E0063881D /* WaspFrameParser.cpp */; };
+		B5F6FF39184B97040063881D /* Bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F6FF37184B97040063881D /* Bridge.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C5688FC85C0AE0B5E4E5F9CE /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C53FF33B244987E09C8CC63F /* Server.cpp */; };
 		C6E1C4962CC70798B430DCBC /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9413D837F3E273803A5F776E /* jsoncpp.cpp */; };
@@ -81,6 +82,8 @@
 		B5F6FF31184A6F0E0063881D /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
 		B5F6FF32184A6F0E0063881D /* WaspFrameParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaspFrameParser.cpp; sourceTree = "<group>"; };
 		B5F6FF33184A6F0E0063881D /* WaspFrameParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaspFrameParser.h; sourceTree = "<group>"; };
+		B5F6FF37184B97040063881D /* Bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.cpp; sourceTree = "<group>"; };
+		B5F6FF38184B97040063881D /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../of_v0.8.0_osx_release/libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C49850835B8C1A87752B848B /* Client.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Client.cpp; path = ../../../of_v0.8.0_osx_release/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Client.cpp; sourceTree = SOURCE_ROOT; };
 		C53FF33B244987E09C8CC63F /* Server.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Server.cpp; path = ../../../of_v0.8.0_osx_release/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Server.cpp; sourceTree = SOURCE_ROOT; };
@@ -274,6 +277,8 @@
 				B5F6FF31184A6F0E0063881D /* testApp.h */,
 				B5F6FF32184A6F0E0063881D /* WaspFrameParser.cpp */,
 				B5F6FF33184A6F0E0063881D /* WaspFrameParser.h */,
+				B5F6FF37184B97040063881D /* Bridge.cpp */,
+				B5F6FF38184B97040063881D /* Bridge.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -385,6 +390,7 @@
 				B5F6FF34184A6F0E0063881D /* main.cpp in Sources */,
 				B5F6FF35184A6F0E0063881D /* testApp.cpp in Sources */,
 				B5F6FF36184A6F0E0063881D /* WaspFrameParser.cpp in Sources */,
+				B5F6FF39184B97040063881D /* Bridge.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

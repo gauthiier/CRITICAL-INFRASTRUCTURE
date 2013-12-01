@@ -3,7 +3,8 @@
 #include "ofMain.h"
 #include "OfSerial.h"
 
-#define BUFFER_LEN 136
+#include "Bridge.h"
+
 
 class testApp : public ofBaseApp{
 
@@ -22,17 +23,5 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        bool setup_serial();
-    
-        string wp_ascii_split(string input);
-    
-    public:
-    
-        ofSerial    _serial;
-        bool        _serial_set;
-    
-        unsigned char        _buffer[BUFFER_LEN];
-        string      _payload;
-    
-		
+        Bridge _bridge;
 };

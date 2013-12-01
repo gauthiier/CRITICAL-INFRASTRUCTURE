@@ -70,7 +70,7 @@ void WaspFrameParser::ASCII_token_frame(string &input, vector<string> &output)
     }
 }
 
-void WaspFrameParser::ASCII_process(string &input, vector<WaspFrame> &output)
+void WaspFrameParser::ASCII_process(string &input, vector<WaspFrame> &output, bool emit)
 {
     vector<string> r;
     WaspFrameParser::ASCII_split_frame(input, r);        
@@ -90,12 +90,16 @@ void WaspFrameParser::ASCII_process(string &input, vector<WaspFrame> &output)
         wp->mote_id = t[2];
         wp->frame_seq = atoi(t[3].c_str());
         wp->mac = t[4];
-        wp->adc_data = atoi(WaspFrameParser::ASCII_parse("CI0:", t[5]).c_str());
+        wp->adc_data = atoi(WaspFrameParser::ASCII_parse(wp->mote_id + ":", t[5]).c_str());
         wp->battery_level = atoi(WaspFrameParser::ASCII_parse("BAT:", t[6]).c_str());
         
         //cout << (*wp) << endl;
         
         output.push_back(*wp);
+        
+        if(emit) {
+            ofNotifyEvent(_frame_event, wp);
+        }
             
     }
         

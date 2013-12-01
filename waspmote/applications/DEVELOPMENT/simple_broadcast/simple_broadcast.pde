@@ -11,6 +11,7 @@ SENSOR_CI3     <int>
 SENSOR_CI4     <int>
 */
 
+#define CI_NODE_NAME "CI4"
 #define SENSOR_PIN ANALOG1 // PIN for the ADC reading
 
 // declare ADC reading variable
@@ -82,7 +83,7 @@ void loop() {
 // B. BROADCAST PACKET
 
   //B.1 create ASCII frame
-  frame.createFrame(ASCII,"CRITICAL-0");
+  frame.createFrame(ASCII, CI_NODE_NAME);
     
   //B.1.1 add CRITICAL INFRASTRUCTURE sensor descriptors
   frame.addSensor(SENSOR_MAC, macLow);                // MAC

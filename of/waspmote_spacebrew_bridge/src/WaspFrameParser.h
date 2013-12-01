@@ -13,6 +13,9 @@
 #include <string>
 #include <vector>
 
+#include "ofEvents.h"
+
+
 using namespace std;
 
 #define MIN_FRAME_ENTRIES   7
@@ -38,12 +41,15 @@ class WaspFrameParser {
     
 public:
     
+    WaspFrameParser(){;}
+    
     static void ASCII_split_frame(string &input, vector<string> &output);
     static void ASCII_token_frame(string &input, vector<string> &output);
-    
-    static void ASCII_process(string &input, vector<WaspFrame> &output);
-    
     static string ASCII_parse(string id, string input);
+    
+    void ASCII_process(string &input, vector<WaspFrame> &output, bool emit);
+    
+    ofEvent<WaspFrame*> _frame_event;
     
 };
 
