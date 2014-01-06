@@ -1,0 +1,40 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>Start red</Name>
+    <Value>74.654602051</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Start green</Name>
+    <Value>74.654602051</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Start blue</Name>
+    <Value>78.009864807</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Start alpha</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>End red</Name>
+    <Value>12.582237244</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>End green</Name>
+    <Value>13.421052933</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>End blue</Name>
+    <Value>13.421052933</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>End alpha</Name>
+    <Value>255.000000000</Value>
+</Widget>

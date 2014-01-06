@@ -1,0 +1,20 @@
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toggle Data Simulation</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Speed (data per frame)</Name>
+    <Value>1.582236767</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin X Scale (data size)</Name>
+    <Value>0.148730263</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Y Scale (time f)</Name>
+    <Value>0.147088811</Value>
+</Widget>

@@ -1,0 +1,50 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Item X Gap</Name>
+    <Value>21.875000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BarWidth</Name>
+    <Value>9.736842155</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 red</Name>
+    <Value>190.411193848</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 green</Name>
+    <Value>141.759872437</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 blue</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 alpha</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 red</Name>
+    <Value>43.618423462</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 green</Name>
+    <Value>68.782897949</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 blue</Name>
+    <Value>163.569076538</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 alpha</Name>
+    <Value>255.000000000</Value>
+</Widget>

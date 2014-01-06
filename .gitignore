@@ -1,1 +1,18 @@
+#mac
+
 *.DS_Store
+
+
+#windows
+
+*.sdf
+*.dll
+*.suo
+*.opensdf
+*.exe
+*.exp
+.lib
+of/Active Tripod/ipch
+of/Active Tripod/obj
+of/Active Tripod/ipch
+of/Active Tripod/obj
