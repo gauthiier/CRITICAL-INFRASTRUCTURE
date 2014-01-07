@@ -38,3 +38,38 @@
     <Name>End alpha</Name>
     <Value>255.000000000</Value>
 </Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness</Name>
+    <Value>0.980263174</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Contrast</Name>
+    <Value>0.986842096</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation</Name>
+    <Value>0.967105269</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Red</Name>
+    <Value>0.684210539</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Green</Name>
+    <Value>0.947368443</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blue</Name>
+    <Value>0.644736826</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>

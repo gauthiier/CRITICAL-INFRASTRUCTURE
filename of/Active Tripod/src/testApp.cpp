@@ -3,11 +3,10 @@
 // TODO
 // ====
 // - Make graph system with 3 simple (for now) but different graphs that can be interchanged
-// - Make events system to send data to scene
+// - Add image to background and create a mask
+// - Use a shader to adjust image brightness/contrast and colour
 // - 
-// - 
-// - Add to GUI
-// - - Publisher choice
+// - Add to config
 // - - IP address
 // - - Host name
 // - - App name
@@ -67,7 +66,7 @@ void testApp::mousePressed(int x, int y, int button)
 void testApp::keyPressed(int key)
 {
 	if (key == 'p')
-	{
 		isPaused = !isPaused;
-	}
+	else if (key == 'f')
+		ofToggleFullscreen();
 }

@@ -17,7 +17,7 @@ void GUI::setup()
     dim = 8;
 	
     addKeyboardShortcutsGUI();
-	addGraphAnimationGUI();
+	//addGraphAnimationGUI();
 	addBarGraphDesignGUI();
 	addGraphSimulationGUI();
     addBackgroundGUI();
@@ -40,6 +40,8 @@ void GUI::addKeyboardShortcutsGUI()
     gui->addLabel("SPACE - SHOW/HIDE GUI", OFX_UI_FONT_SMALL);
     gui->addLabel("'[' - PREVIOUS GUI", OFX_UI_FONT_SMALL);
     gui->addLabel("']' - NEXT GUI", OFX_UI_FONT_SMALL);
+    gui->addLabel("'p' - TOGGLE PAUSE ANIMATION", OFX_UI_FONT_SMALL);
+    gui->addLabel("'f' - TOGGLE FULLSCREEN", OFX_UI_FONT_SMALL);
 
     
     finaliseCanvas(gui, true);
@@ -96,14 +98,26 @@ void GUI::addBackgroundGUI()
     ofxUICanvas* gui = getNewGUI(title);
 
     gui->addLabel("GRADIENT COLOUR");
+	gui->addSpacer(length, 1);
 	gui->addSlider("Start red", 0, 255, &app->scene.bgGradStartCol[0], length, dim);
 	gui->addSlider("Start green", 0, 255, &app->scene.bgGradStartCol[1], length, dim);
 	gui->addSlider("Start blue", 0, 255, &app->scene.bgGradStartCol[2], length, dim);
 	gui->addSlider("Start alpha", 0, 255, &app->scene.bgGradStartCol[3], length, dim);
+	gui->addSpacer(length, 1);
 	gui->addSlider("End red", 0, 255, &app->scene.bgGradEndCol[0], length, dim);
 	gui->addSlider("End green", 0, 255, &app->scene.bgGradEndCol[1], length, dim);
 	gui->addSlider("End blue", 0, 255, &app->scene.bgGradEndCol[2], length, dim);
 	gui->addSlider("End alpha", 0, 255, &app->scene.bgGradEndCol[3], length, dim);
+	gui->addSpacer(length, 1);
+    gui->addLabel("BACKGROUND IMAGE");
+	gui->addSlider("Brightness", 0, 2, &app->scene.brightness, length, dim);
+	gui->addSlider("Contrast", 0, 2, &app->scene.contrast, length, dim);
+	gui->addSlider("Saturation", 0, 2, &app->scene.saturation, length, dim);
+	gui->addSlider("Red", 0, 2, &app->scene.red, length, dim);
+	gui->addSlider("Green", 0, 2, &app->scene.green, length, dim);
+	gui->addSlider("Blue", 0, 2, &app->scene.blue, length, dim);
+	gui->addSlider("Alpha", 0, 2, &app->scene.alpha, length, dim);
+
     
     ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
     finaliseCanvas(gui, true);
