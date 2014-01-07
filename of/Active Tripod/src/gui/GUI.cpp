@@ -97,19 +97,7 @@ void GUI::addBackgroundGUI()
     string title = "BACKGROUND";
     ofxUICanvas* gui = getNewGUI(title);
 
-    gui->addLabel("GRADIENT COLOUR");
-	gui->addSpacer(length, 1);
-	gui->addSlider("Start red", 0, 255, &app->scene.bgGradStartCol[0], length, dim);
-	gui->addSlider("Start green", 0, 255, &app->scene.bgGradStartCol[1], length, dim);
-	gui->addSlider("Start blue", 0, 255, &app->scene.bgGradStartCol[2], length, dim);
-	gui->addSlider("Start alpha", 0, 255, &app->scene.bgGradStartCol[3], length, dim);
-	gui->addSpacer(length, 1);
-	gui->addSlider("End red", 0, 255, &app->scene.bgGradEndCol[0], length, dim);
-	gui->addSlider("End green", 0, 255, &app->scene.bgGradEndCol[1], length, dim);
-	gui->addSlider("End blue", 0, 255, &app->scene.bgGradEndCol[2], length, dim);
-	gui->addSlider("End alpha", 0, 255, &app->scene.bgGradEndCol[3], length, dim);
-	gui->addSpacer(length, 1);
-    gui->addLabel("BACKGROUND IMAGE");
+    gui->addLabel("VIDEO IMAGE SETTINGS");
 	gui->addSlider("Brightness", 0, 2, &app->scene.brightness, length, dim);
 	gui->addSlider("Contrast", 0, 2, &app->scene.contrast, length, dim);
 	gui->addSlider("Saturation", 0, 2, &app->scene.saturation, length, dim);
@@ -117,8 +105,16 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Green", 0, 2, &app->scene.green, length, dim);
 	gui->addSlider("Blue", 0, 2, &app->scene.blue, length, dim);
 	gui->addSlider("Alpha", 0, 2, &app->scene.alpha, length, dim);
+	gui->addSpacer(length, 1);
+    gui->addLabel("HUD SETTINGS");
+	gui->addSlider("Red .", 0, 255, &app->scene.hudColour[0], length, dim);
+	gui->addSlider("Green .", 0, 255, &app->scene.hudColour[1], length, dim);
+	gui->addSlider("Blue .", 0, 255, &app->scene.hudColour[2], length, dim);
+	gui->addSlider("Alpha .", 0, 255, &app->scene.hudColour[3], length, dim);
+	gui->addSlider("Radius Width", 1, 2000, &app->scene.radiusW, length, dim);
+	gui->addSlider("Radius Height", 1, 2000, &app->scene.radiusH, length, dim);
+	gui->addSlider("Circle Point Size", 0, 100, &app->scene.circlePointSize, length, dim);
 
-    
     ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
     finaliseCanvas(gui, true);
 }

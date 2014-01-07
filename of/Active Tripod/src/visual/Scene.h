@@ -19,14 +19,17 @@ public:
     void setup();
     void update();
     void draw();
+	void drawVideo();
+	void drawHUD();
 
 	BarGraph barGraph;
 	ofShader rgbShader;
 	ofImage bgImg;
-
+	
 	float brightness, contrast, saturation, red, green, blue, alpha;
 	
-	float bgGradStartCol[4];
-	float bgGradEndCol[4];
-
+	float hudColour[4];
+	float circlePointSize;
+	float radiusW;
+	float radiusH;
 };

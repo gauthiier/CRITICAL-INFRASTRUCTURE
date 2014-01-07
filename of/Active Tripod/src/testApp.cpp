@@ -50,7 +50,8 @@ void testApp::update()
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void testApp::draw()
+{
     dataManager.draw();
 	scene.draw();
 }
@@ -69,4 +70,9 @@ void testApp::keyPressed(int key)
 		isPaused = !isPaused;
 	else if (key == 'f')
 		ofToggleFullscreen();
+}
+
+
+void testApp::windowResized(int w, int h)
+{
 }
