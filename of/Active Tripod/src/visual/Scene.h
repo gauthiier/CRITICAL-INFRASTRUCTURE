@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "BarGraph.h"
+#include "ofxFTGL.h"
 
 class testApp;
 
@@ -20,16 +21,39 @@ public:
     void update();
     void draw();
 	void drawVideo();
-	void drawHUD();
+	void drawHUDBG();
+	void drawHUDCopy();
+	void drawTextBox(string copy, string align);
+	void keyPressed(int key);
 
 	BarGraph barGraph;
 	ofShader rgbShader;
 	ofImage bgImg;
+	ofxFTGLSimpleLayout text;
+
+
+
+	// video image vars
+	float brightness;
+	float contrast;
+	float saturation;
+	float red;
+	float green;
+	float blue;
+	float alpha;
 	
-	float brightness, contrast, saturation, red, green, blue, alpha;
-	
+	// HUD background vars
 	float hudColour[4];
 	float circlePointSize;
 	float radiusW;
 	float radiusH;
+
+	// text vars
+	float xMargin;
+	float yMargin;
+	float yMarginBottomOffset;
+	float lineLength;
+	float lineSpacing;
+	float textSize;
+	float textColour[4];
 };

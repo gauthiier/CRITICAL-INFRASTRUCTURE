@@ -21,6 +21,7 @@ void GUI::setup()
 	addBarGraphDesignGUI();
 	addGraphSimulationGUI();
     addBackgroundGUI();
+	addHUDTextGUI();
     addVariousGUI();
     
     setGUIColour();
@@ -106,7 +107,7 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Blue", 0, 2, &app->scene.blue, length, dim);
 	gui->addSlider("Alpha", 0, 2, &app->scene.alpha, length, dim);
 	gui->addSpacer(length, 1);
-    gui->addLabel("HUD SETTINGS");
+    gui->addLabel("HUD BACKGROUND SETTINGS");
 	gui->addSlider("Red .", 0, 255, &app->scene.hudColour[0], length, dim);
 	gui->addSlider("Green .", 0, 255, &app->scene.hudColour[1], length, dim);
 	gui->addSlider("Blue .", 0, 255, &app->scene.hudColour[2], length, dim);
@@ -114,6 +115,28 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Radius Width", 1, 2000, &app->scene.radiusW, length, dim);
 	gui->addSlider("Radius Height", 1, 2000, &app->scene.radiusH, length, dim);
 	gui->addSlider("Circle Point Size", 0, 100, &app->scene.circlePointSize, length, dim);
+
+    ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
+    finaliseCanvas(gui, true);
+}
+
+
+void GUI::addHUDTextGUI()
+{
+    string title = "HUD TEXT";
+    ofxUICanvas* gui = getNewGUI(title);
+	
+	gui->addSlider("X Margin", 0, 500, &app->scene.xMargin, length, dim);
+	gui->addSlider("Y Margin", 0, 500, &app->scene.yMargin, length, dim);
+	gui->addSlider("Y Margin Bottom Offset", 0, 300, &app->scene.yMarginBottomOffset, length, dim);
+	gui->addSlider("Line Length", 50, 500, &app->scene.lineLength, length, dim);
+	gui->addSlider("Line Spacing", 0, 10, &app->scene.lineSpacing, length, dim);
+	gui->addSlider("Text Size", 10, 100, &app->scene.textSize, length, dim);
+	gui->addSpacer(length, 1);
+	gui->addSlider("Red", 0, 255, &app->scene.textColour[0], length, dim);
+	gui->addSlider("Green", 0, 255, &app->scene.textColour[1], length, dim);
+	gui->addSlider("Blue", 0, 255, &app->scene.textColour[2], length, dim);
+	gui->addSlider("Alpha", 0, 255, &app->scene.textColour[3], length, dim);
 
     ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
     finaliseCanvas(gui, true);

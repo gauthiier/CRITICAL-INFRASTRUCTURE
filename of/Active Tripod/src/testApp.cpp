@@ -32,6 +32,7 @@ void testApp::setup()
 	ofSetWindowPosition(0, 100);
 	ofEnableSmoothing();
 	ofSeedRandom(ofRandom(23243));
+	ofSetFullscreen(true);
 
 	dataManager.setup();
 	scene.setup();
@@ -70,6 +71,8 @@ void testApp::keyPressed(int key)
 		isPaused = !isPaused;
 	else if (key == 'f')
 		ofToggleFullscreen();
+
+	scene.keyPressed(key);
 }
 
 

@@ -24,6 +24,7 @@ public:
 	void addBarGraphDesignGUI();
 	void addGraphSimulationGUI();
     void addBackgroundGUI();
+	void addHUDTextGUI();
     void addVariousGUI();
     
     void variousGUIEvent(ofxUIEventArgs &e);

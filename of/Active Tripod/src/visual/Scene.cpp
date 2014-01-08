@@ -14,12 +14,26 @@ void Scene::setup()
 	bgImg.loadImage("images/tanks.jpg");
 	rgbShader.load("shaders/RGBShader");
 	barGraph.setup();
+
+
+    text.loadFont("fonts/mplus-1c-regular.ttf", 8);
+    //text.setLineLength(ofGetWidth() - margin * 2);
+
+
+	xMargin = 500;
+	yMargin = 400;
+	lineLength = 200;
 }
 
 
 void Scene::update()
 {
 	barGraph.update();
+
+	text.setLineLength(lineLength);
+    text.setLineSpacing(lineSpacing);
+	text.setSize(textSize);
+
 }
 
 
@@ -27,7 +41,8 @@ void Scene::draw()
 {
 	drawVideo();
 	barGraph.draw();
-	drawHUD();
+	drawHUDBG();
+	drawHUDCopy();
 }
 
 void Scene::drawVideo()
@@ -47,7 +62,7 @@ void Scene::drawVideo()
 	rgbShader.end();
 }
 
-void Scene::drawHUD()
+void Scene::drawHUDBG()
 {
 	ofPushStyle();
 	ofSetColor(hudColour[0], hudColour[1], hudColour[2], hudColour[3]);
@@ -71,4 +86,57 @@ void Scene::drawHUD()
 	ofPopStyle();
 
 	ofFill();
+}
+
+
+void Scene::drawHUDCopy()
+{
+	string tlStr = "TOP LEFT\nThis is some text\nthis is some more text\na little more";
+	drawTextBox(tlStr, "TOP LEFT");
+	string trStr = "TOP RIGHT\nThis is some text\nthis is some more text\na little more\none more line";
+	drawTextBox(trStr, "TOP RIGHT");
+	string blStr = "BOTTOM LEFT\nThis is some text\nthis is some more text";
+	drawTextBox(blStr, "BOTTOM LEFT");
+	string brStr = "BOTTOM RIGHT\nThis is some text\nthis is some more text\na little more";
+	drawTextBox(brStr, "BOTTOM RIGHT");
+}
+
+
+void Scene::drawTextBox(string copy, string align)
+{
+	ofPushStyle();
+	ofSetColor(textColour[0], textColour[1], textColour[2], textColour[3]);
+	ofPushMatrix();
+	if (align == "TOP LEFT")
+	{
+		ofTranslate(xMargin, yMargin);
+		text.setAlignment(FTGL_ALIGN_LEFT);
+	}
+	else if (align == "TOP RIGHT")
+	{
+		text.setAlignment(FTGL_ALIGN_RIGHT);
+		ofTranslate(ofGetWidth() - xMargin - lineLength, yMargin);
+	}
+	else if (align == "BOTTOM LEFT")
+	{
+		ofTranslate(xMargin, ofGetHeight() - yMargin - yMarginBottomOffset);
+		text.setAlignment(FTGL_ALIGN_LEFT);
+	}
+	if (align == "BOTTOM RIGHT")
+	{
+		text.setAlignment(FTGL_ALIGN_RIGHT);
+		ofTranslate(ofGetWidth() - xMargin - lineLength, ofGetHeight() - yMargin - yMarginBottomOffset);
+	}
+
+	text.drawString(copy, 0, 0);
+
+	ofPopMatrix();
+	ofPopStyle();
+}
+
+
+
+void Scene::keyPressed(int key)
+{
+
 }
