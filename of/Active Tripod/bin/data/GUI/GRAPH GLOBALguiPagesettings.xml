@@ -1,0 +1,21 @@
+<Widget>
+    <Kind>2</Kind>
+    <Name>Bar graph</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Solid Body graph</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Line fade graph</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Graph X begin/end (percent)</Name>
+    <HighValue>0.838815808</HighValue>
+    <LowValue>0.069078945</LowValue>
+</Widget>

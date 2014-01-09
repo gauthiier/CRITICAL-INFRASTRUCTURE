@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "BarGraph.h"
+#include "BodyGraph.h"
 #include "ofxFTGL.h"
 
 class testApp;
@@ -25,11 +26,14 @@ public:
 	void drawHUDCopy();
 	void drawTextBox(string copy, string align);
 	void keyPressed(int key);
-
+	
 	BarGraph barGraph;
+	BodyGraph bodyGraph;
 	ofShader rgbShader;
 	ofImage bgImg;
 	ofxFTGLSimpleLayout text;
+
+	AbstractGraph* activeGraph;
 
 
 

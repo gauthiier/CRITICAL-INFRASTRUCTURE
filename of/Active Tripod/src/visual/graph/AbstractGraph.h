@@ -9,22 +9,25 @@
 #pragma once
 
 #include "ofMain.h"
+#include "DataManager.h"
 
 class AbstractGraph
 {
 public:
     void setup();
-    void update();
-    void draw();
-	virtual void addNewData(vector<int> newData);
+    virtual void update();
+    virtual void draw();
+	virtual void addNewData(vector<DataObject> newData);
 	
-	vector<int> publisher0Data;
-	vector<int> publisher1Data;
+	vector<DataObject> publisher0Data;
+	vector<DataObject> publisher1Data;
 	int maxData; // calculated from graphWidth and graphItemXGap
+	
+	static float minGraphPercent;
+	static float maxGraphPercent;
 
 	float graphItemXGap;
-	ofPoint startPnt;
-	int graphWidth;
-	int graphHeight;
+	
+	float graphHeightMax;
 
 };

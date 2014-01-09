@@ -1,9 +1,10 @@
+
 #pragma once
 
 #include "ofMain.h"
 #include "AbstractGraph.h"
 
-class BarGraph : public AbstractGraph
+class BodyGraph : public AbstractGraph
 {
 public:
     void setup();
@@ -12,9 +13,8 @@ public:
 	virtual void addNewData(vector<DataObject> newData);
 
 	float barWidth;
-	
+	float lineWidth;
+
 	float col0[4];
 	float col1[4];
-
-
 };

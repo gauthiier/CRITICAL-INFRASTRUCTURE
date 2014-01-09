@@ -73,6 +73,9 @@
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
       <Filter>addons\ofxFTGL\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\visual\graph\BodyGraph.cpp">
+      <Filter>src\visual\graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -367,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBuffer.h">
       <Filter>addons\ofxFTGL\libs\FTGL\include\FTGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visual\graph\BodyGraph.h">
+      <Filter>src\visual\graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

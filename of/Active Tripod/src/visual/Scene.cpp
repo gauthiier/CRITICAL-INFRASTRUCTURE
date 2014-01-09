@@ -14,21 +14,18 @@ void Scene::setup()
 	bgImg.loadImage("images/tanks.jpg");
 	rgbShader.load("shaders/RGBShader");
 	barGraph.setup();
+	bodyGraph.setup();
 
+	//activeGraph = &barGraph;
 
-    text.loadFont("fonts/mplus-1c-regular.ttf", 8);
-    //text.setLineLength(ofGetWidth() - margin * 2);
-
-
-	xMargin = 500;
-	yMargin = 400;
-	lineLength = 200;
+    //text.loadFont("fonts/Roboto-Regular.ttf", 8);
+    text.loadFont("fonts/Roboto-Light.ttf", 8);
 }
 
 
 void Scene::update()
 {
-	barGraph.update();
+	activeGraph->update();
 
 	text.setLineLength(lineLength);
     text.setLineSpacing(lineSpacing);
@@ -40,7 +37,7 @@ void Scene::update()
 void Scene::draw()
 {
 	drawVideo();
-	barGraph.draw();
+	activeGraph->draw();
 	drawHUDBG();
 	drawHUDCopy();
 }

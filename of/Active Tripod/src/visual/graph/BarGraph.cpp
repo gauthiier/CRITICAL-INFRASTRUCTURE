@@ -1,13 +1,4 @@
-//
-//  gui->cpp
-//  emptyExample
-//
-//  Created by James Alliban on 25/06/2013.
-//
-//
-
 #include "BarGraph.h"
-
 
 void BarGraph::setup()
 {
@@ -26,18 +17,20 @@ void BarGraph::update()
 
 void BarGraph::draw()
 {
+	//printf("BarGraph::draw() - graphItemXGap = %f \n", graphItemXGap);
+
 	if (publisher0Data.size() > 1)
 	{
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{
 			if (i < publisher0Data.size() - 2)
 			{
-				ofPushStyle();
-				ofSetColor(0, 0, 0);
-				ofLine(i * graphItemXGap, publisher0Data[i], (i + 1) * graphItemXGap, publisher0Data[i + 1]);
-				ofSetColor(0, 0, 0);
-				ofLine(i * graphItemXGap, publisher1Data[i], (i + 1) * graphItemXGap, publisher1Data[i + 1]);
-				ofPopStyle();
+				//ofPushStyle();
+				//ofSetColor(0, 0, 0);
+				//ofLine(i * graphItemXGap, publisher0Data[i], (i + 1) * graphItemXGap, publisher0Data[i + 1]);
+				//ofSetColor(0, 0, 0);
+				//ofLine(i * graphItemXGap, publisher1Data[i], (i + 1) * graphItemXGap, publisher1Data[i + 1]);
+				//ofPopStyle();
 			}
 		}
 
@@ -50,16 +43,37 @@ void BarGraph::draw()
 			//ofCircle(i * graphItemXGap, publisher1Data[i], 5);
 			//ofPopStyle();
 		}
+		
+		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
+		float outputMin = (ofGetHeight() * 0.5) - graphHeightMax;
+		float outputMax = (ofGetHeight() * 0.5) + graphHeightMax;
 
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{
 			ofPushStyle();
 
+
 			ofMesh bar;
-			bar.addVertex(ofVec3f(i * graphItemXGap - (barWidth * 0.5), publisher0Data[i], 0));
-			bar.addVertex(ofVec3f(i * graphItemXGap - (barWidth * 0.5) + barWidth, publisher0Data[i], 0));
-			bar.addVertex(ofVec3f(i * graphItemXGap - (barWidth * 0.5), publisher1Data[i], 0));
-			bar.addVertex(ofVec3f(i * graphItemXGap - (barWidth * 0.5) + barWidth, publisher1Data[i], 0));
+			float rectTLX = i * graphItemXGap - (barWidth * 0.5) + xOffset;
+			float rectTLY = ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax);
+			
+			float rectTRX = i * graphItemXGap - (barWidth * 0.5) + barWidth + xOffset;
+			float rectTRY = ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax);
+			
+			float rectBLX = i * graphItemXGap - (barWidth * 0.5) + xOffset;
+			float rectBLY = ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax);
+			
+			float rectBRX = i * graphItemXGap - (barWidth * 0.5) + barWidth + xOffset;
+			float rectBRY = ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax);
+
+			
+			//printf("val:%f, min:%f, max:%f - new val:%f \n", publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, rectTLY);
+			//printf("val:%f, min:%f, max:%f - new val:%f \n", publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, rectBLY);
+
+			bar.addVertex(ofVec3f(rectTLX, rectTLY, 0));
+			bar.addVertex(ofVec3f(rectTRX, rectTRY, 0));
+			bar.addVertex(ofVec3f(rectBLX, rectBLY, 0));
+			bar.addVertex(ofVec3f(rectBRX, rectBRY, 0));
 			bar.addIndex(0);
 			bar.addIndex(1);
 			bar.addIndex(3);
@@ -84,7 +98,7 @@ void BarGraph::draw()
 
 
 
-void BarGraph::addNewData(vector<int> newData)
+void BarGraph::addNewData(vector<DataObject> newData)
 {
 	AbstractGraph::addNewData(newData);
 }

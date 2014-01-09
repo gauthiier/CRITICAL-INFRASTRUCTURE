@@ -9,6 +9,14 @@
 
 class testApp;
 
+struct DataObject
+{
+	string info;
+	float value;
+	float min;
+	float max;
+};
+
 class DataManager
 {
 
@@ -17,6 +25,7 @@ class DataManager
 		void setupSpacebrew();
 		void update();
 		void draw();
+		vector<string> explode( const string &delimiter, const string &str);
 
 		testApp* app;
 
@@ -28,7 +37,7 @@ class DataManager
 		string publisher0Name;
 		string publisher1Name;
 
-		vector<int> newData;
+		vector<DataObject> newData;
 
 		bool isPublisher0DataReceived;
 		bool isPublisher1DataReceived;

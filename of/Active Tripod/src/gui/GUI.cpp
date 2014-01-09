@@ -8,6 +8,7 @@
 
 #include "GUI.h"
 #include "testApp.h"
+#include "AbstractGraph.h"
 
 void GUI::setup()
 {
@@ -17,8 +18,9 @@ void GUI::setup()
     dim = 8;
 	
     addKeyboardShortcutsGUI();
-	//addGraphAnimationGUI();
+	addGraphGlobalGUI();
 	addBarGraphDesignGUI();
+	addBodyGraphDesignGUI();
 	addGraphSimulationGUI();
     addBackgroundGUI();
 	addHUDTextGUI();
@@ -49,13 +51,25 @@ void GUI::addKeyboardShortcutsGUI()
 }
 
 
-void GUI::addGraphAnimationGUI()
+void GUI::addGraphGlobalGUI()
 {
-	string title = "GRAPH ANIMATION";
+	string title = "GRAPH GLOBAL";
     ofxUICanvas* gui = getNewGUI(title);
 
+	vector<string> graphNames;
+	graphNames.push_back("Bar graph");
+	graphNames.push_back("Solid Body graph");
+	graphNames.push_back("Line fade graph");
+
+	gui->addRadio("Graph Selection", graphNames, OFX_UI_ORIENTATION_VERTICAL, dim*2, dim*2);
+	gui->addSpacer(length, 1);
+	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &AbstractGraph::minGraphPercent, &AbstractGraph::maxGraphPercent, length, dim);
+	
+
+    ofAddListener(gui->newGUIEvent, this, &GUI::graphGlobalGUIEvent);
     finaliseCanvas(gui, true);
 }
+
 
 
 void GUI::addBarGraphDesignGUI()
@@ -65,6 +79,8 @@ void GUI::addBarGraphDesignGUI()
 	
 	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.barGraph.graphItemXGap, length, dim);
 	gui->addSlider("BarWidth", 2, 50, &app->scene.barGraph.barWidth, length, dim);
+	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.barGraph.graphHeightMax, length, dim);
+	
 	
 	gui->addSlider("Data0 red", 0, 255, &app->scene.barGraph.col0[0], length, dim);
 	gui->addSlider("Data0 green", 0, 255, &app->scene.barGraph.col0[1], length, dim);
@@ -74,6 +90,27 @@ void GUI::addBarGraphDesignGUI()
 	gui->addSlider("Data1 green", 0, 255, &app->scene.barGraph.col1[1], length, dim);
 	gui->addSlider("Data1 blue", 0, 255, &app->scene.barGraph.col1[2], length, dim);
 	gui->addSlider("Data1 alpha", 0, 255, &app->scene.barGraph.col1[3], length, dim);
+
+    finaliseCanvas(gui, true);
+}
+
+
+void GUI::addBodyGraphDesignGUI()
+{
+	string title = "BODY GRAPH DESIGN";
+    ofxUICanvas* gui = getNewGUI(title);
+	
+	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.bodyGraph.graphItemXGap, length, dim);
+	gui->addSlider("Line width", 1, 50, &app->scene.bodyGraph.lineWidth, length, dim);
+	
+	gui->addSlider("Data0 red", 0, 255, &app->scene.bodyGraph.col0[0], length, dim);
+	gui->addSlider("Data0 green", 0, 255, &app->scene.bodyGraph.col0[1], length, dim);
+	gui->addSlider("Data0 blue", 0, 255, &app->scene.bodyGraph.col0[2], length, dim);
+	gui->addSlider("Data0 alpha", 0, 255, &app->scene.bodyGraph.col0[3], length, dim);
+	gui->addSlider("Data1 red", 0, 255, &app->scene.bodyGraph.col1[0], length, dim);
+	gui->addSlider("Data1 green", 0, 255, &app->scene.bodyGraph.col1[1], length, dim);
+	gui->addSlider("Data1 blue", 0, 255, &app->scene.bodyGraph.col1[2], length, dim);
+	gui->addSlider("Data1 alpha", 0, 255, &app->scene.bodyGraph.col1[3], length, dim);
 
     finaliseCanvas(gui, true);
 }
@@ -174,6 +211,31 @@ void GUI::update()
 void GUI::draw()
 {
 }
+
+
+
+void GUI::graphGlobalGUIEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
+	ofxUIToggle *toggle = (ofxUIToggle *) e.widget; 
+    
+	if (name == "Bar graph")
+    {
+		//ofxUIToggle *toggle = (ofxUIToggle *) e.widget; 
+		if (toggle->getValue()) app->scene.activeGraph = &app->scene.barGraph;
+    }
+    else if (name == "Solid Body graph")
+    {
+		printf("------------------- Solid Body graph\n");
+		if (toggle->getValue()) app->scene.activeGraph = &app->scene.bodyGraph;
+    }
+    else if (name == "Line fade graph")
+	{
+		printf("------------------- Line fade graph\n");
+		//app->scene.activeGraph = &app->scene.lineGraph;
+    }
+}
+
 
 
 

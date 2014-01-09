@@ -111,6 +111,7 @@
     <ClCompile Include="..\..\..\addons\ofxSpacebrew\src\ofxSpacebrew.cpp" />
     <ClCompile Include="src\visual\graph\AbstractGraph.cpp" />
     <ClCompile Include="src\visual\graph\BarGraph.cpp" />
+    <ClCompile Include="src\visual\graph\BodyGraph.cpp" />
     <ClCompile Include="src\visual\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,7 @@
     <ClInclude Include="..\..\..\addons\ofxSpacebrew\src\ofxSpacebrew.h" />
     <ClInclude Include="src\visual\graph\AbstractGraph.h" />
     <ClInclude Include="src\visual\graph\BarGraph.h" />
+    <ClInclude Include="src\visual\graph\BodyGraph.h" />
     <ClInclude Include="src\visual\Scene.h" />
   </ItemGroup>
   <ItemGroup>

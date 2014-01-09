@@ -1,55 +1,50 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Item X Gap</Name>
-    <Value>21.875000000</Value>
+    <Value>7.220395088</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>BarWidth</Name>
-    <Value>17.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Graph Height Max</Name>
-    <Value>407.894744873</Value>
+    <Name>Line width</Name>
+    <Value>25.661184311</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 red</Name>
-    <Value>196.282897949</Value>
+    <Value>89.753288269</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 green</Name>
-    <Value>21.809211731</Value>
+    <Value>208.865127563</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 blue</Name>
-    <Value>67.944076538</Value>
+    <Value>84.720397949</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 alpha</Name>
-    <Value>158.536193848</Value>
+    <Value>230.674346924</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 red</Name>
-    <Value>208.026306152</Value>
+    <Value>164.407897949</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 green</Name>
-    <Value>196.282897949</Value>
+    <Value>83.042762756</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 blue</Name>
-    <Value>18.453947067</Value>
+    <Value>208.865127563</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 alpha</Name>
-    <Value>209.703948975</Value>
+    <Value>185.378295898</Value>
 </Widget>

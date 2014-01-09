@@ -2,24 +2,27 @@
 
 // TODO
 // ====
-// - Make graph system with 3 simple (for now) but different graphs that can be interchanged
-// - Add image to background and create a mask
-// - Use a shader to adjust image brightness/contrast and colour
-// - 
-// - Add to config
-// - - IP address
-// - - Host name
-// - - App name
 // 
-// 
-// 
+// - Map graph min/max
+// - Stop graph going beyond 80% of the screen
+// - Add separate colour sliders for body graph
+// - In body graph use one long line instead of loads of lines
+// - Make 2nd graph - body
+// - Make 3rd graph - separate fade
+// - Add colour boxes to text - DON'T use graph colours - add sliders
+// - Crosshairs in HUD
+// - Add video camera feed
+// - Create text parsing system
+// - Tidy up the first graph
+// - Create animation system
+// - Make system to slow down data - The screen should show 15-20 minutes worth of data
+// - Create a single config file to be loaded from online location. It will contain IP address and host name
 // 
 // 
 // 
 // 
 // NOTES
 // =====
-// - Each publisher should have a unique number. There should be a config file kept in c:/ containing a unique ID
 // - Check that the local data sources always have the same amount of data.
 
 
@@ -33,6 +36,7 @@ void testApp::setup()
 	ofEnableSmoothing();
 	ofSeedRandom(ofRandom(23243));
 	ofSetFullscreen(true);
+	ofSetVerticalSync(true);
 
 	dataManager.setup();
 	scene.setup();
