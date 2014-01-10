@@ -2,7 +2,7 @@
 
 // TODO
 // ====
-// - Add video camera feed
+// - Add spacebrew text to text boxes
 // - Add colour boxes to text
 // - Make system to slow down data - The screen should show 15-20 minutes worth of data
 // - Make 3rd graph - separate fade

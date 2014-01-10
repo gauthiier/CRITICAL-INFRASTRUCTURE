@@ -1,22 +1,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>X Margin</Name>
-    <Value>90.460525513</Value>
+    <Value>64.144737244</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Y Margin</Name>
-    <Value>87.171058655</Value>
+    <Value>80.592102051</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Y Margin Bottom Offset</Name>
-    <Value>92.763160706</Value>
+    <Value>54.276313782</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Length</Name>
-    <Value>380.098693848</Value>
+    <Value>360.855255127</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -27,6 +27,11 @@
     <Kind>4</Kind>
     <Name>Text Size</Name>
     <Value>21.842105865</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Value average amount</Name>
+    <Value>3.006578922</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -47,4 +52,19 @@
     <Kind>4</Kind>
     <Name>Alpha</Name>
     <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Top Colour Box X Offset</Name>
+    <Value>-33.552642822</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Bottom Colour Box X Offset</Name>
+    <Value>73.026336670</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Colour Box Thickness</Name>
+    <Value>6.319078922</Value>
 </Widget>

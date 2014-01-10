@@ -30,4 +30,7 @@ public:
 	
 	float graphHeightMax;
 
+	float col0[4];
+	float col1[4];
+
 };

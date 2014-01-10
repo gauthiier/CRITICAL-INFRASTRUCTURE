@@ -13,8 +13,6 @@ public:
 
 	float barWidth;
 	
-	float col0[4];
-	float col1[4];
 
 
 };

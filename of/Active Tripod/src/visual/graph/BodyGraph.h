@@ -14,7 +14,4 @@ public:
 
 	float barWidth;
 	float lineWidth;
-
-	float col0[4];
-	float col1[4];
 };

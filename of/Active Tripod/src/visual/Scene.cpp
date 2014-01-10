@@ -19,9 +19,6 @@ void Scene::setup()
 	barGraph.setup();
 	bodyGraph.setup();
 
-	//activeGraph = &barGraph;
-
-    //text.loadFont("fonts/Roboto-Regular.ttf", 8);
     text.loadFont("fonts/Roboto-Light.ttf", 8);
 }
 
@@ -35,7 +32,6 @@ void Scene::update()
 	text.setLineLength(lineLength);
     text.setLineSpacing(lineSpacing);
 	text.setSize(textSize);
-
 }
 
 
@@ -45,6 +41,7 @@ void Scene::draw()
 	activeGraph->draw();
 	drawHUDBG();
 	drawHUDCopy();
+	drawHUDColourBars();
 }
 
 void Scene::drawVideo()
@@ -96,14 +93,36 @@ void Scene::drawHUDBG()
 
 void Scene::drawHUDCopy()
 {
-	string tlStr = "TOP LEFT\nThis is some text\nthis is some more text\na little more";
 	drawTextBox(tlStr, "TOP LEFT");
-	string trStr = "TOP RIGHT\nThis is some text\nthis is some more text\na little more\none more line";
 	drawTextBox(trStr, "TOP RIGHT");
-	string blStr = "BOTTOM LEFT\nThis is some text\nthis is some more text";
-	drawTextBox(blStr, "BOTTOM LEFT");
-	string brStr = "BOTTOM RIGHT\nThis is some text\nthis is some more text\na little more";
-	drawTextBox(brStr, "BOTTOM RIGHT");
+	
+	vector<DataObject> *p0Data = &activeGraph->publisher0Data;
+	vector<DataObject> *p1Data = &activeGraph->publisher1Data;
+
+	if (p0Data->size() > (int)averageAmount - 1)
+	{
+		float average0 = 0;
+		for (int i = 0; i < (int)averageAmount; i++)
+			average0 += p0Data->at(p0Data->size() - i - 1).value;
+		average0 /= (int)averageAmount;
+
+		//	(p0Data->back() + p0Data->at(p0Data->size() - 2) + p0Data->at(p0Data->size() - 2))
+		blStr = ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
+			ofToString(p0Data->back().value) + "\n" + 
+			"Running average: " + ofToString(average0);
+		drawTextBox(blStr, "BOTTOM LEFT");
+		
+
+		float average1 = 0;
+		for (int i = 0; i < (int)averageAmount; i++)
+			average1 += p1Data->at(p1Data->size() - i - 1).value;
+		average1 /= (int)averageAmount;
+
+		brStr = ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "m/s\n" +
+			ofToString(p1Data->back().value) + "\n" + 
+			"Running average: " + ofToString(average1);
+		drawTextBox(brStr, "BOTTOM RIGHT");
+	}
 }
 
 
@@ -114,8 +133,8 @@ void Scene::drawTextBox(string copy, string align)
 	ofPushMatrix();
 	if (align == "TOP LEFT")
 	{
-		ofTranslate(xMargin, yMargin);
 		text.setAlignment(FTGL_ALIGN_LEFT);
+		ofTranslate(xMargin, yMargin);
 	}
 	else if (align == "TOP RIGHT")
 	{
@@ -134,16 +153,45 @@ void Scene::drawTextBox(string copy, string align)
 	}
 
 	text.drawString(copy, 0, 0);
+	
+	//printf("%s text.getXHeight() = %f\n", align.c_str(), text.getStringBoundingBox(copy, xMargin, yMargin));
 
 	ofPopMatrix();
 	ofPopStyle();
 }
 
 
+
+void Scene::drawHUDColourBars()
+{
+	ofPushStyle();
+	
+	ofSetColor(activeGraph->col0[0], activeGraph->col0[1], activeGraph->col0[2], activeGraph->col0[3]);
+	ofRect(xMargin, yMargin + topColourBoxXOffset, lineLength, colourBoxThickness);
+
+	ofSetColor(activeGraph->col0[0], activeGraph->col0[1], activeGraph->col0[2], activeGraph->col0[3]);
+	ofRect(xMargin, ofGetHeight() - yMargin - yMarginBottomOffset + bottomColourBoxXOffset, lineLength, colourBoxThickness);
+	
+	ofSetColor(activeGraph->col1[0], activeGraph->col1[1], activeGraph->col1[2], activeGraph->col1[3]);
+	ofRect(ofGetWidth() - xMargin - lineLength, yMargin + topColourBoxXOffset, lineLength, colourBoxThickness);
+
+	ofSetColor(activeGraph->col1[0], activeGraph->col1[1], activeGraph->col1[2], activeGraph->col1[3]);
+	ofRect(ofGetWidth() - xMargin - lineLength, ofGetHeight() - yMargin - yMarginBottomOffset + bottomColourBoxXOffset, lineLength, colourBoxThickness);
+
+	ofPopStyle();
+}
+
+
+
 void Scene::addNewData(vector<DataObject> newData)
 {
 	barGraph.addNewData(newData);
 	bodyGraph.addNewData(newData);
+	
+	tlStr = newData[0].info + "\n" + ofToString(newData[0].value);
+	trStr = newData[1].info + "\n" + ofToString(newData[1].value);
+
+	millisAtLastData = ofGetElapsedTimeMillis();
 }
 
 

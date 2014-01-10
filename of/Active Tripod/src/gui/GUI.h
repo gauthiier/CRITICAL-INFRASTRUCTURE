@@ -31,8 +31,7 @@ public:
 	void graphGlobalGUIEvent(ofxUIEventArgs &e);
     void variousGUIEvent(ofxUIEventArgs &e);
 
-    virtual void update();
-    virtual void draw();
+
     
     testApp* app;
 	vector<string> publishers; 

@@ -25,6 +25,7 @@ public:
 	void drawVideo();
 	void drawHUDBG();
 	void drawHUDCopy();
+	void drawHUDColourBars();
 	void drawTextBox(string copy, string align);
 	void addNewData(vector<DataObject> newData);
 	void keyPressed(int key);
@@ -65,4 +66,15 @@ public:
 	float lineSpacing;
 	float textSize;
 	float textColour[4];
+	string tlStr;
+	string trStr;
+	string blStr;
+	string brStr;
+	long millisAtLastData;
+	float averageAmount;
+
+	// text colour boxes
+	float topColourBoxXOffset;
+	float bottomColourBoxXOffset;
+	float colourBoxThickness;
 };
