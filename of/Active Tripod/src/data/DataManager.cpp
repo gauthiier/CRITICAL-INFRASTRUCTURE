@@ -77,7 +77,7 @@ void DataManager::update()
 		{
 			isPublisher0DataReceived = false;
 			isPublisher1DataReceived = false;
-			app->scene.activeGraph->addNewData(newData);
+			app->scene.addNewData(newData);
 		}
 	}
 }
@@ -122,10 +122,10 @@ void DataManager::onMessage( Spacebrew::Message & m )
 			printf("- - min = %s\n",  data[i].substr(4, -1).c_str());
 			dataObject.min = ofToFloat(data[i].substr(4, -1).c_str());
 		}			
-		if (data[i].substr(0, 5) == " max:") 
+		if (data[i].substr(0, 4) == "max:") 
 		{
-			printf("- - max = %s\n",  data[i].substr(5, -1).c_str());
-			dataObject.max = ofToFloat(data[i].substr(5, -1).c_str());
+			printf("- - max = %s\n",  data[i].substr(4, -1).c_str());
+			dataObject.max = ofToFloat(data[i].substr(4, -1).c_str());
 		}
 	}
 

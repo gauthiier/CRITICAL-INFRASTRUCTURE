@@ -132,6 +132,12 @@ void Scene::drawTextBox(string copy, string align)
 }
 
 
+void Scene::addNewData(vector<DataObject> newData)
+{
+	barGraph.addNewData(newData);
+	bodyGraph.addNewData(newData);
+}
+
 
 void Scene::keyPressed(int key)
 {

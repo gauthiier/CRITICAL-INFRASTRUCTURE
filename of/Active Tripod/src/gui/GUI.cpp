@@ -80,12 +80,13 @@ void GUI::addBarGraphDesignGUI()
 	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.barGraph.graphItemXGap, length, dim);
 	gui->addSlider("BarWidth", 2, 50, &app->scene.barGraph.barWidth, length, dim);
 	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.barGraph.graphHeightMax, length, dim);
-	
+	gui->addSpacer(length, 1);
 	
 	gui->addSlider("Data0 red", 0, 255, &app->scene.barGraph.col0[0], length, dim);
 	gui->addSlider("Data0 green", 0, 255, &app->scene.barGraph.col0[1], length, dim);
 	gui->addSlider("Data0 blue", 0, 255, &app->scene.barGraph.col0[2], length, dim);
 	gui->addSlider("Data0 alpha", 0, 255, &app->scene.barGraph.col0[3], length, dim);
+	gui->addSpacer(length, 1);
 	gui->addSlider("Data1 red", 0, 255, &app->scene.barGraph.col1[0], length, dim);
 	gui->addSlider("Data1 green", 0, 255, &app->scene.barGraph.col1[1], length, dim);
 	gui->addSlider("Data1 blue", 0, 255, &app->scene.barGraph.col1[2], length, dim);
@@ -102,11 +103,14 @@ void GUI::addBodyGraphDesignGUI()
 	
 	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.bodyGraph.graphItemXGap, length, dim);
 	gui->addSlider("Line width", 1, 50, &app->scene.bodyGraph.lineWidth, length, dim);
+	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.bodyGraph.graphHeightMax, length, dim);
+	gui->addSpacer(length, 1);
 	
 	gui->addSlider("Data0 red", 0, 255, &app->scene.bodyGraph.col0[0], length, dim);
 	gui->addSlider("Data0 green", 0, 255, &app->scene.bodyGraph.col0[1], length, dim);
 	gui->addSlider("Data0 blue", 0, 255, &app->scene.bodyGraph.col0[2], length, dim);
 	gui->addSlider("Data0 alpha", 0, 255, &app->scene.bodyGraph.col0[3], length, dim);
+	gui->addSpacer(length, 1);
 	gui->addSlider("Data1 red", 0, 255, &app->scene.bodyGraph.col1[0], length, dim);
 	gui->addSlider("Data1 green", 0, 255, &app->scene.bodyGraph.col1[1], length, dim);
 	gui->addSlider("Data1 blue", 0, 255, &app->scene.bodyGraph.col1[2], length, dim);

@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "BarGraph.h"
 #include "BodyGraph.h"
+#include "DataManager.h"
 #include "ofxFTGL.h"
 
 class testApp;
@@ -25,6 +26,7 @@ public:
 	void drawHUDBG();
 	void drawHUDCopy();
 	void drawTextBox(string copy, string align);
+	void addNewData(vector<DataObject> newData);
 	void keyPressed(int key);
 	
 	BarGraph barGraph;

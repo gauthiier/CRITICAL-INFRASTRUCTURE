@@ -2,31 +2,14 @@
 
 // TODO
 // ====
-// 
-// - Map graph min/max
-// - Stop graph going beyond 80% of the screen
-// - Add separate colour sliders for body graph
-// - In body graph use one long line instead of loads of lines
-// - Make 2nd graph - body
-// - Make 3rd graph - separate fade
-// - Add colour boxes to text - DON'T use graph colours - add sliders
-// - Crosshairs in HUD
 // - Add video camera feed
-// - Create text parsing system
-// - Tidy up the first graph
-// - Create animation system
+// - Add colour boxes to text
 // - Make system to slow down data - The screen should show 15-20 minutes worth of data
+// - Make 3rd graph - separate fade
+// - Crosshairs in HUD
+// - Create graph animation system
 // - Create a single config file to be loaded from online location. It will contain IP address and host name
 // 
-// 
-// 
-// 
-// NOTES
-// =====
-// - Check that the local data sources always have the same amount of data.
-
-
-
 //--------------------------------------------------------------
 void testApp::setup()
 {
@@ -45,7 +28,7 @@ void testApp::setup()
 	isPaused = false;
 }
 
-//--------------------------------------------------------------
+
 void testApp::update()
 {
 	if (isPaused) return;
@@ -54,7 +37,7 @@ void testApp::update()
 	scene.update();
 }
 
-//--------------------------------------------------------------
+
 void testApp::draw()
 {
     dataManager.draw();
@@ -62,7 +45,6 @@ void testApp::draw()
 }
 
 
-//--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button)
 {
 

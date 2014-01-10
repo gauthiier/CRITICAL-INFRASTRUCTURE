@@ -33,13 +33,24 @@ void BodyGraph::draw()
 		//	ofPopStyle();
 		//}
 
+		
+		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
+		float outputMin = (ofGetHeight() * 0.5) - graphHeightMax;
+		float outputMax = (ofGetHeight() * 0.5) + graphHeightMax;
 
+		// draw main part of graph (body)
 		ofMesh body;
 		body.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{
-			//body.addVertex(ofVec3f(i * graphItemXGap, publisher0Data[i], 0));
-			//body.addVertex(ofVec3f(i * graphItemXGap, publisher1Data[i], 0));
+			body.addVertex(ofVec3f(
+				i * graphItemXGap + xOffset, 
+				ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax), 
+				0));
+			body.addVertex(ofVec3f(
+				i * graphItemXGap + xOffset, 
+				ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax), 
+				0));
 			
 			body.addColor(ofColor(col0[0],col0[1],col0[2], col0[3]));
 			body.addColor(ofColor(col1[0],col1[1],col1[2], col1[3]));
@@ -48,20 +59,31 @@ void BodyGraph::draw()
 		body.drawFaces();
 
 		
+		// draw lines
+		ofPushStyle();
+		ofPolyline poly0;
+		ofPolyline poly1;
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{
-			if (i < publisher0Data.size() - 2)
+			if (i < publisher0Data.size() - 1)
 			{
-				//ofPushStyle();
-				//ofSetLineWidth(lineWidth);
-				//ofSetColor(col0[0],col0[1],col0[2], 255);
-				//ofLine(i * graphItemXGap, publisher0Data[i], (i + 1) * graphItemXGap, publisher0Data[i + 1]);
-				//ofSetColor(col1[0],col1[1],col1[2], 255);
-				//ofLine(i * graphItemXGap, publisher1Data[i], (i + 1) * graphItemXGap, publisher1Data[i + 1]);
-				//ofPopStyle();
+				ofSetLineWidth(lineWidth);
+				poly0.addVertex(ofPoint(
+					i * graphItemXGap + xOffset,
+					ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax)));
+				
+				
+				poly1.addVertex(ofPoint(
+					i * graphItemXGap + xOffset,
+					ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax)));
 			}
 		}
-
+		
+		ofSetColor(col0[0],col0[1],col0[2], 255);
+		poly0.draw();
+		ofSetColor(col1[0],col1[1],col1[2], 255);
+		poly1.draw();
+		ofPopStyle();
 	}
 }
 

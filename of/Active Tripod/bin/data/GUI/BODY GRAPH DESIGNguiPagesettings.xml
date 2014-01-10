@@ -6,7 +6,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Line width</Name>
-    <Value>25.661184311</Value>
+    <Value>7.286184311</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Height Max</Name>
+    <Value>443.421051025</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -26,7 +31,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 alpha</Name>
-    <Value>230.674346924</Value>
+    <Value>155.180923462</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -46,5 +51,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 alpha</Name>
-    <Value>185.378295898</Value>
+    <Value>170.279602051</Value>
 </Widget>
