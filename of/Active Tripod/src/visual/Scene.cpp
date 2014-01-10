@@ -11,6 +11,9 @@
 
 void Scene::setup()
 {
+	vidGrabber.initGrabber(1280, 720);
+	vidGrabber.setDesiredFrameRate(30);
+
 	bgImg.loadImage("images/tanks.jpg");
 	rgbShader.load("shaders/RGBShader");
 	barGraph.setup();
@@ -25,6 +28,8 @@ void Scene::setup()
 
 void Scene::update()
 {
+	vidGrabber.update();
+	
 	activeGraph->update();
 
 	text.setLineLength(lineLength);
@@ -54,7 +59,10 @@ void Scene::drawVideo()
 	rgbShader.setUniform1f("blue", blue);
 	rgbShader.setUniform1f("alpha", alpha);
 	
-    bgImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+	if (isVideoVisible)
+		vidGrabber.draw(0, 0, ofGetWidth(), ofGetHeight());
+	if (isImageVisible)
+	    bgImg.draw(0, 0, ofGetWidth(), ofGetHeight());
 	
 	rgbShader.end();
 }

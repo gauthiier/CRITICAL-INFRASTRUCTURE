@@ -32,6 +32,7 @@ public:
 	BarGraph barGraph;
 	BodyGraph bodyGraph;
 	ofShader rgbShader;
+	ofVideoGrabber vidGrabber;
 	ofImage bgImg;
 	ofxFTGLSimpleLayout text;
 
@@ -47,6 +48,8 @@ public:
 	float green;
 	float blue;
 	float alpha;
+	bool isVideoVisible;
+	bool isImageVisible;
 	
 	// HUD background vars
 	float hudColour[4];

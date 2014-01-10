@@ -139,6 +139,9 @@ void GUI::addBackgroundGUI()
     string title = "BACKGROUND";
     ofxUICanvas* gui = getNewGUI(title);
 
+	gui->addToggle("Toggle Video Visibility", &app->scene.isVideoVisible, toggleDim, toggleDim);
+	gui->addToggle("Toggle Image Visibility", &app->scene.isImageVisible, toggleDim, toggleDim);
+
     gui->addLabel("VIDEO IMAGE SETTINGS");
 	gui->addSlider("Brightness", 0, 2, &app->scene.brightness, length, dim);
 	gui->addSlider("Contrast", 0, 2, &app->scene.contrast, length, dim);

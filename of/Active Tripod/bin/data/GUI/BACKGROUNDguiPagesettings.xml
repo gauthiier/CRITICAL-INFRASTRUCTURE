@@ -1,4 +1,14 @@
 <Widget>
+    <Kind>2</Kind>
+    <Name>Toggle Video Visibility</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toggle Image Visibility</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Brightness</Name>
     <Value>0.921052635</Value>
