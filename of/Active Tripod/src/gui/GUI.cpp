@@ -146,6 +146,10 @@ void GUI::addBackgroundGUI()
 
 	gui->addToggle("Toggle Video Visibility", &app->scene.isVideoVisible, toggleDim, toggleDim);
 	gui->addToggle("Toggle Image Visibility", &app->scene.isImageVisible, toggleDim, toggleDim);
+	gui->addSlider("Video/Image Width Percent", 0, 2, &app->scene.videoWidthPercentage, length, dim);
+	gui->addSlider("Video/Image Height Percent", 0, 2, &app->scene.videoHeightPercentage, length, dim);
+
+	
 
     gui->addLabel("VIDEO IMAGE SETTINGS");
 	gui->addSlider("Brightness", 0, 2, &app->scene.brightness, length, dim);

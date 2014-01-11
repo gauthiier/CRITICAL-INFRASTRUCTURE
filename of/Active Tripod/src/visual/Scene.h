@@ -49,6 +49,8 @@ public:
 	float green;
 	float blue;
 	float alpha;
+	float videoWidthPercentage;
+	float videoHeightPercentage;
 	bool isVideoVisible;
 	bool isImageVisible;
 	

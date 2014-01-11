@@ -2,7 +2,6 @@
 
 // TODO
 // ====
-// - Make HUD BG hole size a percentage rather than pixels
 // - Add option to resize video draw size (rather than making it fullscreen) and init size
 // - Make system to slow down data - The screen should show 15-20 minutes worth of data
 // - Make 3rd graph - separate fade

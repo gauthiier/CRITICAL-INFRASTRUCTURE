@@ -56,11 +56,17 @@ void Scene::drawVideo()
 	rgbShader.setUniform1f("blue", blue);
 	rgbShader.setUniform1f("alpha", alpha);
 	
+	float vidW = ofGetWidth() * videoWidthPercentage;
+	float vidH = ofGetHeight() * videoHeightPercentage;
+
+	ofPushMatrix();
+	ofTranslate((ofGetWidth() - vidW) * 0.5, (ofGetHeight() - vidH) * 0.5);
 	if (isVideoVisible)
-		vidGrabber.draw(0, 0, ofGetWidth(), ofGetHeight());
+		vidGrabber.draw(0, 0, vidW, vidH);
 	if (isImageVisible)
-	    bgImg.draw(0, 0, ofGetWidth(), ofGetHeight());
-	
+	    bgImg.draw(0, 0, vidW, vidH);
+	ofPopMatrix();
+
 	rgbShader.end();
 }
 
