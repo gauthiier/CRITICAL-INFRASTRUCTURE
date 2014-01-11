@@ -76,6 +76,9 @@ void Scene::drawHUDBG()
 	ofVertex(0, ofGetHeight());
 		
 	ofNextContour(true);
+
+	float radiusW = (ofGetWidth() * 0.5) * hudHoleWidthPercentage;
+	float radiusH = (ofGetHeight() * 0.5) * hudHoleHeightPercentage;
 	
 	for (int i = 0; i < (int)circlePointSize; i++)
 	{

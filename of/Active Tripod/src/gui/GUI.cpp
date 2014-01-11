@@ -162,8 +162,8 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Green .", 0, 255, &app->scene.hudColour[1], length, dim);
 	gui->addSlider("Blue .", 0, 255, &app->scene.hudColour[2], length, dim);
 	gui->addSlider("Alpha .", 0, 255, &app->scene.hudColour[3], length, dim);
-	gui->addSlider("Radius Width", 1, 2000, &app->scene.radiusW, length, dim);
-	gui->addSlider("Radius Height", 1, 2000, &app->scene.radiusH, length, dim);
+	gui->addSlider("Hole Width Percent", 0, 2, &app->scene.hudHoleWidthPercentage, length, dim);
+	gui->addSlider("Hole Height Percent", 0, 2, &app->scene.hudHoleHeightPercentage, length, dim);
 	gui->addSlider("Circle Point Size", 0, 100, &app->scene.circlePointSize, length, dim);
 
     ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);

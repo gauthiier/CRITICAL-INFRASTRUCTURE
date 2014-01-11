@@ -55,8 +55,8 @@ public:
 	// HUD background vars
 	float hudColour[4];
 	float circlePointSize;
-	float radiusW;
-	float radiusH;
+	float hudHoleWidthPercentage;
+	float hudHoleHeightPercentage;
 
 	// text vars
 	float xMargin;

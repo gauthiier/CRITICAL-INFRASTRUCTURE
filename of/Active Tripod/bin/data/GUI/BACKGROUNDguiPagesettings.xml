@@ -65,13 +65,13 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Radius Width</Name>
-    <Value>829.532897949</Value>
+    <Name>Hole Width Percent</Name>
+    <Value>0.875000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Radius Height</Name>
-    <Value>612.536193848</Value>
+    <Name>Hole Height Percent</Name>
+    <Value>1.019736886</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
