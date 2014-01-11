@@ -20,7 +20,6 @@ void AbstractGraph::setup()
 void AbstractGraph::update()
 {
 	maxData = (ofGetWidth() * (AbstractGraph::maxGraphPercent - AbstractGraph::minGraphPercent)) /  graphItemXGap;
-	printf("ofGetWidth():%i, maxData:%i, graphItemXGap:%f, screen active:%f \n", ofGetWidth(), maxData, graphItemXGap, (AbstractGraph::maxGraphPercent - AbstractGraph::minGraphPercent));
 }
 
 

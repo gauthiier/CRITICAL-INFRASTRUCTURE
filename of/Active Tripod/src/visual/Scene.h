@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "BarGraph.h"
 #include "BodyGraph.h"
+#include "SeparateBodyGraph.h"
 #include "DataManager.h"
 #include "ofxFTGL.h"
 
@@ -34,6 +35,8 @@ public:
 	
 	BarGraph barGraph;
 	BodyGraph bodyGraph;
+	SeparateBodyGraph separateBodyGraph;
+
 	ofShader rgbShader;
 	ofVideoGrabber vidGrabber;
 	ofImage bgImg;

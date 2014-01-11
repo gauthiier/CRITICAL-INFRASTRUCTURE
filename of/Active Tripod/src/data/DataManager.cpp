@@ -47,7 +47,6 @@ void DataManager::setupSpacebrew()
 
 void DataManager::update()
 {
-
 	if (isDataSimulated)
 	{
 		if (ofGetFrameNum() % (int)simulationSpeed == 0)
@@ -118,22 +117,22 @@ void DataManager::onMessage( Spacebrew::Message & m )
 	{
 		if (data[i].substr(0, 5) == "info:") 
 		{
-			printf("- - info = %s\n",  data[i].substr(5, -1).c_str());
+			//printf("- - info = %s\n",  data[i].substr(5, -1).c_str());
 			dataObject.info = data[i].substr(5, -1).c_str();
 		}
 		if (data[i].substr(0, 6) == "value:") 
 		{
-			printf("- - value = %s\n",  data[i].substr(6, -1).c_str());
+			//printf("- - value = %s\n",  data[i].substr(6, -1).c_str());
 			dataObject.value = ofToFloat(data[i].substr(6, -1).c_str());
 		}
 		if (data[i].substr(0, 4) == "min:") 
 		{
-			printf("- - min = %s\n",  data[i].substr(4, -1).c_str());
+			//printf("- - min = %s\n",  data[i].substr(4, -1).c_str());
 			dataObject.min = ofToFloat(data[i].substr(4, -1).c_str());
 		}			
 		if (data[i].substr(0, 4) == "max:") 
 		{
-			printf("- - max = %s\n",  data[i].substr(4, -1).c_str());
+			//printf("- - max = %s\n",  data[i].substr(4, -1).c_str());
 			dataObject.max = ofToFloat(data[i].substr(4, -1).c_str());
 		}
 	}

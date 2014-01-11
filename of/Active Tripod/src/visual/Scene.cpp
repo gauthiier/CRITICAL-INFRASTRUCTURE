@@ -18,6 +18,7 @@ void Scene::setup()
 	rgbShader.load("shaders/RGBShader");
 	barGraph.setup();
 	bodyGraph.setup();
+	separateBodyGraph.setup();
 
     text.loadFont("fonts/Roboto-Light.ttf", 8);
 }
@@ -197,6 +198,7 @@ void Scene::addNewData(vector<DataObject> newData)
 {
 	barGraph.addNewData(newData);
 	bodyGraph.addNewData(newData);
+	separateBodyGraph.addNewData(newData);
 	
 	tlStr = newData[0].info + "\n" + ofToString(newData[0].value);
 	trStr = newData[1].info + "\n" + ofToString(newData[1].value);
@@ -215,4 +217,5 @@ void Scene::clearGraphData()
 {
 	barGraph.clear();
 	bodyGraph.clear();
+	separateBodyGraph.clear();
 }

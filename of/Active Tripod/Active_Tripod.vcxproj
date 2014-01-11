@@ -112,6 +112,7 @@
     <ClCompile Include="src\visual\graph\AbstractGraph.cpp" />
     <ClCompile Include="src\visual\graph\BarGraph.cpp" />
     <ClCompile Include="src\visual\graph\BodyGraph.cpp" />
+    <ClCompile Include="src\visual\graph\SeparateBodyGraph.cpp" />
     <ClCompile Include="src\visual\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +191,7 @@
     <ClInclude Include="src\visual\graph\AbstractGraph.h" />
     <ClInclude Include="src\visual\graph\BarGraph.h" />
     <ClInclude Include="src\visual\graph\BodyGraph.h" />
+    <ClInclude Include="src\visual\graph\SeparateBodyGraph.h" />
     <ClInclude Include="src\visual\Scene.h" />
   </ItemGroup>
   <ItemGroup>

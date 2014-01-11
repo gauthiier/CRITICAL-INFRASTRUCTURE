@@ -23,6 +23,7 @@ public:
 	void addGraphGlobalGUI();
 	void addBarGraphDesignGUI();
 	void addBodyGraphDesignGUI();
+	void addSeparateBodyGraphDesignGUI();
 	void addGraphSimulationGUI();
     void addBackgroundGUI();
 	void addHUDTextGUI();

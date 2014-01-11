@@ -21,6 +21,7 @@ void GUI::setup()
 	addGraphGlobalGUI();
 	addBarGraphDesignGUI();
 	addBodyGraphDesignGUI();
+	addSeparateBodyGraphDesignGUI();
 	addGraphSimulationGUI();
     addBackgroundGUI();
 	addHUDTextGUI();
@@ -59,7 +60,7 @@ void GUI::addGraphGlobalGUI()
 	vector<string> graphNames;
 	graphNames.push_back("Bar graph");
 	graphNames.push_back("Solid Body graph");
-	graphNames.push_back("Line fade graph");
+	graphNames.push_back("Separate Body graph");
 
 	gui->addRadio("Graph Selection", graphNames, OFX_UI_ORIENTATION_VERTICAL, dim*2, dim*2);
 	
@@ -122,6 +123,34 @@ void GUI::addBodyGraphDesignGUI()
 	gui->addSlider("Data1 green", 0, 255, &app->scene.bodyGraph.col1[1], length, dim);
 	gui->addSlider("Data1 blue", 0, 255, &app->scene.bodyGraph.col1[2], length, dim);
 	gui->addSlider("Data1 alpha", 0, 255, &app->scene.bodyGraph.col1[3], length, dim);
+
+    finaliseCanvas(gui, true);
+}
+
+
+void GUI::addSeparateBodyGraphDesignGUI()
+{
+	string title = "SEPARATE BODY GRAPH DESIGN";
+    ofxUICanvas* gui = getNewGUI(title);
+	
+	gui->addToggle("Toggle Draw Lines", &app->scene.separateBodyGraph.isDrawLines, toggleDim, toggleDim);
+	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.separateBodyGraph.graphItemXGap, length, dim);
+	gui->addSlider("Line width", 1, 50, &app->scene.separateBodyGraph.lineWidth, length, dim);
+	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.separateBodyGraph.graphHeightMax, length, dim);
+	gui->addSlider("Graph bottom end (percent)", 0, 2, &app->scene.separateBodyGraph.graphEndPercent, length, dim);
+	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->scene.separateBodyGraph.sendDataSpeed, length, dim);
+	
+	gui->addSpacer(length, 1);
+	gui->addSlider("Data0 red", 0, 255, &app->scene.separateBodyGraph.col0[0], length, dim);
+	gui->addSlider("Data0 green", 0, 255, &app->scene.separateBodyGraph.col0[1], length, dim);
+	gui->addSlider("Data0 blue", 0, 255, &app->scene.separateBodyGraph.col0[2], length, dim);
+	gui->addSlider("Data0 alpha", 0, 255, &app->scene.separateBodyGraph.col0[3], length, dim);
+
+	gui->addSpacer(length, 1);
+	gui->addSlider("Data1 red", 0, 255, &app->scene.separateBodyGraph.col1[0], length, dim);
+	gui->addSlider("Data1 green", 0, 255, &app->scene.separateBodyGraph.col1[1], length, dim);
+	gui->addSlider("Data1 blue", 0, 255, &app->scene.separateBodyGraph.col1[2], length, dim);
+	gui->addSlider("Data1 alpha", 0, 255, &app->scene.separateBodyGraph.col1[3], length, dim);
 
     finaliseCanvas(gui, true);
 }
@@ -243,10 +272,10 @@ void GUI::graphGlobalGUIEvent(ofxUIEventArgs &e)
 		printf("------------------- Solid Body graph\n");
 		if (toggle->getValue()) app->scene.activeGraph = &app->scene.bodyGraph;
     }
-    else if (name == "Line fade graph")
+    else if (name == "Separate Body graph")
 	{
 		printf("------------------- Line fade graph\n");
-		//app->scene.activeGraph = &app->scene.lineGraph;
+		if (toggle->getValue()) app->scene.activeGraph = &app->scene.separateBodyGraph;
     }
 }
 
