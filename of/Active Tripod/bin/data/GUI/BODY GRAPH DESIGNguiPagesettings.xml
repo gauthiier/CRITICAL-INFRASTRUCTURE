@@ -1,4 +1,14 @@
 <Widget>
+    <Kind>2</Kind>
+    <Name>Toggle Draw Body</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toggle Draw Lines</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Graph Item X Gap</Name>
     <Value>7.220395088</Value>
@@ -31,12 +41,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 alpha</Name>
-    <Value>155.180923462</Value>
+    <Value>186.217102051</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 red</Name>
-    <Value>164.407897949</Value>
+    <Value>167.763153076</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -51,5 +61,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 alpha</Name>
-    <Value>170.279602051</Value>
+    <Value>184.539474487</Value>
 </Widget>

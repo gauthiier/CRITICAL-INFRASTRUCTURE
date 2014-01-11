@@ -2,13 +2,15 @@
 
 // TODO
 // ====
-// - Add spacebrew text to text boxes
-// - Add colour boxes to text
+// - Make HUD BG hole size a percentage rather than pixels
+// - Add option to resize video draw size (rather than making it fullscreen) and init size
 // - Make system to slow down data - The screen should show 15-20 minutes worth of data
+// - add ability to remove the lines or body from body graph
 // - Make 3rd graph - separate fade
 // - Crosshairs in HUD
 // - Create graph animation system
 // - Create a single config file to be loaded from online location. It will contain IP address and host name
+// - Add 'clear all data' button to UI
 // 
 //--------------------------------------------------------------
 void testApp::setup()

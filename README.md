@@ -15,3 +15,4 @@ ofxSpacebrew
 ofxLibwebsockets
 ofxUI
 ofxXmlSettings
+ofxFTGL

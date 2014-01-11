@@ -103,6 +103,8 @@ void GUI::addBodyGraphDesignGUI()
 	string title = "BODY GRAPH DESIGN";
     ofxUICanvas* gui = getNewGUI(title);
 	
+	gui->addToggle("Toggle Draw Body", &app->scene.bodyGraph.isDrawBody, toggleDim, toggleDim);
+	gui->addToggle("Toggle Draw Lines", &app->scene.bodyGraph.isDrawLines, toggleDim, toggleDim);
 	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.bodyGraph.graphItemXGap, length, dim);
 	gui->addSlider("Line width", 1, 50, &app->scene.bodyGraph.lineWidth, length, dim);
 	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.bodyGraph.graphHeightMax, length, dim);
@@ -180,7 +182,7 @@ void GUI::addHUDTextGUI()
 	gui->addSlider("Line Length", 50, 500, &app->scene.lineLength, length, dim);
 	gui->addSlider("Line Spacing", 0, 10, &app->scene.lineSpacing, length, dim);
 	gui->addSlider("Text Size", 10, 100, &app->scene.textSize, length, dim);
-	gui->addSlider("Value average amount", 2, 20, &app->scene.averageAmount, length, dim);
+	gui->addSlider("Value average amount", 2, 150, &app->scene.averageAmount, length, dim);
 	
 	gui->addSpacer(length, 1);
 	gui->addSlider("Red", 0, 255, &app->scene.textColour[0], length, dim);

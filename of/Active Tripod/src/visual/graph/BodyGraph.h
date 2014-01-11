@@ -14,4 +14,7 @@ public:
 
 	float barWidth;
 	float lineWidth;
+
+	bool isDrawBody;
+	bool isDrawLines;
 };

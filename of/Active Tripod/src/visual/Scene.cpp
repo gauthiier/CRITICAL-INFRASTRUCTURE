@@ -99,27 +99,28 @@ void Scene::drawHUDCopy()
 	vector<DataObject> *p0Data = &activeGraph->publisher0Data;
 	vector<DataObject> *p1Data = &activeGraph->publisher1Data;
 
-	if (p0Data->size() > (int)averageAmount - 1)
+	int amountToAverage = MIN(p0Data->size(), averageAmount);
+	if (p0Data->size() > 2)
 	{
 		float average0 = 0;
-		for (int i = 0; i < (int)averageAmount; i++)
+		for (int i = 0; i < (int)amountToAverage; i++)
 			average0 += p0Data->at(p0Data->size() - i - 1).value;
-		average0 /= (int)averageAmount;
+		average0 /= (int)amountToAverage;
 
 		//	(p0Data->back() + p0Data->at(p0Data->size() - 2) + p0Data->at(p0Data->size() - 2))
-		blStr = ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
-			ofToString(p0Data->back().value) + "\n" + 
+		blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
+			"Current Value: " + ofToString(p0Data->back().value) + "\n" + 
 			"Running average: " + ofToString(average0);
 		drawTextBox(blStr, "BOTTOM LEFT");
 		
 
 		float average1 = 0;
-		for (int i = 0; i < (int)averageAmount; i++)
+		for (int i = 0; i < (int)amountToAverage; i++)
 			average1 += p1Data->at(p1Data->size() - i - 1).value;
-		average1 /= (int)averageAmount;
+		average1 /= (int)amountToAverage;
 
-		brStr = ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "m/s\n" +
-			ofToString(p1Data->back().value) + "\n" + 
+		brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
+			"Current Value: " + ofToString(p1Data->back().value) + "\n" + 
 			"Running average: " + ofToString(average1);
 		drawTextBox(brStr, "BOTTOM RIGHT");
 	}
