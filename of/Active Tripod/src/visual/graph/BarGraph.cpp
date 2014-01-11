@@ -51,8 +51,8 @@ void BarGraph::draw()
 		}
 		
 		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
-		float outputMin = (ofGetHeight() * 0.5) - graphHeightMax;
-		float outputMax = (ofGetHeight() * 0.5) + graphHeightMax;
+		float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
+		float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
 
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{

@@ -31,27 +31,12 @@ void SeparateBodyGraph::draw()
 
 	if (publisher0Data.size() > 1)
 	{
-		//for (int i = 0; i < publisher0Data.size() - 1; i++)
-		//{
-		//	ofPushStyle();
-		//	ofSetColor(255, 0, 0);
-		//	ofCircle(i * graphItemXGap, publisher0Data[i], 5);
-		//	ofSetColor(0, 255, 0);
-		//	ofCircle(i * graphItemXGap, publisher1Data[i], 5);
-		//	ofPopStyle();
-		//}
-		
-
-		
 		ofMesh body0 = getMesh(publisher0Data, col0);
 		ofMesh body1 = getMesh(publisher1Data, col1);
 		
-		
-
-		
 		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
-		float outputMin = (ofGetHeight() * 0.5) - graphHeightMax;
-		float outputMax = (ofGetHeight() * 0.5) + graphHeightMax;
+		float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
+		float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
 
 		
 		// draw lines
@@ -141,8 +126,8 @@ ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col)
 {
 	ofMesh bodyMesh;
 	float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
-	float outputMin = (ofGetHeight() * 0.5) - graphHeightMax;
-	float outputMax = (ofGetHeight() * 0.5) + graphHeightMax;
+	float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
+	float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
 
 	// draw main part of graph (xOffset)
 	bodyMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
