@@ -1,23 +1,29 @@
 #include "BarGraph.h"
+#include "testApp.h"
 
 void BarGraph::setup()
 {
 	AbstractGraph::setup();
-
+	app = (testApp*)ofGetAppPtr();
 	graphItemXGap = 10;
+	graphName = "BAR";
 }
 
 
 void BarGraph::update()
 {
-//	if (ofGetFrameNum() % 30 == 0)
-//		printf("publisher0Data.size():%i \n", publisher0Data.size());
+	AbstractGraph::update();
 }
 
 
 void BarGraph::draw()
 {
-	//printf("BarGraph::draw() - graphItemXGap = %f \n", graphItemXGap);
+	if (app->gui.getVisible())
+	{
+		int timePerScreenfull = maxData * sendDataSpeed;
+		ofDrawBitmapString("Time to fill screen:" + ofToString(timePerScreenfull), 500, 150);
+	}
+
 
 	if (publisher0Data.size() > 1)
 	{

@@ -26,6 +26,9 @@ class DataManager
 		void update();
 		void draw();
 		vector<string> explode( const string &delimiter, const string &str);
+		
+        // listen to spacebrew Messages
+        void onMessage( Spacebrew::Message & m );
 
 		testApp* app;
 
@@ -39,14 +42,13 @@ class DataManager
 
 		vector<DataObject> newData;
 
-		bool isPublisher0DataReceived;
-		bool isPublisher1DataReceived;
+		//bool isPublisher0DataReceived;
+		//bool isPublisher1DataReceived;
 
 		bool isDataSimulated;
 		float perlinXScale;
 		float perlinYScale;
 		float simulationSpeed;
-    
-        // listen to spacebrew Messages
-        void onMessage( Spacebrew::Message & m );
+
+		float nextDataSendTime;
 };

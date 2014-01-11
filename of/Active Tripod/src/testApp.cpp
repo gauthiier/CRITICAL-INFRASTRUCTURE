@@ -2,13 +2,13 @@
 
 // TODO
 // ====
-// - Add option to resize video draw size (rather than making it fullscreen) and init size
 // - Make system to slow down data - The screen should show 15-20 minutes worth of data
 // - Make 3rd graph - separate fade
 // - Crosshairs in HUD
 // - Create graph animation system
 // - Create a single config file to be loaded from online location. It will contain IP address and host name
 // - Add 'clear all data' button to UI
+// - If min or max values change - clear graph - ask bout this
 // 
 //--------------------------------------------------------------
 void testApp::setup()
@@ -35,6 +35,7 @@ void testApp::update()
 
 	dataManager.update();
 	scene.update();
+	//if (gui.isVisible()) 
 }
 
 
@@ -57,6 +58,8 @@ void testApp::keyPressed(int key)
 		isPaused = !isPaused;
 	else if (key == 'f')
 		ofToggleFullscreen();
+	else if (key == 'c')
+		scene.clearGraphData();
 
 	scene.keyPressed(key);
 }

@@ -28,7 +28,9 @@ public:
 	void drawHUDColourBars();
 	void drawTextBox(string copy, string align);
 	void addNewData(vector<DataObject> newData);
+	void clearGraphData();
 	void keyPressed(int key);
+
 	
 	BarGraph barGraph;
 	BodyGraph bodyGraph;

@@ -81,6 +81,7 @@ void GUI::addBarGraphDesignGUI()
 	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.barGraph.graphItemXGap, length, dim);
 	gui->addSlider("BarWidth", 2, 50, &app->scene.barGraph.barWidth, length, dim);
 	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.barGraph.graphHeightMax, length, dim);
+	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->scene.barGraph.sendDataSpeed, length, dim);
 	
 	gui->addSpacer(length, 1);
 	gui->addSlider("Data0 red", 0, 255, &app->scene.barGraph.col0[0], length, dim);
@@ -108,6 +109,7 @@ void GUI::addBodyGraphDesignGUI()
 	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.bodyGraph.graphItemXGap, length, dim);
 	gui->addSlider("Line width", 1, 50, &app->scene.bodyGraph.lineWidth, length, dim);
 	gui->addSlider("Graph Height Max", 100, 1000, &app->scene.bodyGraph.graphHeightMax, length, dim);
+	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->scene.bodyGraph.sendDataSpeed, length, dim);
 	
 	gui->addSpacer(length, 1);
 	gui->addSlider("Data0 red", 0, 255, &app->scene.bodyGraph.col0[0], length, dim);

@@ -19,7 +19,8 @@ void AbstractGraph::setup()
 
 void AbstractGraph::update()
 {
-
+	maxData = (ofGetWidth() * (AbstractGraph::maxGraphPercent - AbstractGraph::minGraphPercent)) /  graphItemXGap;
+	printf("ofGetWidth():%i, maxData:%i, graphItemXGap:%f, screen active:%f \n", ofGetWidth(), maxData, graphItemXGap, (AbstractGraph::maxGraphPercent - AbstractGraph::minGraphPercent));
 }
 
 
@@ -34,11 +35,16 @@ void AbstractGraph::addNewData(vector<DataObject> newData)
 	publisher0Data.push_back(newData[0]);
 	publisher1Data.push_back(newData[1]);
 
-	maxData = (ofGetWidth() / graphItemXGap) * (AbstractGraph::maxGraphPercent - AbstractGraph::minGraphPercent);
-
 	while (publisher0Data.size() > maxData && publisher0Data.size() > maxData)
 	{
 		publisher0Data.erase(publisher0Data.begin());
 		publisher1Data.erase(publisher1Data.begin());
 	}
+}
+
+
+void AbstractGraph::clear()
+{
+	publisher0Data.clear();
+	publisher1Data.clear();
 }

@@ -21,10 +21,12 @@ void DataManager::setup()
 	
 	newData.resize(2);
 
-	isPublisher0DataReceived = false;
-	isPublisher1DataReceived = false;
+	//isPublisher0DataReceived = false;
+	//isPublisher1DataReceived = false;
 
 	setupSpacebrew();
+
+	nextDataSendTime = 0.1;
 }
 
 
@@ -73,10 +75,17 @@ void DataManager::update()
 	}
 	else
 	{
-		if (isPublisher0DataReceived && isPublisher1DataReceived) 
+		/*if (isPublisher0DataReceived && isPublisher1DataReceived) 
 		{
 			isPublisher0DataReceived = false;
 			isPublisher1DataReceived = false;
+			app->scene.addNewData(newData);
+		}*/
+
+		//sendDataSpeed = app->scene.activeGraph->sendDataSpeed;
+		if (ofGetElapsedTimef() >= nextDataSendTime + app->scene.activeGraph->sendDataSpeed)
+		{
+			nextDataSendTime += app->scene.activeGraph->sendDataSpeed;
 			app->scene.addNewData(newData);
 		}
 	}
@@ -132,12 +141,12 @@ void DataManager::onMessage( Spacebrew::Message & m )
 
     if (m.name == publisher0Name)
 	{
-		isPublisher0DataReceived = true;
+		//isPublisher0DataReceived = true;
 		newData[0] = dataObject;
     }
     else if (m.name == publisher1Name)
 	{
-		isPublisher1DataReceived = true;
+		//isPublisher1DataReceived = true;
 		newData[1] = dataObject;
     }
 }

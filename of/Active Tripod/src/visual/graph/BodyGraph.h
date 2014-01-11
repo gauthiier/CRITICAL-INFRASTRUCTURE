@@ -4,6 +4,8 @@
 #include "ofMain.h"
 #include "AbstractGraph.h"
 
+class testApp;
+
 class BodyGraph : public AbstractGraph
 {
 public:
@@ -11,6 +13,8 @@ public:
     virtual void update();
     virtual void draw();
 	virtual void addNewData(vector<DataObject> newData);
+	
+	testApp *app;
 
 	float barWidth;
 	float lineWidth;

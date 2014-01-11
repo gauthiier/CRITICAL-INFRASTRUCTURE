@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "DataManager.h"
 
+
 class AbstractGraph
 {
 public:
@@ -18,7 +19,8 @@ public:
     virtual void update();
     virtual void draw();
 	virtual void addNewData(vector<DataObject> newData);
-	
+	void clear();
+
 	vector<DataObject> publisher0Data;
 	vector<DataObject> publisher1Data;
 	int maxData; // calculated from graphWidth and graphItemXGap
@@ -32,5 +34,8 @@ public:
 
 	float col0[4];
 	float col1[4];
+
+	string graphName;
+	float sendDataSpeed;
 
 };

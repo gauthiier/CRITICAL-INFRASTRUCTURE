@@ -11,17 +11,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Item X Gap</Name>
-    <Value>7.220395088</Value>
+    <Value>6.332236767</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line width</Name>
-    <Value>7.286184311</Value>
+    <Value>6.157894611</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Height Max</Name>
     <Value>443.421051025</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data send speed (seconds)</Name>
+    <Value>4.027631760</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

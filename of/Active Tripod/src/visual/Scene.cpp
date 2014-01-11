@@ -209,3 +209,10 @@ void Scene::keyPressed(int key)
 {
 
 }
+
+
+void Scene::clearGraphData()
+{
+	barGraph.clear();
+	bodyGraph.clear();
+}

@@ -4,23 +4,32 @@
 //
 
 #include "BodyGraph.h"
+#include "testApp.h"
 
 
 void BodyGraph::setup()
 {
 	AbstractGraph::setup();
+	app = (testApp*)ofGetAppPtr();
+	graphName = "BODY";
 }
 
 
 void BodyGraph::update()
 {
-//	if (ofGetFrameNum() % 30 == 0)
-//		printf("publisher0Data.size():%i \n", publisher0Data.size());
-}
+	AbstractGraph::update();
+}																			
 
 
 void BodyGraph::draw()
 {
+	if (app->gui.getVisible())
+	{
+		float timePerScreenfull = (float)maxData * sendDataSpeed;
+		printf("timePerScreenfull:%f, maxData:%i, sendDataSpeed:%f \n", timePerScreenfull, maxData, sendDataSpeed);
+		ofDrawBitmapString("Time to fill screen:" + ofToString(timePerScreenfull), 500, 150);
+	}
+
 	if (publisher0Data.size() > 1)
 	{
 		//for (int i = 0; i < publisher0Data.size() - 1; i++)
