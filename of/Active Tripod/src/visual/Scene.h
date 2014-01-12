@@ -24,6 +24,8 @@ public:
     void update();
     void draw();
 	void drawVideo();
+	void drawGraphValues();
+	void drawCrosshairs();
 	void drawHUDBG();
 	void drawHUDCopy();
 	void drawHUDColourBars();
@@ -58,7 +60,16 @@ public:
 	float videoHeightPercentage;
 	bool isVideoVisible;
 	bool isImageVisible;
-	
+
+	// graph text
+	float graphTextColour[4];
+	float graphTextSize;
+
+	// crosshairs
+	float crosshairLineWidth;
+	float crosshairAlpha;
+	float crosshairCircleSize;
+
 	// HUD background vars
 	float hudColour[4];
 	float circlePointSize;

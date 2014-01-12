@@ -46,6 +46,7 @@ void GUI::addKeyboardShortcutsGUI()
     gui->addLabel("']' - NEXT GUI", OFX_UI_FONT_SMALL);
     gui->addLabel("'p' - TOGGLE PAUSE ANIMATION", OFX_UI_FONT_SMALL);
     gui->addLabel("'f' - TOGGLE FULLSCREEN", OFX_UI_FONT_SMALL);
+    gui->addLabel("'c' - CLEAR ALL GRAPH DATA", OFX_UI_FONT_SMALL);
 
     
     finaliseCanvas(gui, true);
@@ -67,6 +68,13 @@ void GUI::addGraphGlobalGUI()
 	gui->addSpacer(length, 1);
 	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &AbstractGraph::minGraphPercent, &AbstractGraph::maxGraphPercent, length, dim);
 	
+    gui->addLabel("GRAPH TEXT");
+	gui->addSpacer(length, 1);
+	gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
+	gui->addSlider("Red", 0, 255, &app->scene.graphTextColour[0], length, dim);
+	gui->addSlider("Green", 0, 255, &app->scene.graphTextColour[1], length, dim);
+	gui->addSlider("Blue", 0, 255, &app->scene.graphTextColour[2], length, dim);
+	gui->addSlider("Alpha", 0, 255, &app->scene.graphTextColour[3], length, dim);
 
     ofAddListener(gui->newGUIEvent, this, &GUI::graphGlobalGUIEvent);
     finaliseCanvas(gui, true);
@@ -200,6 +208,10 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Hole Width Percent", 0, 2, &app->scene.hudHoleWidthPercentage, length, dim);
 	gui->addSlider("Hole Height Percent", 0, 2, &app->scene.hudHoleHeightPercentage, length, dim);
 	gui->addSlider("Circle Point Size", 0, 100, &app->scene.circlePointSize, length, dim);
+    gui->addLabel("CROSSHAIRS SETTINGS");
+	gui->addSlider("Line Width", 0, 10, &app->scene.crosshairLineWidth, length, dim);
+	gui->addSlider("Alpha ..", 0, 255, &app->scene.crosshairAlpha, length, dim);
+	gui->addSlider("Circle Size", 0, 100, &app->scene.crosshairCircleSize, length, dim);
 
     ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
     finaliseCanvas(gui, true);

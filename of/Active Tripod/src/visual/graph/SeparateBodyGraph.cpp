@@ -33,12 +33,17 @@ void SeparateBodyGraph::draw()
 	{
 		ofMesh body0 = getMesh(publisher0Data, col0);
 		ofMesh body1 = getMesh(publisher1Data, col1);
-		
+
+		if (body0.getVertices().size() > 2)
+		{
+			currentPub0Point = ofPoint(body0.getVertex(body0.getVertices().size() - 2).x, body0.getVertex(body0.getVertices().size() - 2).y);
+			currentPub1Point = ofPoint(body0.getVertex(body1.getVertices().size() - 2).x, body1.getVertex(body1.getVertices().size() - 2).y);
+		}
+
 		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
 		float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
 		float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
 
-		
 		// draw lines
 		ofPushStyle();
 		ofPolyline poly0;
@@ -64,8 +69,6 @@ void SeparateBodyGraph::draw()
 		ofVec2f centroid0 = poly0.getCentroid2D();
 		ofVec2f centroid1 = poly1.getCentroid2D();
 
-		printf("centroid0.y:%f, centroid1.y:%f\n", centroid0.y, centroid1.y);
-		
 		float av0;
 		float av1;
 
@@ -77,8 +80,6 @@ void SeparateBodyGraph::draw()
 		av0 /= poly0.size();
 		av1 /= poly1.size();
 		
-		printf("av0:%f, av1:%f\n", av0, av1);
-
 		int lineAlpha = 255;
 		if (!isDrawLines) lineAlpha = 0;
 
@@ -101,20 +102,6 @@ void SeparateBodyGraph::draw()
 			body0.drawFaces();
 			ofSetColor(col0[0],col0[1],col0[2], lineAlpha);
 			poly0.draw();
-		}
-
-		if (isDrawLines)
-		{
-			if (av0 > av1)
-			{
-				
-				
-			}
-			else
-			{
-				
-				
-			}
 		}
 		
 		ofPopStyle();

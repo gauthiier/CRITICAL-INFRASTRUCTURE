@@ -2,11 +2,9 @@
 
 // TODO
 // ====
-// - Crosshairs in HUD
-// - Create graph animation system
-// - make maxGraphHeight percentage instead of pixels
-// - Create a single config file to be loaded from online location. It will contain IP address and host name
 // - If min or max values change - clear graph - ask bout this
+// - Create a single config file to be loaded from online location. It will contain IP address and host name
+// - Create graph animation system
 // 
 //--------------------------------------------------------------
 void testApp::setup()

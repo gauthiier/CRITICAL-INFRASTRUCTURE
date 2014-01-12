@@ -29,6 +29,7 @@ void AbstractGraph::draw()
 }
 
 
+
 void AbstractGraph::addNewData(vector<DataObject> newData)
 {
 	publisher0Data.push_back(newData[0]);

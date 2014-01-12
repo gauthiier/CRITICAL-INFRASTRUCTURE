@@ -29,10 +29,6 @@ void Scene::update()
 	vidGrabber.update();
 	
 	activeGraph->update();
-
-	text.setLineLength(lineLength);
-    text.setLineSpacing(lineSpacing);
-	text.setSize(textSize);
 }
 
 
@@ -40,6 +36,8 @@ void Scene::draw()
 {
 	drawVideo();
 	activeGraph->draw();
+	drawGraphValues();
+	drawCrosshairs();
 	drawHUDBG();
 	drawHUDCopy();
 	drawHUDColourBars();
@@ -70,6 +68,36 @@ void Scene::drawVideo()
 
 	rgbShader.end();
 }
+
+
+void Scene::drawGraphValues()
+{
+	if (activeGraph->publisher0Data.size() < 2) return;
+
+	ofPoint val0 = activeGraph->currentPub0Point;
+	ofPoint val1 = activeGraph->currentPub1Point;
+
+	ofPushStyle();
+	text.setAlignment(FTGL_ALIGN_LEFT);
+	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
+	text.setSize(graphTextSize);
+	text.drawString(ofToString(activeGraph->publisher0Data.back().value), val0.x + 10, val0.y);
+	text.drawString(ofToString(activeGraph->publisher1Data.back().value), val1.x + 10, val1.y);
+	ofPopStyle();
+}
+
+
+void Scene::drawCrosshairs()
+{
+	ofPushStyle();
+	ofSetLineWidth(crosshairLineWidth);
+	ofSetColor(hudColour[0], hudColour[1], hudColour[2], crosshairAlpha);
+	ofLine(ofGetWidth() * 0.5, 0, ofGetWidth() * 0.5, ofGetHeight()); // vert
+	ofLine(0, ofGetHeight() * 0.5, ofGetWidth(), ofGetHeight() * 0.5); // horz
+	ofCircle(ofGetWidth() * 0.5, ofGetHeight() * 0.5, crosshairCircleSize);
+	ofPopStyle();
+}
+
 
 void Scene::drawHUDBG()
 {
@@ -103,12 +131,16 @@ void Scene::drawHUDBG()
 
 void Scene::drawHUDCopy()
 {
+	text.setLineLength(lineLength);
+    text.setLineSpacing(lineSpacing);
+	text.setSize(textSize);
+
 	drawTextBox(tlStr, "TOP LEFT");
 	drawTextBox(trStr, "TOP RIGHT");
 	
 	vector<DataObject> *p0Data = &activeGraph->publisher0Data;
 	vector<DataObject> *p1Data = &activeGraph->publisher1Data;
-
+	
 	int amountToAverage = MIN(p0Data->size(), averageAmount);
 	if (p0Data->size() > 2)
 	{

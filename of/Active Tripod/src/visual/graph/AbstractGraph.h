@@ -27,6 +27,9 @@ public:
 	
 	static float minGraphPercent;
 	static float maxGraphPercent;
+	
+	ofPoint currentPub0Point;
+	ofPoint currentPub1Point;
 
 	float graphItemXGap;
 	

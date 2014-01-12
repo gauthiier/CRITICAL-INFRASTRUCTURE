@@ -27,29 +27,6 @@ void BarGraph::draw()
 
 	if (publisher0Data.size() > 1)
 	{
-		for (int i = 0; i < publisher0Data.size() - 1; i++)
-		{
-			if (i < publisher0Data.size() - 2)
-			{
-				//ofPushStyle();
-				//ofSetColor(0, 0, 0);
-				//ofLine(i * graphItemXGap, publisher0Data[i], (i + 1) * graphItemXGap, publisher0Data[i + 1]);
-				//ofSetColor(0, 0, 0);
-				//ofLine(i * graphItemXGap, publisher1Data[i], (i + 1) * graphItemXGap, publisher1Data[i + 1]);
-				//ofPopStyle();
-			}
-		}
-
-		for (int i = 0; i < publisher0Data.size() - 1; i++)
-		{
-			//ofPushStyle();
-			//ofSetColor(255, 0, 0);
-			//ofCircle(i * graphItemXGap, publisher0Data[i], 5);
-			//ofSetColor(0, 255, 0);
-			//ofCircle(i * graphItemXGap, publisher1Data[i], 5);
-			//ofPopStyle();
-		}
-		
 		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
 		float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
 		float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
@@ -57,7 +34,6 @@ void BarGraph::draw()
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{
 			ofPushStyle();
-
 
 			ofMesh bar;
 			float rectTLX = i * graphItemXGap - (barWidth * 0.5) + xOffset;
@@ -72,9 +48,11 @@ void BarGraph::draw()
 			float rectBRX = i * graphItemXGap - (barWidth * 0.5) + barWidth + xOffset;
 			float rectBRY = ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax);
 
-			
-			//printf("val:%f, min:%f, max:%f - new val:%f \n", publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, rectTLY);
-			//printf("val:%f, min:%f, max:%f - new val:%f \n", publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, rectBLY);
+			if (i == publisher0Data.size() - 2)
+			{
+				currentPub0Point = ofPoint(rectTRX, rectTRY);
+				currentPub1Point = ofPoint(rectBRX, rectBRY);
+			}
 
 			bar.addVertex(ofVec3f(rectTLX, rectTLY, 0));
 			bar.addVertex(ofVec3f(rectTRX, rectTRY, 0));
@@ -93,10 +71,6 @@ void BarGraph::draw()
 
 			bar.drawFaces();
 
-			//ofSetColor(255, 255, 0);
-			//ofRect(i * graphItemXGap - (barWidth * 0.5), publisher0Data[i], barWidth, publisher1Data[i] - publisher0Data[i]);
-			//ofSetColor(0, 0, 0);
-			//ofLine(i * graphItemXGap, publisher0Data[i], i * graphItemXGap, publisher1Data[i]);
 			ofPopStyle();
 		}
 	}

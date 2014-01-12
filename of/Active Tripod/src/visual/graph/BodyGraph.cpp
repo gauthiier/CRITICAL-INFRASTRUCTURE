@@ -54,6 +54,14 @@ void BodyGraph::draw()
 			
 				body.addColor(ofColor(col0[0],col0[1],col0[2], col0[3]));
 				body.addColor(ofColor(col1[0],col1[1],col1[2], col1[3]));
+
+				if (i == publisher0Data.size() - 2)
+				{
+					currentPub0Point = ofPoint(i * graphItemXGap + xOffset, 
+						ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax));
+					currentPub1Point = ofPoint(i * graphItemXGap + xOffset, 
+						ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax));
+				}
 			}
 		
 			body.drawFaces();
