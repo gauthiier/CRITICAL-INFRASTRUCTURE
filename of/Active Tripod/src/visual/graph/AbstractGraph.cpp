@@ -13,7 +13,6 @@ float AbstractGraph::maxGraphPercent;
 
 void AbstractGraph::setup()
 {
-	printf("AbstractGraph::setup()\n");
 }
 
 

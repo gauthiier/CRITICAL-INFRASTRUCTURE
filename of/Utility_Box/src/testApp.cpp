@@ -1,83 +1,66 @@
 #include "testApp.h"
 
+// TODO
+// ====
+// - If min or max values change - clear graph - ask bout this
+// - Create a single config file to be loaded from online location. It will contain IP address and host name
+// - Create graph animation system
+// 
 //--------------------------------------------------------------
-void testApp::setup(){
-    ofSetFrameRate(60);
-    string host = Spacebrew::SPACEBREW_CLOUD; // "localhost";
-    string name = "of-button-example";
-    string description = "It's amazing";
-    
-    spacebrew.addPublish("button", Spacebrew::TYPE_BOOLEAN);
-    spacebrew.addSubscribe("backgroundOn", Spacebrew::TYPE_BOOLEAN); //"boolean" ); // just typing "boolean" also works
-    spacebrew.connect( host, name, description );
-    
-    // listen to spacebrew events
-    Spacebrew::addListener(this, spacebrew);
-    
-    // circle stuff
-    bButtonPressed  = false;
-    radius          = 200;
-    
-    // background
-    bBackgroundOn   = false;
-    
-    // layout stuff
-    ofBackground(0);
-    ofSetRectMode(OF_RECTMODE_CENTER);
-    ofEnableSmoothing();
-    ofSetCircleResolution(100);
+void testApp::setup()
+{
+    ofSetFrameRate(30);
+	ofSetLogLevel(OF_LOG_SILENT);
+	ofSetWindowPosition(0, 100);
+	ofEnableSmoothing();
+	ofSeedRandom(ofRandom(23243));
+	ofSetFullscreen(true);
+	ofSetVerticalSync(true);
+
+	dataManager.setup();
+	scene.setup();
+	gui.setup();
+
+	isPaused = false;
 }
 
-//--------------------------------------------------------------
-void testApp::update(){}
 
-//--------------------------------------------------------------
-void testApp::draw(){
-    if ( !bBackgroundOn ){
-        ofBackgroundGradient(ofColor(0,0,0), ofColor(50,50,50));
-    } else {
-        ofBackgroundGradient(ofColor(100,0,0), ofColor(150,150,0));
-    }
-    
-    string textToDraw = "PRESS ME";
-    if ( bButtonPressed ){
-        ofSetColor( 150, 0, 0 );
-        textToDraw = "THANKS";
-    } else {
-        ofSetColor(150);
-    }
-    ofCircle(ofGetWidth() / 2.0f, ofGetHeight()/2.0f, radius);
-    ofSetColor(255);
-    ofDrawBitmapString(textToDraw, ofGetWidth() / 2.0f - 30, ofGetHeight()/2.0f);
+void testApp::update()
+{
+	if (isPaused) return;
+
+	dataManager.update();
+	scene.update();
+	//if (gui.isVisible()) 
 }
 
-//--------------------------------------------------------------
-void testApp::onMessage( Spacebrew::Message & m ){
-    if ( m.name == "backgroundOn" ){
-        bBackgroundOn = m.valueBoolean();
-    }
+
+void testApp::draw()
+{
+    dataManager.draw();
+	scene.draw();
 }
 
-//--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
-    if ( checkInsideCircle( ofPoint(x,y), ofPoint(ofGetWidth() / 2.0f, ofGetHeight()/2.0f), radius) ){
-        bButtonPressed = true;
-        spacebrew.sendBoolean("button", true);
-    }
+
+void testApp::mousePressed(int x, int y, int button)
+{
+
 }
 
-//--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
-    if (bButtonPressed){
-        spacebrew.sendBoolean("button", false);
-    }
-    bButtonPressed = false;
+
+void testApp::keyPressed(int key)
+{
+	if (key == 'p')
+		isPaused = !isPaused;
+	else if (key == 'f')
+		ofToggleFullscreen();
+	else if (key == 'c')
+		scene.clearGraphData();
+
+	scene.keyPressed(key);
 }
 
-//--------------------------------------------------------------
-bool testApp::checkInsideCircle( ofPoint point, ofPoint position, int radius ){
-    return ( point.x < position.x + radius
-            && point.x > position.x - radius
-            && point.y < position.y + radius
-            && point.y > position.y - radius );
+
+void testApp::windowResized(int w, int h)
+{
 }

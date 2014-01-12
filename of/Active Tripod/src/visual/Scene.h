@@ -69,6 +69,8 @@ public:
 	float crosshairLineWidth;
 	float crosshairAlpha;
 	float crosshairCircleSize;
+	float crosshairVertScale;
+	float crosshairHorizScale;
 
 	// HUD background vars
 	float hudColour[4];

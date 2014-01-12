@@ -23,7 +23,8 @@ void GUI::setup()
 	addBodyGraphDesignGUI();
 	addSeparateBodyGraphDesignGUI();
 	addGraphSimulationGUI();
-    addBackgroundGUI();
+    addVideoGUI();
+    addHUDGUI();
 	addHUDTextGUI();
     addVariousGUI();
     
@@ -178,9 +179,9 @@ void GUI::addGraphSimulationGUI()
 }
 
 
-void GUI::addBackgroundGUI()
+void GUI::addVideoGUI()
 {
-    string title = "BACKGROUND";
+    string title = "VIDEO";
     ofxUICanvas* gui = getNewGUI(title);
 
 	gui->addToggle("Toggle Video Visibility", &app->scene.isVideoVisible, toggleDim, toggleDim);
@@ -198,6 +199,15 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Green", 0, 2, &app->scene.green, length, dim);
 	gui->addSlider("Blue", 0, 2, &app->scene.blue, length, dim);
 	gui->addSlider("Alpha", 0, 2, &app->scene.alpha, length, dim);
+	
+    finaliseCanvas(gui, true);
+}
+
+
+void GUI::addHUDGUI()
+{
+    string title = "HUD";
+    ofxUICanvas* gui = getNewGUI(title);
 
 	gui->addSpacer(length, 1);
     gui->addLabel("HUD BACKGROUND SETTINGS");
@@ -212,8 +222,9 @@ void GUI::addBackgroundGUI()
 	gui->addSlider("Line Width", 0, 10, &app->scene.crosshairLineWidth, length, dim);
 	gui->addSlider("Alpha ..", 0, 255, &app->scene.crosshairAlpha, length, dim);
 	gui->addSlider("Circle Size", 0, 100, &app->scene.crosshairCircleSize, length, dim);
+	gui->addSlider("Vertical line size (percent)", 0, 1, &app->scene.crosshairVertScale, length, dim);
+	gui->addSlider("Horizontal line size (percent)", 0, 1, &app->scene.crosshairHorizScale, length, dim);
 
-    ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
     finaliseCanvas(gui, true);
 }
 
@@ -239,11 +250,10 @@ void GUI::addHUDTextGUI()
 	
 	gui->addSpacer(length, 1);
     gui->addLabel("COLOUR KEY");
-	gui->addSlider("Top Colour Box X Offset", -300, 300, &app->scene.topColourBoxXOffset, length, dim);
-	gui->addSlider("Bottom Colour Box X Offset", -300, 300, &app->scene.bottomColourBoxXOffset, length, dim);
+	gui->addSlider("Top Colour Box Y Offset", -300, 300, &app->scene.topColourBoxXOffset, length, dim);
+	gui->addSlider("Bottom Colour Box Y Offset", -300, 300, &app->scene.bottomColourBoxXOffset, length, dim);
 	gui->addSlider("Colour Box Thickness", 1, 50, &app->scene.colourBoxThickness, length, dim);
 
-    ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
     finaliseCanvas(gui, true);
 }
 

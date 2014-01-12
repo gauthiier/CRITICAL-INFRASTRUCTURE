@@ -15,6 +15,7 @@ struct DataObject
 	float value;
 	float min;
 	float max;
+	string unitMeasure;
 };
 
 class DataManager

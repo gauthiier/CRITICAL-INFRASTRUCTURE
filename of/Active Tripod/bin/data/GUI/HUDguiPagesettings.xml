@@ -1,0 +1,60 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>Red .</Name>
+    <Value>20.970394135</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Green .</Name>
+    <Value>21.809211731</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blue .</Name>
+    <Value>22.648025513</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Alpha .</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hole Width Percent</Name>
+    <Value>0.875000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hole Height Percent</Name>
+    <Value>1.019736886</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Circle Point Size</Name>
+    <Value>52.302627563</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Width</Name>
+    <Value>3.421052694</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Alpha ..</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Circle Size</Name>
+    <Value>15.460527420</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Vertical line size (percent)</Name>
+    <Value>0.138157889</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Horizontal line size (percent)</Name>
+    <Value>0.069078945</Value>
+</Widget>

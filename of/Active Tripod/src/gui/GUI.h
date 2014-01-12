@@ -25,7 +25,8 @@ public:
 	void addBodyGraphDesignGUI();
 	void addSeparateBodyGraphDesignGUI();
 	void addGraphSimulationGUI();
-    void addBackgroundGUI();
+    void addVideoGUI();
+    void addHUDGUI();
 	void addHUDTextGUI();
     void addVariousGUI();
     

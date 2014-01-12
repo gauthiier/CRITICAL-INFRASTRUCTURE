@@ -26,7 +26,7 @@ void BodyGraph::draw()
 	if (app->gui.getVisible())
 	{
 		float timePerScreenfull = (float)maxData * sendDataSpeed;
-		printf("timePerScreenfull:%f, maxData:%i, sendDataSpeed:%f \n", timePerScreenfull, maxData, sendDataSpeed);
+		//printf("timePerScreenfull:%f, maxData:%i, sendDataSpeed:%f \n", timePerScreenfull, maxData, sendDataSpeed);
 		ofDrawBitmapString("Time to fill screen:" + ofToString(timePerScreenfull), 500, 150);
 	}
 
@@ -78,7 +78,6 @@ void BodyGraph::draw()
 			{
 				if (i < publisher0Data.size() - 1)
 				{
-					ofSetLineWidth(lineWidth);
 					poly0.addVertex(ofPoint(
 						i * graphItemXGap + xOffset,
 						ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax)));
@@ -90,6 +89,7 @@ void BodyGraph::draw()
 				}
 			}
 		
+			ofSetLineWidth(lineWidth);
 			ofSetColor(col0[0],col0[1],col0[2], 255);
 			poly0.draw();
 			ofSetColor(col1[0],col1[1],col1[2], 255);

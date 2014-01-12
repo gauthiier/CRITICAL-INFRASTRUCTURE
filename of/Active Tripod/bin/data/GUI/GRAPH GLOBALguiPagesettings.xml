@@ -1,12 +1,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Bar graph</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Solid Body graph</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -22,7 +22,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Size</Name>
-    <Value>30.016448975</Value>
+    <Value>29.424343109</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

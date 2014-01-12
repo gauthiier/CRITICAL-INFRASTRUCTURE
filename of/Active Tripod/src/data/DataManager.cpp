@@ -93,10 +93,6 @@ void DataManager::update()
 
 void DataManager::draw()
 {
-	ofPushStyle();
-	ofSetColor(255, 0, 0);
-	ofCircle(sin(ofGetElapsedTimef() * 0.5) * 300 + 300, 100, 20);
-	ofPopStyle();
 }
 
 
@@ -107,9 +103,8 @@ void DataManager::onMessage( Spacebrew::Message & m )
 	printf("new message - %s\n", m.valueString().c_str());
 	// split the formatted string into a list of different data types
 	vector<string> data = explode(",", m.valueString());
-    //for(int i = 0; i < data.size(); i++)
-    //    cout <<i << " ["<< data[i] <<"] " <<endl;
-
+    for(int i = 0; i < data.size(); i++)
+        cout <<i << " ["<< data[i] <<"] " <<endl;
 
 	// make a new data object and add the different data sources to it
 	DataObject dataObject;
@@ -117,26 +112,30 @@ void DataManager::onMessage( Spacebrew::Message & m )
 	{
 		if (data[i].substr(0, 5) == "info:") 
 		{
-			//printf("- - info = %s\n",  data[i].substr(5, -1).c_str());
 			dataObject.info = data[i].substr(5, -1).c_str();
 		}
 		if (data[i].substr(0, 6) == "value:") 
 		{
-			//printf("- - value = %s\n",  data[i].substr(6, -1).c_str());
 			dataObject.value = ofToFloat(data[i].substr(6, -1).c_str());
 		}
 		if (data[i].substr(0, 4) == "min:") 
 		{
-			//printf("- - min = %s\n",  data[i].substr(4, -1).c_str());
 			dataObject.min = ofToFloat(data[i].substr(4, -1).c_str());
 		}			
 		if (data[i].substr(0, 4) == "max:") 
 		{
-			//printf("- - max = %s\n",  data[i].substr(4, -1).c_str());
 			dataObject.max = ofToFloat(data[i].substr(4, -1).c_str());
+		}	
+		if (data[i].substr(0, 5) == "unit:") 
+		{
+			dataObject.unitMeasure = data[i].substr(5, -1).c_str();
+			printf("------------ dataObject.unitMeasure = %s", data[i].substr(5, -1).c_str());
 		}
 	}
 
+	//vector<string> unitMeasure = explode("\n", data[0]); 
+	//printf("Unit Measure  = %s \n",  unitMeasure[unitMeasure.size() - 1].c_str());
+	//dataObject.unitMeasure = unitMeasure[unitMeasure.size() - 1];
 
     if (m.name == publisher0Name)
 	{

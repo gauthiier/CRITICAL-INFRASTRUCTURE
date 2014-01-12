@@ -81,8 +81,14 @@ void Scene::drawGraphValues()
 	text.setAlignment(FTGL_ALIGN_LEFT);
 	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
 	text.setSize(graphTextSize);
-	text.drawString(ofToString(activeGraph->publisher0Data.back().value), val0.x + 10, val0.y);
-	text.drawString(ofToString(activeGraph->publisher1Data.back().value), val1.x + 10, val1.y);
+	text.drawString(
+		ofToString(activeGraph->publisher0Data.back().value) + " " + activeGraph->publisher0Data[activeGraph->publisher0Data.size() - 1].unitMeasure, 
+		val0.x + 10, 
+		val0.y);
+	text.drawString(
+		ofToString(activeGraph->publisher1Data.back().value) + " " + activeGraph->publisher1Data[activeGraph->publisher1Data.size() - 1].unitMeasure, 
+		val1.x + 10, 
+		val1.y);
 	ofPopStyle();
 }
 
@@ -92,8 +98,17 @@ void Scene::drawCrosshairs()
 	ofPushStyle();
 	ofSetLineWidth(crosshairLineWidth);
 	ofSetColor(hudColour[0], hudColour[1], hudColour[2], crosshairAlpha);
-	ofLine(ofGetWidth() * 0.5, 0, ofGetWidth() * 0.5, ofGetHeight()); // vert
-	ofLine(0, ofGetHeight() * 0.5, ofGetWidth(), ofGetHeight() * 0.5); // horz
+
+	ofLine(ofGetWidth() * 0.5, 
+		ofGetHeight() * 0.5 - ((ofGetHeight() * 0.5) * crosshairVertScale), 
+		ofGetWidth() * 0.5, 
+		ofGetHeight() * 0.5 + ((ofGetHeight() * 0.5) * crosshairVertScale)); // vert
+
+	ofLine(ofGetWidth() * 0.5 - ((ofGetWidth() * 0.5) * crosshairHorizScale), 
+		ofGetHeight() * 0.5, 
+		ofGetWidth() * 0.5 + ((ofGetWidth() * 0.5) * crosshairHorizScale), 
+		ofGetHeight() * 0.5); // horz
+
 	ofCircle(ofGetWidth() * 0.5, ofGetHeight() * 0.5, crosshairCircleSize);
 	ofPopStyle();
 }
@@ -232,8 +247,8 @@ void Scene::addNewData(vector<DataObject> newData)
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
 	
-	tlStr = newData[0].info + "\n" + ofToString(newData[0].value);
-	trStr = newData[1].info + "\n" + ofToString(newData[1].value);
+	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + ofToString(newData[0].value);
+	trStr = newData[1].info + newData[1].unitMeasure + "\n" + ofToString(newData[1].value);
 
 	millisAtLastData = ofGetElapsedTimeMillis();
 }
