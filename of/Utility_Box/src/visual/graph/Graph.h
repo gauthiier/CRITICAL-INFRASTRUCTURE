@@ -14,6 +14,7 @@ public:
 	void draw();
 	void addNewData(DataObject newData);
 	ofMesh getMesh(vector<DataObject> publisherData, float* col);
+	void createInfoTextFbo();
 	void clear();
 
 	testApp *app;
@@ -21,9 +22,9 @@ public:
 
 	vector<DataObject> publisher0Data;
 	int maxData; // calculated from graphWidth and graphItemXGap
-
-	//ofFbo
 	
+	ofFbo infoTextFbo;
+
 	static float minGraphPercent;
 	static float maxGraphPercent;
 	static float maxGraphWidth;

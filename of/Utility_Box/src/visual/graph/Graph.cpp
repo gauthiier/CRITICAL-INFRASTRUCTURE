@@ -130,6 +130,10 @@ ofMesh Graph::getMesh(vector<DataObject> publisherData, float* col)
 }
 
 
+void Graph::createInfoTextFbo()
+{
+}
+
 
 void Graph::addNewData(DataObject newData)
 {

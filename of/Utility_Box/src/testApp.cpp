@@ -2,9 +2,9 @@
 
 // TODO
 // ====
-// - If min or max values change - clear graph - ask bout this
-// - Create a single config file to be loaded from online location. It will contain IP address and host name
-// - Create graph animation system
+// - Add text planes
+// - Add animated camera
+// - Colour range - tweet between 3 points
 // 
 //--------------------------------------------------------------
 void testApp::setup()
