@@ -249,8 +249,6 @@ void Scene::addNewData(vector<DataObject> newData)
 	
 	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + ofToString(newData[0].value);
 	trStr = newData[1].info + newData[1].unitMeasure + "\n" + ofToString(newData[1].value);
-
-	millisAtLastData = ofGetElapsedTimeMillis();
 }
 
 

@@ -90,7 +90,6 @@ public:
 	string trStr;
 	string blStr;
 	string brStr;
-	long millisAtLastData;
 	float averageAmount;
 
 	// text colour boxes

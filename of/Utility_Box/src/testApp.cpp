@@ -31,7 +31,6 @@ void testApp::update()
 
 	dataManager.update();
 	scene.update();
-	//if (gui.isVisible()) 
 }
 
 
@@ -63,4 +62,5 @@ void testApp::keyPressed(int key)
 
 void testApp::windowResized(int w, int h)
 {
+	scene.setViewport();
 }

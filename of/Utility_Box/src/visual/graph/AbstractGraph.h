@@ -21,24 +21,6 @@ public:
 	virtual void addNewData(vector<DataObject> newData);
 	void clear();
 
-	vector<DataObject> publisher0Data;
-	vector<DataObject> publisher1Data;
-	int maxData; // calculated from graphWidth and graphItemXGap
 	
-	static float minGraphPercent;
-	static float maxGraphPercent;
-	
-	ofPoint currentPub0Point;
-	ofPoint currentPub1Point;
-
-	float graphItemXGap;
-	
-	float graphHeightMax;
-
-	float col0[4];
-	float col1[4];
-
-	string graphName;
-	float sendDataSpeed;
 
 };

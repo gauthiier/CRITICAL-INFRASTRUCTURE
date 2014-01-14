@@ -28,7 +28,7 @@ public:
     
     ofColor color;
     
-protected:
+//protected:
     
     virtual void buildTopBarGUI();
     virtual ofxUICanvas* getNewGUI(string title);

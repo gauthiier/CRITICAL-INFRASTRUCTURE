@@ -8,7 +8,7 @@
 
 #include "GUI.h"
 #include "testApp.h"
-#include "AbstractGraph.h"
+#include "Graph.h"
 
 void GUI::setup()
 {
@@ -19,12 +19,8 @@ void GUI::setup()
 	
     addKeyboardShortcutsGUI();
 	addGraphGlobalGUI();
-	addBarGraphDesignGUI();
-	addBodyGraphDesignGUI();
-	addSeparateBodyGraphDesignGUI();
+	addGraphDesignGUI();
 	addGraphSimulationGUI();
-    addBackgroundGUI();
-	addHUDTextGUI();
     addVariousGUI();
     
     setGUIColour();
@@ -35,6 +31,8 @@ bool GUI::getVisible()
 {
     return GUIManager::getVisible();
 }
+
+
 
 void GUI::addKeyboardShortcutsGUI()
 {
@@ -66,99 +64,42 @@ void GUI::addGraphGlobalGUI()
 	gui->addRadio("Graph Selection", graphNames, OFX_UI_ORIENTATION_VERTICAL, dim*2, dim*2);
 	
 	gui->addSpacer(length, 1);
-	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &AbstractGraph::minGraphPercent, &AbstractGraph::maxGraphPercent, length, dim);
+	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &Graph::minGraphPercent, &Graph::maxGraphPercent, length, dim);
 	
-    gui->addLabel("GRAPH TEXT");
-	gui->addSpacer(length, 1);
-	gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
-	gui->addSlider("Red", 0, 255, &app->scene.graphTextColour[0], length, dim);
-	gui->addSlider("Green", 0, 255, &app->scene.graphTextColour[1], length, dim);
-	gui->addSlider("Blue", 0, 255, &app->scene.graphTextColour[2], length, dim);
-	gui->addSlider("Alpha", 0, 255, &app->scene.graphTextColour[3], length, dim);
+ //   gui->addLabel("GRAPH TEXT");
+	//gui->addSpacer(length, 1);
+	//gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
+	//gui->addSlider("Red", 0, 255, &app->scene.graphTextColour[0], length, dim);
+	//gui->addSlider("Green", 0, 255, &app->scene.graphTextColour[1], length, dim);
+	//gui->addSlider("Blue", 0, 255, &app->scene.graphTextColour[2], length, dim);
+	//gui->addSlider("Alpha", 0, 255, &app->scene.graphTextColour[3], length, dim);
 
-    ofAddListener(gui->newGUIEvent, this, &GUI::graphGlobalGUIEvent);
     finaliseCanvas(gui, true);
 }
 
 
 
-void GUI::addBarGraphDesignGUI()
+void GUI::addGraphDesignGUI()
 {
-	string title = "BAR GRAPH DESIGN";
+	string title = "GRAPH DESIGN";
     ofxUICanvas* gui = getNewGUI(title);
 	
-	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.barGraph.graphItemXGap, length, dim);
-	gui->addSlider("BarWidth", 2, 50, &app->scene.barGraph.barWidth, length, dim);
-	gui->addSlider("Graph Height Max", 0, 1, &app->scene.barGraph.graphHeightMax, length, dim);
-	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->scene.barGraph.sendDataSpeed, length, dim);
+	gui->addToggle("Toggle Draw Lines", &Graph::isDrawLines, toggleDim, toggleDim);
+	gui->addSlider("Graph Item X Gap", 0.1, 2, &Graph::graphItemXGap, length, dim);
+	gui->addSlider("Line width", 1, 20, &Graph::lineWidth, length, dim);
+	gui->addSlider("Graph Width max", 1, 300, &Graph::maxGraphWidth, length, dim);
+	gui->addSlider("Graph Height Max", 0, 100, &Graph::graphHeightMax, length, dim);
+	gui->addSlider("Graph bottom end (percent)", 0, 20, &Graph::graphEndPercent, length, dim);
+	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->dataManager.sendDataSpeed, length, dim);
+
 	
-	gui->addSpacer(length, 1);
-	gui->addSlider("Data0 red", 0, 255, &app->scene.barGraph.col0[0], length, dim);
-	gui->addSlider("Data0 green", 0, 255, &app->scene.barGraph.col0[1], length, dim);
-	gui->addSlider("Data0 blue", 0, 255, &app->scene.barGraph.col0[2], length, dim);
-	gui->addSlider("Data0 alpha", 0, 255, &app->scene.barGraph.col0[3], length, dim);
-
-	gui->addSpacer(length, 1);
-	gui->addSlider("Data1 red", 0, 255, &app->scene.barGraph.col1[0], length, dim);
-	gui->addSlider("Data1 green", 0, 255, &app->scene.barGraph.col1[1], length, dim);
-	gui->addSlider("Data1 blue", 0, 255, &app->scene.barGraph.col1[2], length, dim);
-	gui->addSlider("Data1 alpha", 0, 255, &app->scene.barGraph.col1[3], length, dim);
-
-    finaliseCanvas(gui, true);
-}
-
-
-void GUI::addBodyGraphDesignGUI()
-{
-	string title = "BODY GRAPH DESIGN";
-    ofxUICanvas* gui = getNewGUI(title);
 	
-	gui->addToggle("Toggle Draw Body", &app->scene.bodyGraph.isDrawBody, toggleDim, toggleDim);
-	gui->addToggle("Toggle Draw Lines", &app->scene.bodyGraph.isDrawLines, toggleDim, toggleDim);
-	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.bodyGraph.graphItemXGap, length, dim);
-	gui->addSlider("Line width", 1, 50, &app->scene.bodyGraph.lineWidth, length, dim);
-	gui->addSlider("Graph Height Max", 0, 1, &app->scene.bodyGraph.graphHeightMax, length, dim);
-	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->scene.bodyGraph.sendDataSpeed, length, dim);
-	
-	gui->addSpacer(length, 1);
-	gui->addSlider("Data0 red", 0, 255, &app->scene.bodyGraph.col0[0], length, dim);
-	gui->addSlider("Data0 green", 0, 255, &app->scene.bodyGraph.col0[1], length, dim);
-	gui->addSlider("Data0 blue", 0, 255, &app->scene.bodyGraph.col0[2], length, dim);
-	gui->addSlider("Data0 alpha", 0, 255, &app->scene.bodyGraph.col0[3], length, dim);
+	//gui->addSpacer(length, 1);
+	//gui->addSlider("Data0 red", 0, 255, &app->scene.graphManager.col0[0], length, dim);
+	//gui->addSlider("Data0 green", 0, 255, &app->scene.graph.col0[1], length, dim);
+	//gui->addSlider("Data0 blue", 0, 255, &app->scene.graph.col0[2], length, dim);
+	//gui->addSlider("Data0 alpha", 0, 255, &app->scene.graph.col0[3], length, dim);
 
-	gui->addSpacer(length, 1);
-	gui->addSlider("Data1 red", 0, 255, &app->scene.bodyGraph.col1[0], length, dim);
-	gui->addSlider("Data1 green", 0, 255, &app->scene.bodyGraph.col1[1], length, dim);
-	gui->addSlider("Data1 blue", 0, 255, &app->scene.bodyGraph.col1[2], length, dim);
-	gui->addSlider("Data1 alpha", 0, 255, &app->scene.bodyGraph.col1[3], length, dim);
-
-    finaliseCanvas(gui, true);
-}
-
-
-void GUI::addSeparateBodyGraphDesignGUI()
-{
-	string title = "SEPARATE BODY GRAPH DESIGN";
-    ofxUICanvas* gui = getNewGUI(title);
-	
-	gui->addToggle("Toggle Draw Lines", &app->scene.separateBodyGraph.isDrawLines, toggleDim, toggleDim);
-	gui->addSlider("Graph Item X Gap", 5, 50, &app->scene.separateBodyGraph.graphItemXGap, length, dim);
-	gui->addSlider("Line width", 1, 50, &app->scene.separateBodyGraph.lineWidth, length, dim);
-	gui->addSlider("Graph Height Max", 0, 1, &app->scene.separateBodyGraph.graphHeightMax, length, dim);
-	gui->addSlider("Graph bottom end (percent)", 0, 2, &app->scene.separateBodyGraph.graphEndPercent, length, dim);
-	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->scene.separateBodyGraph.sendDataSpeed, length, dim);
-	
-	gui->addSpacer(length, 1);
-	gui->addSlider("Data0 red", 0, 255, &app->scene.separateBodyGraph.col0[0], length, dim);
-	gui->addSlider("Data0 green", 0, 255, &app->scene.separateBodyGraph.col0[1], length, dim);
-	gui->addSlider("Data0 blue", 0, 255, &app->scene.separateBodyGraph.col0[2], length, dim);
-	gui->addSlider("Data0 alpha", 0, 255, &app->scene.separateBodyGraph.col0[3], length, dim);
-
-	gui->addSpacer(length, 1);
-	gui->addSlider("Data1 red", 0, 255, &app->scene.separateBodyGraph.col1[0], length, dim);
-	gui->addSlider("Data1 green", 0, 255, &app->scene.separateBodyGraph.col1[1], length, dim);
-	gui->addSlider("Data1 blue", 0, 255, &app->scene.separateBodyGraph.col1[2], length, dim);
-	gui->addSlider("Data1 alpha", 0, 255, &app->scene.separateBodyGraph.col1[3], length, dim);
 
     finaliseCanvas(gui, true);
 }
@@ -178,74 +119,6 @@ void GUI::addGraphSimulationGUI()
 }
 
 
-void GUI::addBackgroundGUI()
-{
-    string title = "BACKGROUND";
-    ofxUICanvas* gui = getNewGUI(title);
-
-	gui->addToggle("Toggle Video Visibility", &app->scene.isVideoVisible, toggleDim, toggleDim);
-	gui->addToggle("Toggle Image Visibility", &app->scene.isImageVisible, toggleDim, toggleDim);
-	gui->addSlider("Video/Image Width Percent", 0, 2, &app->scene.videoWidthPercentage, length, dim);
-	gui->addSlider("Video/Image Height Percent", 0, 2, &app->scene.videoHeightPercentage, length, dim);
-
-	
-
-    gui->addLabel("VIDEO IMAGE SETTINGS");
-	gui->addSlider("Brightness", 0, 2, &app->scene.brightness, length, dim);
-	gui->addSlider("Contrast", 0, 2, &app->scene.contrast, length, dim);
-	gui->addSlider("Saturation", 0, 2, &app->scene.saturation, length, dim);
-	gui->addSlider("Red", 0, 2, &app->scene.red, length, dim);
-	gui->addSlider("Green", 0, 2, &app->scene.green, length, dim);
-	gui->addSlider("Blue", 0, 2, &app->scene.blue, length, dim);
-	gui->addSlider("Alpha", 0, 2, &app->scene.alpha, length, dim);
-
-	gui->addSpacer(length, 1);
-    gui->addLabel("HUD BACKGROUND SETTINGS");
-	gui->addSlider("Red .", 0, 255, &app->scene.hudColour[0], length, dim);
-	gui->addSlider("Green .", 0, 255, &app->scene.hudColour[1], length, dim);
-	gui->addSlider("Blue .", 0, 255, &app->scene.hudColour[2], length, dim);
-	gui->addSlider("Alpha .", 0, 255, &app->scene.hudColour[3], length, dim);
-	gui->addSlider("Hole Width Percent", 0, 2, &app->scene.hudHoleWidthPercentage, length, dim);
-	gui->addSlider("Hole Height Percent", 0, 2, &app->scene.hudHoleHeightPercentage, length, dim);
-	gui->addSlider("Circle Point Size", 0, 100, &app->scene.circlePointSize, length, dim);
-    gui->addLabel("CROSSHAIRS SETTINGS");
-	gui->addSlider("Line Width", 0, 10, &app->scene.crosshairLineWidth, length, dim);
-	gui->addSlider("Alpha ..", 0, 255, &app->scene.crosshairAlpha, length, dim);
-	gui->addSlider("Circle Size", 0, 100, &app->scene.crosshairCircleSize, length, dim);
-
-    ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
-    finaliseCanvas(gui, true);
-}
-
-
-void GUI::addHUDTextGUI()
-{
-    string title = "HUD TEXT";
-    ofxUICanvas* gui = getNewGUI(title);
-	
-	gui->addSlider("X Margin", 0, 500, &app->scene.xMargin, length, dim);
-	gui->addSlider("Y Margin", 0, 500, &app->scene.yMargin, length, dim);
-	gui->addSlider("Y Margin Bottom Offset", 0, 300, &app->scene.yMarginBottomOffset, length, dim);
-	gui->addSlider("Line Length", 50, 500, &app->scene.lineLength, length, dim);
-	gui->addSlider("Line Spacing", 0, 10, &app->scene.lineSpacing, length, dim);
-	gui->addSlider("Text Size", 10, 100, &app->scene.textSize, length, dim);
-	gui->addSlider("Value average amount", 2, 150, &app->scene.averageAmount, length, dim);
-	
-	gui->addSpacer(length, 1);
-	gui->addSlider("Red", 0, 255, &app->scene.textColour[0], length, dim);
-	gui->addSlider("Green", 0, 255, &app->scene.textColour[1], length, dim);
-	gui->addSlider("Blue", 0, 255, &app->scene.textColour[2], length, dim);
-	gui->addSlider("Alpha", 0, 255, &app->scene.textColour[3], length, dim);
-	
-	gui->addSpacer(length, 1);
-    gui->addLabel("COLOUR KEY");
-	gui->addSlider("Top Colour Box Y Offset", -300, 300, &app->scene.topColourBoxXOffset, length, dim);
-	gui->addSlider("Bottom Colour Box Y Offset", -300, 300, &app->scene.bottomColourBoxXOffset, length, dim);
-	gui->addSlider("Colour Box Thickness", 1, 50, &app->scene.colourBoxThickness, length, dim);
-
-    ofAddListener(gui->newGUIEvent, this, &GUI::variousGUIEvent);
-    finaliseCanvas(gui, true);
-}
 
 
 void GUI::addVariousGUI()
@@ -268,28 +141,6 @@ void GUI::addVariousGUI()
 }
 
 
-
-void GUI::graphGlobalGUIEvent(ofxUIEventArgs &e)
-{
-    string name = e.widget->getName();
-	ofxUIToggle *toggle = (ofxUIToggle *) e.widget; 
-    
-	if (name == "Bar graph")
-    {
-		//ofxUIToggle *toggle = (ofxUIToggle *) e.widget; 
-		if (toggle->getValue()) app->scene.activeGraph = &app->scene.barGraph;
-    }
-    else if (name == "Solid Body graph")
-    {
-		printf("------------------- Solid Body graph\n");
-		if (toggle->getValue()) app->scene.activeGraph = &app->scene.bodyGraph;
-    }
-    else if (name == "Separate Body graph")
-	{
-		printf("------------------- Line fade graph\n");
-		if (toggle->getValue()) app->scene.activeGraph = &app->scene.separateBodyGraph;
-    }
-}
 
 
 

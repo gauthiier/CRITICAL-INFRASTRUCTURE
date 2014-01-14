@@ -1,0 +1,35 @@
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toggle Draw Lines</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Item X Gap</Name>
+    <Value>0.518750012</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line width</Name>
+    <Value>2.562500000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Width max</Name>
+    <Value>94.437500000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Height Max</Name>
+    <Value>15.789472580</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph bottom end (percent)</Name>
+    <Value>0.723684192</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data send speed (seconds)</Name>
+    <Value>0.820065796</Value>
+</Widget>

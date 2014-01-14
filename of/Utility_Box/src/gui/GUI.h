@@ -13,7 +13,7 @@
 
 class testApp;
 
-class GUI : GUIManager
+class GUI : public GUIManager
 {
 public:
     virtual void setup();
@@ -21,19 +21,15 @@ public:
     
     void addKeyboardShortcutsGUI();
 	void addGraphGlobalGUI();
-	void addBarGraphDesignGUI();
-	void addBodyGraphDesignGUI();
-	void addSeparateBodyGraphDesignGUI();
+	void addGraphDesignGUI();
 	void addGraphSimulationGUI();
-    void addBackgroundGUI();
-	void addHUDTextGUI();
     void addVariousGUI();
     
-	void graphGlobalGUIEvent(ofxUIEventArgs &e);
     void variousGUIEvent(ofxUIEventArgs &e);
 
 
     
     testApp* app;
 	vector<string> publishers; 
+
 };

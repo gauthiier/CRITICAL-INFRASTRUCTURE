@@ -1,7 +1,7 @@
-﻿Build started 12/1/2014 6:00:31 PM.
+﻿Build started 14/1/2014 2:20:19 PM.
      1>Project "C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\Utility_Box.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\..\libs\openFrameworks /I..\..\..\libs\openFrameworks\graphics /I..\..\..\libs\openFrameworks\app /I..\..\..\libs\openFrameworks\sound /I..\..\..\libs\openFrameworks\utils /I..\..\..\libs\openFrameworks\communication /I..\..\..\libs\openFrameworks\video /I..\..\..\libs\openFrameworks\types /I..\..\..\libs\openFrameworks\math /I..\..\..\libs\openFrameworks\3d /I..\..\..\libs\openFrameworks\gl /I..\..\..\libs\openFrameworks\events /I..\..\..\libs\glut\include /I..\..\..\libs\rtAudio\include /I..\..\..\libs\quicktime\include /I..\..\..\libs\freetype\include /I..\..\..\libs\freetype\include\freetype2 /I..\..\..\libs\freeImage\include /I..\..\..\libs\fmodex\include /I..\..\..\libs\videoInput\include /I..\..\..\libs\glew\include\ /I..\..\..\libs\glu\include /I..\..\..\libs\tess2\include /I..\..\..\libs\cairo\include\cairo /I..\..\..\libs\poco\include /I..\..\..\libs\glfw\include /I..\..\..\..\libs\openssl\include /I..\..\..\addons /Isrc /Isrc\data /Isrc\gui /Isrc\visual /Isrc\visual\graph /I..\..\..\addons\ofxLibwebsockets\libs\jsoncpp /I..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json /I..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\ /I..\..\..\addons\ofxLibwebsockets\libs\openssl\openssl /I..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include /I..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets /I..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src /I..\..\..\addons\ofxLibwebsockets\src /I..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\win32port /I..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\win32port\win32helpers /I..\..\..\addons\ofxSpacebrew\src /I..\..\..\addons\ofxUI\src /I..\..\..\addons\ofxXmlSettings\libs /I..\..\..\addons\ofxXmlSettings\src /I..\..\..\addons\ofxFTGL\src /I..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL /I..\..\..\addons\ofxFTGL\libs\FTGL\include /I..\..\..\addons\ofxFTGL\libs\FTGL /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _CONSOLE /D POCO_STATIC /D CAIRO_WIN32_STATIC_BUILD /D DISABLE_SOME_FLOATING_POINT /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\Release\\" /Fd"obj\Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\data\DataManager.cpp src\gui\GUI.cpp src\main.cpp src\testApp.cpp src\visual\graph\SeparateBodyGraph.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\..\libs\openFrameworks /I..\..\..\libs\openFrameworks\graphics /I..\..\..\libs\openFrameworks\app /I..\..\..\libs\openFrameworks\sound /I..\..\..\libs\openFrameworks\utils /I..\..\..\libs\openFrameworks\communication /I..\..\..\libs\openFrameworks\video /I..\..\..\libs\openFrameworks\types /I..\..\..\libs\openFrameworks\math /I..\..\..\libs\openFrameworks\3d /I..\..\..\libs\openFrameworks\gl /I..\..\..\libs\openFrameworks\events /I..\..\..\libs\glut\include /I..\..\..\libs\rtAudio\include /I..\..\..\libs\quicktime\include /I..\..\..\libs\freetype\include /I..\..\..\libs\freetype\include\freetype2 /I..\..\..\libs\freeImage\include /I..\..\..\libs\fmodex\include /I..\..\..\libs\videoInput\include /I..\..\..\libs\glew\include\ /I..\..\..\libs\glu\include /I..\..\..\libs\tess2\include /I..\..\..\libs\cairo\include\cairo /I..\..\..\libs\poco\include /I..\..\..\libs\glfw\include /I..\..\..\..\libs\openssl\include /I..\..\..\addons /Isrc /Isrc\data /Isrc\gui /Isrc\visual /Isrc\visual\graph /I..\..\..\addons\ofxLibwebsockets\libs\jsoncpp /I..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json /I..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\ /I..\..\..\addons\ofxLibwebsockets\libs\openssl\openssl /I..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include /I..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets /I..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src /I..\..\..\addons\ofxLibwebsockets\src /I..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\win32port /I..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\win32port\win32helpers /I..\..\..\addons\ofxSpacebrew\src /I..\..\..\addons\ofxUI\src /I..\..\..\addons\ofxXmlSettings\libs /I..\..\..\addons\ofxXmlSettings\src /I..\..\..\addons\ofxFTGL\src /I..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL /I..\..\..\addons\ofxFTGL\libs\FTGL\include /I..\..\..\addons\ofxFTGL\libs\FTGL /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _CONSOLE /D POCO_STATIC /D CAIRO_WIN32_STATIC_BUILD /D DISABLE_SOME_FLOATING_POINT /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\Release\\" /Fd"obj\Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\data\DataManager.cpp
          DataManager.cpp
      1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(126): warning C4250: 'Poco::InputStreamConverter' : inherits 'std::basic_istream<_Elem,_Traits>::std::basic_istream<_Elem,_Traits>::_Add_vtordisp1' via dominance
                  with
@@ -27,86 +27,68 @@
                      _Elem=char,
                      _Traits=std::char_traits<char>
                  ]
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\src\visual\Scene.h(12): fatal error C1083: Cannot open include file: 'BarGraph.h': No such file or directory
-         GUI.cpp
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(126): warning C4250: 'Poco::InputStreamConverter' : inherits 'std::basic_istream<_Elem,_Traits>::std::basic_istream<_Elem,_Traits>::_Add_vtordisp1' via dominance
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\istream(74) : see declaration of 'std::basic_istream<_Elem,_Traits>::_Add_vtordisp1'
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(144): warning C4250: 'Poco::OutputStreamConverter' : inherits 'std::basic_ostream<_Elem,_Traits>::std::basic_ostream<_Elem,_Traits>::_Add_vtordisp2' via dominance
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\ostream(90) : see declaration of 'std::basic_ostream<_Elem,_Traits>::_Add_vtordisp2'
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\src\visual\Scene.h(12): fatal error C1083: Cannot open include file: 'BarGraph.h': No such file or directory
-         main.cpp
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(126): warning C4250: 'Poco::InputStreamConverter' : inherits 'std::basic_istream<_Elem,_Traits>::std::basic_istream<_Elem,_Traits>::_Add_vtordisp1' via dominance
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\istream(74) : see declaration of 'std::basic_istream<_Elem,_Traits>::_Add_vtordisp1'
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(144): warning C4250: 'Poco::OutputStreamConverter' : inherits 'std::basic_ostream<_Elem,_Traits>::std::basic_ostream<_Elem,_Traits>::_Add_vtordisp2' via dominance
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\ostream(90) : see declaration of 'std::basic_ostream<_Elem,_Traits>::_Add_vtordisp2'
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\src\visual\Scene.h(12): fatal error C1083: Cannot open include file: 'BarGraph.h': No such file or directory
-         testApp.cpp
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(126): warning C4250: 'Poco::InputStreamConverter' : inherits 'std::basic_istream<_Elem,_Traits>::std::basic_istream<_Elem,_Traits>::_Add_vtordisp1' via dominance
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\istream(74) : see declaration of 'std::basic_istream<_Elem,_Traits>::_Add_vtordisp1'
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-     1>C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\poco\include\Poco/StreamConverter.h(144): warning C4250: 'Poco::OutputStreamConverter' : inherits 'std::basic_ostream<_Elem,_Traits>::std::basic_ostream<_Elem,_Traits>::_Add_vtordisp2' via dominance
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\ostream(90) : see declaration of 'std::basic_ostream<_Elem,_Traits>::_Add_vtordisp2'
-                 with
-                 [
-                     _Elem=char,
-                     _Traits=std::char_traits<char>
-                 ]
-     1>Done Building Project "C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\Utility_Box.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\Utility_Box.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\..\..\libs\glut\lib\vs /LIBPATH:..\..\..\libs\glfw\lib\vs /LIBPATH:..\..\..\libs\rtAudio\lib\vs /LIBPATH:..\..\..\libs\FreeImage\lib\vs /LIBPATH:..\..\..\libs\freetype\lib\vs /LIBPATH:..\..\..\libs\quicktime\lib\vs /LIBPATH:..\..\..\libs\fmodex\lib\vs /LIBPATH:..\..\..\libs\videoInput\lib\vs /LIBPATH:..\..\..\libs\cairo\lib\vs /LIBPATH:..\..\..\libs\glew\lib\vs /LIBPATH:..\..\..\libs\glu\lib\vs /LIBPATH:..\..\..\libs\openssl\lib\vs /LIBPATH:..\..\..\libs\Poco\lib\vs /LIBPATH:..\..\..\libs\tess2\lib\vs /LIBPATH:..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs2012 /LIBPATH:..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\lib\win32\Release "cairo-static.lib" "pixman-1.lib" msimg32.lib OpenGL32.lib GLu32.lib kernel32.lib setupapi.lib Vfw32.lib comctl32.lib glut32.lib rtAudio.lib videoInput.lib libfreetype.lib FreeImage.lib qtmlClient.lib dsound.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib glew32s.lib fmodex_vc.lib glu32.lib crypt32.lib libeay32MD.lib ssleay32MD.lib PocoFoundationmd.lib PocoNetmd.lib PocoUtilmd.lib PocoXMLmd.lib Ws2_32.lib tess2.lib glfw3.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib websockets_static.lib ZLIB.lib ftgl_static.lib /NODEFAULTLIB:PocoFoundationd.lib /NODEFAULTLIB:atlthunk.lib /NODEFAULTLIB:LIBC.lib /NODEFAULTLIB:LIBCMT /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"bin\Utility_Box.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE:NO /NXCOMPAT /IMPLIB:"bin\Utility_Box.lib" /MACHINE:X86 /SAFESEH obj\Release\icon.res
+         obj\Release\ofxFTGLFont.obj
+         obj\Release\ofxFTGLSimpleLayout.obj
+         obj\Release\tinyxml.obj
+         obj\Release\tinyxmlerror.obj
+         obj\Release\tinyxmlparser.obj
+         obj\Release\ofxXmlSettings.obj
+         obj\Release\DataManager.obj
+         obj\Release\GUI.obj
+         obj\Release\GUIManager.obj
+         obj\Release\main.obj
+         obj\Release\testApp.obj
+         obj\Release\jsoncpp.obj
+         obj\Release\Server.obj
+         obj\Release\Reactor.obj
+         obj\Release\Protocol.obj
+         obj\Release\Events.obj
+         obj\Release\Connection.obj
+         obj\Release\Client.obj
+         obj\Release\ofxSpacebrew.obj
+         obj\Release\AbstractGraph.obj
+         obj\Release\Graph.obj
+         obj\Release\GraphManager.obj
+         obj\Release\Scene.obj
+         "C:\Users\James Alliban\Work\of_v0.8.0_vs_release\libs\openFrameworksCompiled\lib\vs\openframeworksLib.lib"
+            Creating library bin\Utility_Box.lib and object bin\Utility_Box.exp
+         Generating code
+         Finished generating code
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??1FTBBox@@QAE@XZ (public: __thiscall FTBBox::~FTBBox(void)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ??1FTBBox@@QAE@XZ (public: __thiscall FTBBox::~FTBBox(void)) imported
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??0FTExtrudeFont@@QAE@PBD@Z (public: __thiscall FTExtrudeFont::FTExtrudeFont(char const *)) imported
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??1FTExtrudeFont@@UAE@XZ (public: virtual __thiscall FTExtrudeFont::~FTExtrudeFont(void)) imported
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??0FTPolygonFont@@QAE@PBD@Z (public: __thiscall FTPolygonFont::FTPolygonFont(char const *)) imported
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??1FTPolygonFont@@UAE@XZ (public: virtual __thiscall FTPolygonFont::~FTPolygonFont(void)) imported
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??0FTTextureFont@@QAE@PBD@Z (public: __thiscall FTTextureFont::FTTextureFont(char const *)) imported
+     1>ofxFTGLFont.obj : warning LNK4049: locally defined symbol ??1FTTextureFont@@UAE@XZ (public: virtual __thiscall FTTextureFont::~FTTextureFont(void)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ??0FTSimpleLayout@@QAE@XZ (public: __thiscall FTSimpleLayout::FTSimpleLayout(void)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ??1FTSimpleLayout@@UAE@XZ (public: virtual __thiscall FTSimpleLayout::~FTSimpleLayout(void)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?SetFont@FTSimpleLayout@@QAEXPAVFTFont@@@Z (public: void __thiscall FTSimpleLayout::SetFont(class FTFont *)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?SetLineLength@FTSimpleLayout@@QAEXM@Z (public: void __thiscall FTSimpleLayout::SetLineLength(float)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?GetLineLength@FTSimpleLayout@@QBEMXZ (public: float __thiscall FTSimpleLayout::GetLineLength(void)const ) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?SetAlignment@FTSimpleLayout@@QAEXW4TextAlignment@FTGL@@@Z (public: void __thiscall FTSimpleLayout::SetAlignment(enum FTGL::TextAlignment)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?GetAlignment@FTSimpleLayout@@QBE?AW4TextAlignment@FTGL@@XZ (public: enum FTGL::TextAlignment __thiscall FTSimpleLayout::GetAlignment(void)const ) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?SetLineSpacing@FTSimpleLayout@@QAEXM@Z (public: void __thiscall FTSimpleLayout::SetLineSpacing(float)) imported
+     1>ofxFTGLSimpleLayout.obj : warning LNK4049: locally defined symbol ?GetLineSpacing@FTSimpleLayout@@QBEMXZ (public: float __thiscall FTSimpleLayout::GetLineSpacing(void)const ) imported
+         Utility_Box.vcxproj -> C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\bin\Utility_Box.exe
+       PostBuildEvent:
+         xcopy /e /i /y "C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\*.dll" "C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\bin"
+         :VCEnd
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\Assimp32.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\fmodex.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\fmodexL.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\FreeImage.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\FreeType-6.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\glut32.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\libeay32.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\ssleay32.dll
+         C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\..\..\..\export\vs\Zlib.dll
+         9 File(s) copied
+     1>Done Building Project "C:\Users\James Alliban\Work\of_v0.8.0_vs_release\CRITICAL-INFRASTRUCTURE\of\Utility_Box\Utility_Box.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:10.91
+Time Elapsed 00:00:07.37

@@ -27,10 +27,12 @@ class DataManager
 		void draw();
 		vector<string> explode( const string &delimiter, const string &str);
 		
+		
         // listen to spacebrew Messages
         void onMessage( Spacebrew::Message & m );
 
 		testApp* app;
+		float sendDataSpeed;
 
 		int appId;
 

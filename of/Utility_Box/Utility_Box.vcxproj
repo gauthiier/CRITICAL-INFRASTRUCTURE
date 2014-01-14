@@ -110,7 +110,8 @@
     <ClCompile Include="..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src\Client.cpp" />
     <ClCompile Include="..\..\..\addons\ofxSpacebrew\src\ofxSpacebrew.cpp" />
     <ClCompile Include="src\visual\graph\AbstractGraph.cpp" />
-    <ClCompile Include="src\visual\graph\SeparateBodyGraph.cpp" />
+    <ClCompile Include="src\visual\graph\Graph.cpp" />
+    <ClCompile Include="src\visual\graph\GraphManager.cpp" />
     <ClCompile Include="src\visual\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +188,8 @@
     <ClInclude Include="src\testApp.h" />
     <ClInclude Include="..\..\..\addons\ofxSpacebrew\src\ofxSpacebrew.h" />
     <ClInclude Include="src\visual\graph\AbstractGraph.h" />
-    <ClInclude Include="src\visual\graph\SeparateBodyGraph.h" />
+    <ClInclude Include="src\visual\graph\Graph.h" />
+    <ClInclude Include="src\visual\graph\GraphManager.h" />
     <ClInclude Include="src\visual\Scene.h" />
   </ItemGroup>
   <ItemGroup>

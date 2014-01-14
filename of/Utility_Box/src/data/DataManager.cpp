@@ -6,10 +6,7 @@ void DataManager::setup()
 {
 	app = (testApp*)ofGetAppPtr();
 	
-	newData.resize(2);
-
-	//isPublisher0DataReceived = false;
-	//isPublisher1DataReceived = false;
+	newData.resize(30);
 
 	setupSpacebrew();
 
@@ -25,9 +22,9 @@ void DataManager::setupSpacebrew()
 
 	for (int i = 0; i < 30; i++)
 	{
-		spacebrew.addSubscribe(ofToString(i), Spacebrew::TYPE_STRING);
+		spacebrew.addSubscribe("utility_" + ofToString(i), Spacebrew::TYPE_STRING);
 	}
-	spacebrew.connect( host, name, description );
+	spacebrew.connect(host, name, description);
 	
     // listen to spacebrew events
     Spacebrew::addListener(this, spacebrew);
@@ -40,40 +37,27 @@ void DataManager::update()
 	{
 		if (ofGetFrameNum() % (int)simulationSpeed == 0)
 		{
-			DataObject dataObject0;
-			dataObject0.info = "Some text to describe the data\nSome more text\nOne more line";
-			dataObject0.value = ofNoise(newData.size() * perlinXScale, ofGetElapsedTimef() * perlinYScale);
-			dataObject0.min = 0;
-			dataObject0.max = 1;
+			vector<DataObject> dataObjects;
+			for (int i = 0; i < 30; i++)
+			{
+				DataObject dataObject;
+				dataObject.info = "Some text to describe the data\nSome more text\nOne more line";
+				dataObject.value = ofNoise(newData.size() * perlinXScale, (ofGetElapsedTimef() + (i * 756)) * perlinYScale);
+				dataObject.min = 0;
+				dataObject.max = 1;
 			
-			//printf("dataObject0.value = %f \n", dataObject0.value);
+				dataObjects.push_back(dataObject);
+			}
 
-			newData[0] = dataObject0;
-
-			DataObject dataObject1;
-			dataObject1.info = "Some descriptive text\nSome more\nLittle bit more\nLast one";
-			dataObject1.value = ofNoise((newData.size() + 500) * perlinXScale, (ofGetElapsedTimef() + 1000) * perlinYScale);
-			dataObject1.min = 0;
-			dataObject1.max = 1;
-			
-			newData[1] = dataObject1;
-
-			app->scene.activeGraph->addNewData(newData);
+			app->scene.addNewData(dataObjects);
 		}
 	}
 	else
 	{
-		/*if (isPublisher0DataReceived && isPublisher1DataReceived) 
-		{
-			isPublisher0DataReceived = false;
-			isPublisher1DataReceived = false;
-			app->scene.addNewData(newData);
-		}*/
-
 		//sendDataSpeed = app->scene.activeGraph->sendDataSpeed;
-		if (ofGetElapsedTimef() >= nextDataSendTime + app->scene.activeGraph->sendDataSpeed)
+		if (ofGetElapsedTimef() >= nextDataSendTime + sendDataSpeed)
 		{
-			nextDataSendTime += app->scene.activeGraph->sendDataSpeed;
+			nextDataSendTime += sendDataSpeed;
 			app->scene.addNewData(newData);
 		}
 	}
@@ -82,10 +66,6 @@ void DataManager::update()
 
 void DataManager::draw()
 {
-	ofPushStyle();
-	ofSetColor(255, 0, 0);
-	ofCircle(sin(ofGetElapsedTimef() * 0.5) * 300 + 300, 100, 20);
-	ofPopStyle();
 }
 
 
@@ -127,16 +107,15 @@ void DataManager::onMessage( Spacebrew::Message & m )
 	}
 
 
-    if (m.name == publisher0Name)
+	for (int i = 0; i < 30; i++)
 	{
-		//isPublisher0DataReceived = true;
-		newData[0] = dataObject;
-    }
-    else if (m.name == publisher1Name)
-	{
-		//isPublisher1DataReceived = true;
-		newData[1] = dataObject;
-    }
+		if (m.name == "utility_" + ofToString(i))
+		{
+			printf("adding %s to dataObject %i\n", m.name.c_str(), i);
+			//isPublisher0DataReceived = true;
+			newData[i] = dataObject;
+		}
+	}
 }
 
 
