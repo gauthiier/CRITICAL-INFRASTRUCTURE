@@ -2,7 +2,7 @@
 
 // TODO
 // ====
-// - Add a minimum time for each angle
+// - Add a minimum time for each angle to avoif unslightly quick switching
 // - optimise - don't calculate graph point values evey frame
 // - investigate backward graph animation (use alternating colours)
 // - Colour range - tween between 2-3 points

@@ -15,6 +15,8 @@ class Camera : public ofEasyCam
 public:
     void setup(int _camID);
     void update();
+    void activate();
+    void deactivate();
 	
 	int camID;
 
@@ -26,4 +28,6 @@ public:
 	float distance;
 	float rotSpeed;
 	float swapProbability;
+	float minSecondsBeforeSwapping;
+	float timeBecameActive;
 };

@@ -144,6 +144,7 @@ void Scene::switchCamera()
 		newCamID = (ofRandom(2) < 0.5) ? 0 : 1;
 
 	printf("************ changing cameras to %i ************** \n", newCamID);
-
+	activeCamera->deactivate();
 	activeCamera = &cameras[newCamID];
+	activeCamera->activate();
 }

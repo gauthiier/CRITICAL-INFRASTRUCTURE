@@ -116,7 +116,25 @@ void DataManager::onMessage( Spacebrew::Message & m )
 		}
 		if (data[i].substr(0, 6) == "value:") 
 		{
-			dataObject.value = ofToFloat(data[i].substr(6, -1).c_str());
+			string valString = data[i].substr(6, -1).c_str();
+			dataObject.value = ofToFloat(valString);
+
+			if (dataObject.value > 1000000000)
+			{
+				// create long long int
+				stringstream sstr(valString);
+				__int64 val;
+				sstr >> val;
+				dataObject.longlongIntValue = val;
+				dataObject.stringValue = addCommasToNumberString(valString);
+			}
+			else 
+			{
+				dataObject.longlongIntValue = 0;
+				dataObject.stringValue = (dataObject.value > 999) ? addCommasToNumberString(valString) : valString;
+			}
+
+			printf("\ndataObject.longlongValue = %llli \n\n",dataObject.longlongIntValue);
 		}
 		if (data[i].substr(0, 4) == "min:") 
 		{
@@ -129,7 +147,6 @@ void DataManager::onMessage( Spacebrew::Message & m )
 		if (data[i].substr(0, 5) == "unit:") 
 		{
 			dataObject.unitMeasure = data[i].substr(5, -1).c_str();
-			printf("------------ dataObject.unitMeasure = %s", data[i].substr(5, -1).c_str());
 		}
 	}
 
@@ -180,4 +197,40 @@ vector<string> DataManager::explode(const string &delimiter, const string &str)
     }
     arr.push_back(  str.substr(k, i-k) );
     return arr;
+}
+
+
+string DataManager::addCommasToNumberString(string num)
+{
+	printf("adding commas \n");
+    string temp;
+	string integral = num;
+	string fractional;
+    int decimalLocation = integral.find('.');
+
+	if (decimalLocation != -1)
+	{
+		integral = integral.substr(0 , decimalLocation);
+		fractional = integral.substr(decimalLocation);
+	}
+	else
+	{
+		integral = num;
+		fractional = "";
+	}
+
+    int endstring = integral.length();
+	int i;
+    for(i = endstring - 3; i >= 0; i -= 3) {
+        if (i > 0) {
+            temp = ","+ integral.substr(i, 3) + temp;
+        } else {
+            temp = integral.substr(i, 3) + temp;
+        }      
+    }
+    if (i < 0) {
+        temp = integral.substr(0, 3+i) + temp;
+    }
+	printf("adding commas - temp = %s\n", temp.c_str());
+    return temp + fractional;
 }

@@ -13,6 +13,8 @@ struct DataObject
 {
 	string info;
 	float value;
+	string stringValue;
+	long long int longlongIntValue;
 	float min;
 	float max;
 	string unitMeasure;
@@ -27,6 +29,7 @@ class DataManager
 		void update();
 		void draw();
 		vector<string> explode( const string &delimiter, const string &str);
+		string addCommasToNumberString(string num);
 		
         // listen to spacebrew Messages
         void onMessage( Spacebrew::Message & m );

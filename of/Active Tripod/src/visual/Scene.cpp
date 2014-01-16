@@ -82,11 +82,11 @@ void Scene::drawGraphValues()
 	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
 	text.setSize(graphTextSize);
 	text.drawString(
-		ofToString(activeGraph->publisher0Data.back().value) + " " + activeGraph->publisher0Data[activeGraph->publisher0Data.size() - 1].unitMeasure, 
+		activeGraph->publisher0Data.back().stringValue + " " + activeGraph->publisher0Data.back().unitMeasure, 
 		val0.x + 10, 
 		val0.y);
 	text.drawString(
-		ofToString(activeGraph->publisher1Data.back().value) + " " + activeGraph->publisher1Data[activeGraph->publisher1Data.size() - 1].unitMeasure, 
+		activeGraph->publisher1Data.back().stringValue + " " + activeGraph->publisher1Data.back().unitMeasure, 
 		val1.x + 10, 
 		val1.y);
 	ofPopStyle();
@@ -156,30 +156,70 @@ void Scene::drawHUDCopy()
 	vector<DataObject> *p0Data = &activeGraph->publisher0Data;
 	vector<DataObject> *p1Data = &activeGraph->publisher1Data;
 	
+
+
+
 	int amountToAverage = MIN(p0Data->size(), averageAmount);
 	if (p0Data->size() > 2)
 	{
-		float average0 = 0;
-		for (int i = 0; i < (int)amountToAverage; i++)
-			average0 += p0Data->at(p0Data->size() - i - 1).value;
-		average0 /= (int)amountToAverage;
+		if (p0Data->back().longlongIntValue > 0)
+		{
+			long long int average0 = 0;
+			for (int i = 0; i < (int)amountToAverage; i++)
+				average0 += p0Data->at(p0Data->size() - i - 1).value;
+			average0 /= (int)amountToAverage;
 
-		//	(p0Data->back() + p0Data->at(p0Data->size() - 2) + p0Data->at(p0Data->size() - 2))
-		blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
-			"Current Value: " + ofToString(p0Data->back().value) + "\n" + 
-			"Running average: " + ofToString(average0);
-		drawTextBox(blStr, "BOTTOM LEFT");
-		
+			string valueWithCommas = addCommasToNumberString(ofToString(average0));
 
-		float average1 = 0;
-		for (int i = 0; i < (int)amountToAverage; i++)
-			average1 += p1Data->at(p1Data->size() - i - 1).value;
-		average1 /= (int)amountToAverage;
+			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
+				"Current Value: " + p0Data->back().stringValue + "\n" + 
+				"Running average: " + valueWithCommas;
+			drawTextBox(blStr, "BOTTOM LEFT");
+		}
+		else
+		{
+			float average0 = 0;
+			for (int i = 0; i < (int)amountToAverage; i++)
+				average0 += p0Data->at(p0Data->size() - i - 1).value;
+			average0 /= (int)amountToAverage;
+			
+			string valueWithCommas = (average0 > 999) ? addCommasToNumberString(ofToString(average0)) : ofToString(average0);
 
-		brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
-			"Current Value: " + ofToString(p1Data->back().value) + "\n" + 
-			"Running average: " + ofToString(average1);
-		drawTextBox(brStr, "BOTTOM RIGHT");
+			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
+				"Current Value: " + p0Data->back().stringValue + "\n" + 
+				"Running average: " + valueWithCommas;
+			drawTextBox(blStr, "BOTTOM LEFT");
+		}
+
+
+		if (p1Data->back().longlongIntValue > 0)
+		{
+			float average1 = 0;
+			for (int i = 0; i < (int)amountToAverage; i++)
+				average1 += p1Data->at(p1Data->size() - i - 1).value;
+			average1 /= (int)amountToAverage;
+			
+			string valueWithCommas = addCommasToNumberString(ofToString(average1));
+
+			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
+				"Current Value: " + p1Data->back().stringValue + "\n" + 
+				"Running average: " + valueWithCommas;
+			drawTextBox(brStr, "BOTTOM RIGHT");
+		}
+		else
+		{
+			long long int average1 = 0;
+			for (int i = 0; i < (int)amountToAverage; i++)
+				average1 += p1Data->at(p1Data->size() - i - 1).value;
+			average1 /= (int)amountToAverage;
+			
+			string valueWithCommas = (average1 > 999) ? addCommasToNumberString(ofToString(average1)) : ofToString(average1);
+
+			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
+				"Current Value: " + p1Data->back().stringValue + "\n" + 
+				"Running average: " + valueWithCommas;
+			drawTextBox(brStr, "BOTTOM RIGHT");
+		}
 	}
 }
 
@@ -247,14 +287,13 @@ void Scene::addNewData(vector<DataObject> newData)
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
 	
-	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + ofToString(newData[0].value);
-	trStr = newData[1].info + newData[1].unitMeasure + "\n" + ofToString(newData[1].value);
+	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + ofToString(newData[0].stringValue);
+	trStr = newData[1].info + newData[1].unitMeasure + "\n" + ofToString(newData[1].stringValue);
 }
 
 
 void Scene::keyPressed(int key)
 {
-
 }
 
 
@@ -263,4 +302,44 @@ void Scene::clearGraphData()
 	barGraph.clear();
 	bodyGraph.clear();
 	separateBodyGraph.clear();
+}
+
+
+
+
+
+
+
+
+string Scene::addCommasToNumberString(string num)
+{
+    string temp;
+	string integral = num;
+	string fractional;
+    int decimalLocation = integral.find('.');
+
+	if (decimalLocation != -1)
+	{
+		integral = integral.substr(0 , decimalLocation);
+		fractional = integral.substr(decimalLocation);
+	}
+	else
+	{
+		integral = num;
+		fractional = "";
+	}
+
+    int endstring = integral.length();
+	int i;
+    for(i = endstring - 3; i >= 0; i -= 3) {
+        if (i > 0) {
+            temp = ","+ integral.substr(i, 3) + temp;
+        } else {
+            temp = integral.substr(i, 3) + temp;
+        }      
+    }
+    if (i < 0) {
+        temp = integral.substr(0, 3+i) + temp;
+    }
+    return temp + fractional;
 }

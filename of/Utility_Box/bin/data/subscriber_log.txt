@@ -13,33 +13,25 @@ Cryptocurrency exchange rate on mtgox.com
 7 = Number of likes of the transmediale fan page on Facebook
 
 8 = Haus der Kulturen Main Foyer - Noise Level
-9 = Total twitter updates
-
+9 = 
 10 = Haus der Kulturen Bar Area - Noise Level
-11 = HUAWEI Guangdong Stock Price on the Shenzen Exchange
-
+11 = 
 12 = Haus der Kulturen Beneath Main Foyer - Power Consumption (Amperes)
-13 = Google Inc. Stock Price on the NASDAQ Exchange
-
+13 = 
 14 = Haus der Kulturen Main Foyer - Power Consumption (Amperes)
 15 = 
 16 = Haus der Kulturen Back Smoking Area - Air Quality
 17 = 
 18 = Haus der Kulturen Mezanine Smoking Area - Air Quality
-19 = Percentage of books about media art out of all books on sale on ebay
-
+19 = 
 20 = Haus der Kulturen Mezanine Smoking Area - Air Quality
-21 = Number of photos tagged with berlin on Flickr
-
+21 = 
 22 = 
-23 = Number of photos tagged with berlin on Instagram
-
+23 = 
 24 = 
-25 = Number of photos tagged with transmediale on Instagram
-
+25 = 
 26 = 
-27 = Number of downvotes on reddit.com/r/funny
-
+27 = 
 28 = 
 29 = 
 
