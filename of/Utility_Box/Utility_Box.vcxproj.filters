@@ -76,6 +76,9 @@
     <ClCompile Include="src\visual\graph\GraphManager.cpp">
       <Filter>src\visual\graph</Filter>
     </ClCompile>
+    <ClCompile Include="src\visual\Camera.cpp">
+      <Filter>src\visual</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -373,6 +376,9 @@
     </ClInclude>
     <ClInclude Include="src\visual\graph\GraphManager.h">
       <Filter>src\visual\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visual\Camera.h">
+      <Filter>src\visual</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

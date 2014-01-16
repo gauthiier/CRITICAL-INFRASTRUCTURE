@@ -1,35 +1,80 @@
 <Widget>
     <Kind>2</Kind>
+    <Name>Toggle Draw Body</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Toggle Draw Lines</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Graph Item X Gap</Name>
-    <Value>0.518750012</Value>
+    <Kind>2</Kind>
+    <Name>Toggle Clamp Y Values</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Line width</Name>
-    <Value>2.562500000</Value>
+    <Name>Graph Item X Gap</Name>
+    <Value>0.981249988</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph z Range</Name>
+    <Value>50.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Width max</Name>
-    <Value>94.437500000</Value>
+    <Value>101.322372437</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Height Max</Name>
-    <Value>15.789472580</Value>
+    <Value>19.078947067</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Graph bottom end (percent)</Name>
-    <Value>0.723684192</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data send speed (seconds)</Name>
-    <Value>0.820065796</Value>
+    <Value>0.361842096</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Thickness</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Scale</Name>
+    <Value>50.095394135</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Ticks</Name>
+    <Value>15.023026466</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid Red</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid Green</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid Blue</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid Alpha</Name>
+    <Value>79.687500000</Value>
 </Widget>

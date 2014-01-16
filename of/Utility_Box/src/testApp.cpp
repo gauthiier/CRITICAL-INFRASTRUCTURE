@@ -2,9 +2,10 @@
 
 // TODO
 // ====
-// - Add text planes
-// - Add animated camera
-// - Colour range - tweet between 3 points
+// - Add a minimum time for each angle
+// - optimise - don't calculate graph point values evey frame
+// - investigate backward graph animation (use alternating colours)
+// - Colour range - tween between 2-3 points
 // 
 //--------------------------------------------------------------
 void testApp::setup()
@@ -20,6 +21,7 @@ void testApp::setup()
 	dataManager.setup();
 	scene.setup();
 	gui.setup();
+	scene.graphManager.updateInfoText();
 
 	isPaused = false;
 }
@@ -55,6 +57,10 @@ void testApp::keyPressed(int key)
 		ofToggleFullscreen();
 	else if (key == 'c')
 		scene.clearGraphData();
+	else if (key == 't')
+		scene.graphManager.updateInfoText();
+	else if (key == 'o')
+		scene.graphManager.outputData();
 
 	scene.keyPressed(key);
 }

@@ -109,6 +109,7 @@
     <ClCompile Include="..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src\Connection.cpp" />
     <ClCompile Include="..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src\Client.cpp" />
     <ClCompile Include="..\..\..\addons\ofxSpacebrew\src\ofxSpacebrew.cpp" />
+    <ClCompile Include="src\visual\Camera.cpp" />
     <ClCompile Include="src\visual\graph\AbstractGraph.cpp" />
     <ClCompile Include="src\visual\graph\Graph.cpp" />
     <ClCompile Include="src\visual\graph\GraphManager.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="src\gui\GUIManager.h" />
     <ClInclude Include="src\testApp.h" />
     <ClInclude Include="..\..\..\addons\ofxSpacebrew\src\ofxSpacebrew.h" />
+    <ClInclude Include="src\visual\Camera.h" />
     <ClInclude Include="src\visual\graph\AbstractGraph.h" />
     <ClInclude Include="src\visual\graph\Graph.h" />
     <ClInclude Include="src\visual\graph\GraphManager.h" />

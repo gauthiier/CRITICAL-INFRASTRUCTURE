@@ -1,150 +1,85 @@
 <Widget>
     <Kind>2</Kind>
-    <Name>CI0-DATA - Light Level</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CI0-BATT - Battery Level of node 0</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CI1-DATA - Air Quality</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CI1-BATT - Battery Level of node 1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CI2-DATA - Humidity</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CI1-BATT - Battery Level of node 2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 3</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 4</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 5</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 6</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 7</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 8</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 9</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 10</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 11</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 12</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 13</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 14</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 15</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 16</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 17</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 18</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 19</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>temp 20</Name>
+    <Name>Rotation</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>temp 21</Name>
-    <Value>0</Value>
+    <Name>Auto Camera Swap</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>temp 22</Name>
-    <Value>0</Value>
+    <Kind>4</Kind>
+    <Name>Cam0 Distance</Name>
+    <Value>98.125000000</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>temp 23</Name>
-    <Value>0</Value>
+    <Kind>4</Kind>
+    <Name>Cam0 Y</Name>
+    <Value>56.384868622</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>temp 24</Name>
-    <Value>0</Value>
+    <Kind>4</Kind>
+    <Name>Cam0 Direction Point Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam0 Rotation Speed</Name>
+    <Value>-0.092105269</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam0 Swap Probablity (per frame)</Name>
+    <Value>0.005233553</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam1 Distance</Name>
+    <Value>70.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam1 Y</Name>
+    <Value>31.878290176</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam1 Direction Point Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam1 Rotation Speed</Name>
+    <Value>-0.250000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam1 Swap Probablity (per frame)</Name>
+    <Value>0.011421053</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam2 Distance</Name>
+    <Value>48.125000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam2 Y</Name>
+    <Value>58.835529327</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam2 Direction Point Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam2 Rotation Speed</Name>
+    <Value>-0.342105269</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cam2 Swap Probablity (per frame)</Name>
+    <Value>0.012723684</Value>
 </Widget>

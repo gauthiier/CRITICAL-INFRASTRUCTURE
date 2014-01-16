@@ -2,6 +2,7 @@
 
 // TODO
 // ====
+// - some values are too high (Twitter). make a valueString string in the struct for display
 // - If min or max values change - clear graph - ask bout this
 // - Create a single config file to be loaded from online location. It will contain IP address and host name
 // - Create graph animation system

@@ -22,10 +22,14 @@ public:
     void addKeyboardShortcutsGUI();
 	void addGraphGlobalGUI();
 	void addGraphDesignGUI();
+	void addGraphTextGUI();
+	void addLegendTextGUI();
 	void addGraphSimulationGUI();
+	void addCameraGUI();
     void addVariousGUI();
     
     void variousGUIEvent(ofxUIEventArgs &e);
+	void graphTextGUIEvent(ofxUIEventArgs &e);
 
 
     

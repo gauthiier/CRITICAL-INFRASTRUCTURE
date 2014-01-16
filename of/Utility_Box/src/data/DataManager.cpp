@@ -6,7 +6,15 @@ void DataManager::setup()
 {
 	app = (testApp*)ofGetAppPtr();
 	
-	newData.resize(30);
+	for (int i = 0; i < 30; i++)
+	{
+		DataObject dataObject;
+		dataObject.value = -999;
+		dataObject.min = -999;
+		dataObject.max = -999;
+		dataObject.info = "";
+		newData.push_back(dataObject);
+	}
 
 	setupSpacebrew();
 
@@ -41,7 +49,7 @@ void DataManager::update()
 			for (int i = 0; i < 30; i++)
 			{
 				DataObject dataObject;
-				dataObject.info = "Some text to describe the data\nSome more text\nOne more line";
+				dataObject.info = "";
 				dataObject.value = ofNoise(newData.size() * perlinXScale, (ofGetElapsedTimef() + (i * 756)) * perlinYScale);
 				dataObject.min = 0;
 				dataObject.max = 1;
@@ -59,6 +67,24 @@ void DataManager::update()
 		{
 			nextDataSendTime += sendDataSpeed;
 			app->scene.addNewData(newData);
+
+
+			ofstream logFile;
+			logFile.open(ofToDataPath("subscriber_log.txt").c_str());
+			string str;
+
+			for (int i = 0; i < newData.size(); i++)
+			{
+				DataObject data = newData[i];
+				str += ofToString(i) + " = " + data.info + "\n";
+
+			}
+			unsigned char buf = ofToChar(str);
+			// write data to txt file
+			logFile << str[0] << str <<"\n";
+
+			logFile.close();
+
 		}
 	}
 }
@@ -86,7 +112,7 @@ void DataManager::onMessage( Spacebrew::Message & m )
 	{
 		if (data[i].substr(0, 5) == "info:") 
 		{
-			//printf("- - info = %s\n",  data[i].substr(5, -1).c_str());
+			//printf("- info = %s\n",  data[i].substr(5, -1).c_str());
 			dataObject.info = data[i].substr(5, -1).c_str();
 		}
 		if (data[i].substr(0, 6) == "value:") 
@@ -111,9 +137,10 @@ void DataManager::onMessage( Spacebrew::Message & m )
 	{
 		if (m.name == "utility_" + ofToString(i))
 		{
-			printf("adding %s to dataObject %i\n", m.name.c_str(), i);
 			//isPublisher0DataReceived = true;
 			newData[i] = dataObject;
+			//printf("- - - adding %s to dataObject %i, info:%s, min:%f \n", m.name.c_str(), i, newData[i].info.c_str(), newData[i].min);
+			
 		}
 	}
 }

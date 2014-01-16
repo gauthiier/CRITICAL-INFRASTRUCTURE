@@ -11,8 +11,9 @@
 #include "ofMain.h"
 #include "Graph.h"
 #include "DataManager.h"
-#include "ofxFTGL.h"
 #include "GraphManager.h"
+#include "ofxFTGL.h"
+#include "Camera.h"
 
 class testApp;
 
@@ -27,13 +28,27 @@ public:
 	void addNewData(vector<DataObject> newData);
 	void clearGraphData();
 	void keyPressed(int key);
-
+	void switchCamera();
 
 	GraphManager graphManager;
+	
+	Camera cameras[3];
+	Camera *activeCamera;
+	ofNode lookAtNode;
+	ofVec3f lookAtVec;
 
-	ofEasyCam camera;
 	ofRectangle viewport;
 
 	ofxFTGLSimpleLayout text;
+	float legendTextSize;
+	float legendTextSpacing;
+	float legendTextLineLength;
+	ofPoint legendTextPoint;
+	
+	float gridScale;
+	float gridTicks;
+	float gridCol[4];
 
+	bool isCamRotate;
+	bool isCamAutoSwap;
 };

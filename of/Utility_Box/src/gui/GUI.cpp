@@ -20,7 +20,10 @@ void GUI::setup()
     addKeyboardShortcutsGUI();
 	addGraphGlobalGUI();
 	addGraphDesignGUI();
+	addGraphTextGUI();
+	addLegendTextGUI();
 	addGraphSimulationGUI();
+	addCameraGUI();
     addVariousGUI();
     
     setGUIColour();
@@ -45,6 +48,8 @@ void GUI::addKeyboardShortcutsGUI()
     gui->addLabel("'p' - TOGGLE PAUSE ANIMATION", OFX_UI_FONT_SMALL);
     gui->addLabel("'f' - TOGGLE FULLSCREEN", OFX_UI_FONT_SMALL);
     gui->addLabel("'c' - CLEAR ALL GRAPH DATA", OFX_UI_FONT_SMALL);
+    gui->addLabel("'t' - REDRAW TEXT FBOS", OFX_UI_FONT_SMALL);
+    gui->addLabel("'o' - OUTPUT GRAPH DATA TO TXT", OFX_UI_FONT_SMALL);
 
     
     finaliseCanvas(gui, true);
@@ -55,17 +60,6 @@ void GUI::addGraphGlobalGUI()
 {
 	string title = "GRAPH GLOBAL";
     ofxUICanvas* gui = getNewGUI(title);
-
-	vector<string> graphNames;
-	graphNames.push_back("Bar graph");
-	graphNames.push_back("Solid Body graph");
-	graphNames.push_back("Separate Body graph");
-
-	gui->addRadio("Graph Selection", graphNames, OFX_UI_ORIENTATION_VERTICAL, dim*2, dim*2);
-	
-	gui->addSpacer(length, 1);
-	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &Graph::minGraphPercent, &Graph::maxGraphPercent, length, dim);
-	
  //   gui->addLabel("GRAPH TEXT");
 	//gui->addSpacer(length, 1);
 	//gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
@@ -84,14 +78,25 @@ void GUI::addGraphDesignGUI()
 	string title = "GRAPH DESIGN";
     ofxUICanvas* gui = getNewGUI(title);
 	
+	gui->addToggle("Toggle Draw Body", &Graph::isDrawBody, toggleDim, toggleDim);
 	gui->addToggle("Toggle Draw Lines", &Graph::isDrawLines, toggleDim, toggleDim);
+	gui->addToggle("Toggle Clamp Y Values", &Graph::isClampYValues, toggleDim, toggleDim);
 	gui->addSlider("Graph Item X Gap", 0.1, 2, &Graph::graphItemXGap, length, dim);
-	gui->addSlider("Line width", 1, 20, &Graph::lineWidth, length, dim);
+	gui->addSlider("Graph z Range", 0, 200, &Graph::zRange, length, dim);
 	gui->addSlider("Graph Width max", 1, 300, &Graph::maxGraphWidth, length, dim);
 	gui->addSlider("Graph Height Max", 0, 100, &Graph::graphHeightMax, length, dim);
 	gui->addSlider("Graph bottom end (percent)", 0, 20, &Graph::graphEndPercent, length, dim);
 	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->dataManager.sendDataSpeed, length, dim);
+	gui->addSlider("Line Thickness", 1, 20, &Graph::lineThickness, length, dim);
 
+	gui->addLabel("GRID");
+	gui->addSlider("Scale", 1, 200, &app->scene.gridScale, length, dim);
+	gui->addSlider("Ticks", 1, 50, &app->scene.gridTicks, length, dim);
+	gui->addSlider("Grid Red", 0, 255, &app->scene.gridCol[0], length, dim);
+	gui->addSlider("Grid Green", 0, 255, &app->scene.gridCol[1], length, dim);
+	gui->addSlider("Grid Blue", 0, 255, &app->scene.gridCol[2], length, dim);
+	gui->addSlider("Grid Alpha", 0, 255, &app->scene.gridCol[3], length, dim);
+	
 	
 	
 	//gui->addSpacer(length, 1);
@@ -104,6 +109,43 @@ void GUI::addGraphDesignGUI()
     finaliseCanvas(gui, true);
 }
 
+
+void GUI::addGraphTextGUI()
+{
+	string title = "GRAPH TEXT";
+    ofxUICanvas* gui = getNewGUI(title);
+	
+	//gui->addToggle("Toggle Draw Lines", &Graph::isDrawLines, toggleDim, toggleDim);
+	gui->addSlider("Line Width", 10, 150, &Graph::lineLength, length, dim);
+	gui->addSlider("Line Spacing", 10, 50, &Graph::lineSpacing, length, dim);
+	gui->addSlider("Text Size", 10, 100, &Graph::textSize, length, dim);
+	gui->addSlider("Text Fbo Width", 10, 200, &Graph::fboW, length, dim);
+	gui->addSlider("Text Fbo Height", 10, 100, &Graph::fboH, length, dim);
+	gui->addSlider("Text Draw Y", 0, 100, &Graph::textY, length, dim);
+	gui->addSlider("Text X", -200, 200, &Graph::textPnt.x, length, dim);
+	gui->addSlider("Text Y", -200, 200, &Graph::textPnt.y, length, dim);
+	gui->addSlider("Text z Offset", -50, 50, &Graph::graphTextZOffset, length, dim);
+
+	gui->addWidgetDown(new ofxUILabelButton(false, "UPDATE TEXT", OFX_UI_FONT_MEDIUM)); 
+	
+    ofAddListener(gui->newGUIEvent, this, &GUI::graphTextGUIEvent);
+    finaliseCanvas(gui, true);
+}
+
+
+void GUI::addLegendTextGUI()
+{
+	string title = "TITLE AND LEGEND TEXT";
+    ofxUICanvas* gui = getNewGUI(title);
+	
+	gui->addSlider("Size", 10, 100, &app->scene.legendTextSize, length, dim);
+	gui->addSlider("Spacing", 0, 10, &app->scene.legendTextSpacing, length, dim);
+	gui->addSlider("Line Length", 20, 1000, &app->scene.legendTextLineLength, length, dim);
+	gui->addSlider("X", 0, 500, &app->scene.legendTextPoint.x, length, dim);
+	gui->addSlider("Y", 0, 500, &app->scene.legendTextPoint.y, length, dim);
+
+    finaliseCanvas(gui, true);
+}
 
 void GUI::addGraphSimulationGUI()
 {
@@ -118,6 +160,26 @@ void GUI::addGraphSimulationGUI()
     finaliseCanvas(gui, true);
 }
 
+
+void GUI::addCameraGUI()
+{
+	string title = "CAMERA";
+    ofxUICanvas* gui = getNewGUI(title);
+	
+    gui->addToggle("Rotation", &app->scene.isCamRotate, toggleDim, toggleDim);
+    gui->addToggle("Auto Camera Swap", &app->scene.isCamAutoSwap, toggleDim, toggleDim);
+	for (int i = 0; i < 3; i++)
+	{
+		gui->addLabel("CAMERA " + ofToString(i));
+		gui->addSlider("Cam" + ofToString(i) + " Distance", 10, 200, &app->scene.cameras[i].distance, length, dim);
+		gui->addSlider("Cam" + ofToString(i) + " Y", 1, 150, &app->scene.cameras[i].positionVec.y, length, dim);
+		gui->addSlider("Cam" + ofToString(i) + " Direction Point Y", 0, 150, &app->scene.cameras[i].lookAtVec.y, length, dim);
+		gui->addSlider("Cam" + ofToString(i) + " Rotation Speed", -2, 2, &app->scene.cameras[i].rotSpeed, length, dim);
+		gui->addSlider("Cam" + ofToString(i) + " Swap Probablity (per frame)", 0.001, 0.1, &app->scene.cameras[i].swapProbability, length, dim);
+	}
+
+    finaliseCanvas(gui, true);
+}
 
 
 
@@ -142,6 +204,13 @@ void GUI::addVariousGUI()
 
 
 
+void GUI::graphTextGUIEvent(ofxUIEventArgs &e)
+{
+	string name = e.widget->getName();
+    
+    if (name == "UPDATE TEXT")
+		app->scene.graphManager.updateInfoText();
+}
 
 
 
