@@ -30,4 +30,6 @@ public:
 	float swapProbability;
 	float minSecondsBeforeSwapping;
 	float timeBecameActive;
+
+	bool isReadyForSwap;
 };

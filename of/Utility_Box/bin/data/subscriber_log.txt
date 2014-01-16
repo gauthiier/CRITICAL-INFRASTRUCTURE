@@ -1,37 +1,45 @@
-00 = Haus der Kulturen South-facing - Light Level (Lumen)
+00 = 
 1 = Gangnamstyle YouTube Video
 (The Most Popular Video On YouTube)
 
-2 = Haus der Kulturen West-facing  - Light Level (Lumen)
+2 = 
 3 = Bitcoin EUR Price
 Cryptocurrency exchange rate on mtgox.com
 
-4 = Haus der Kulturen North - Interior Temperature (Celsius)
+4 = 
 5 = Number of times transmediale.de has been shared on Facebook
 
-6 = Haus der Kulturen South  - Interior Temperature (Celsius)
+6 = 
 7 = Number of likes of the transmediale fan page on Facebook
 
-8 = Haus der Kulturen Main Foyer - Noise Level
-9 = 
-10 = Haus der Kulturen Bar Area - Noise Level
-11 = 
-12 = Haus der Kulturen Beneath Main Foyer - Power Consumption (Amperes)
-13 = 
-14 = Haus der Kulturen Main Foyer - Power Consumption (Amperes)
+8 = 
+9 = Total twitter updates
+
+10 = 
+11 = HUAWEI Guangdong Stock Price on the Shenzen Exchange
+
+12 = 
+13 = Google Inc. Stock Price on the NASDAQ Exchange
+
+14 = 
 15 = 
-16 = Haus der Kulturen Back Smoking Area - Air Quality
+16 = 
 17 = 
-18 = Haus der Kulturen Mezanine Smoking Area - Air Quality
-19 = 
-20 = Haus der Kulturen Mezanine Smoking Area - Air Quality
-21 = 
+18 = 
+19 = Percentage of books about media art out of all books on sale on ebay
+
+20 = 
+21 = Number of photos tagged with berlin on Flickr
+
 22 = 
-23 = 
+23 = Number of photos tagged with berlin on Instagram
+
 24 = 
-25 = 
+25 = Number of photos tagged with transmediale on Instagram
+
 26 = 
-27 = 
+27 = Number of downvotes on reddit.com/r/funny
+
 28 = 
 29 = 
 

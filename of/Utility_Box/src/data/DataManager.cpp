@@ -17,8 +17,6 @@ void DataManager::setup()
 	}
 
 	setupSpacebrew();
-
-	nextDataSendTime = 0.1;
 }
 
 

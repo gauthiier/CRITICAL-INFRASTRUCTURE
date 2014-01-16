@@ -37,17 +37,17 @@ void Scene::update()
 	{
 		if (activeCamera->camID == 0)
 		{
-			if (ofRandom(1) < activeCamera->swapProbability) 
+			if (ofRandom(1) < activeCamera->swapProbability && activeCamera->isReadyForSwap) 
 				switchCamera();
 		}
 		else if (activeCamera->camID == 1)
 		{
-			if (ofRandom(1) < activeCamera->swapProbability) 
+			if (ofRandom(1) < activeCamera->swapProbability && activeCamera->isReadyForSwap) 
 				switchCamera();
 		}
 		else if (activeCamera->camID == 2)
 		{
-			if (ofRandom(1) < activeCamera->swapProbability) 
+			if (ofRandom(1) < activeCamera->swapProbability && activeCamera->isReadyForSwap) 
 				switchCamera();
 		}
 	}
@@ -143,7 +143,6 @@ void Scene::switchCamera()
 	if (activeCamera->camID == 2)
 		newCamID = (ofRandom(2) < 0.5) ? 0 : 1;
 
-	printf("************ changing cameras to %i ************** \n", newCamID);
 	activeCamera->deactivate();
 	activeCamera = &cameras[newCamID];
 	activeCamera->activate();

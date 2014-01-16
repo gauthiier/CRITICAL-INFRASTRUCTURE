@@ -176,6 +176,7 @@ void GUI::addCameraGUI()
 		gui->addSlider("Cam" + ofToString(i) + " Direction Point Y", 0, 150, &app->scene.cameras[i].lookAtVec.y, length, dim);
 		gui->addSlider("Cam" + ofToString(i) + " Rotation Speed", -2, 2, &app->scene.cameras[i].rotSpeed, length, dim);
 		gui->addSlider("Cam" + ofToString(i) + " Swap Probablity (per frame)", 0.001, 0.1, &app->scene.cameras[i].swapProbability, length, dim);
+		gui->addSlider("Cam" + ofToString(i) + " Min Seconds Before Swapping", 0.5, 10, &app->scene.cameras[i].minSecondsBeforeSwapping, length, dim);
 	}
 
     finaliseCanvas(gui, true);
