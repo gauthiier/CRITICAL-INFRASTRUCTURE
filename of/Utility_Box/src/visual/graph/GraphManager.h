@@ -3,6 +3,10 @@
 #include "DataManager.h"
 #include "Graph.h"
 #include "ofxFTGL.h"
+#include "ofxOsc.h"
+
+#define HOST "localhost"
+#define PORT 7500
 
 struct compareGraphByDistToCam
 {
@@ -23,4 +27,6 @@ public:
 	vector<Graph*> graphs;
 	vector<Graph*> reorderedGraphs;
 	ofxFTGLSimpleLayout text;
+
+	ofxOscSender sender;
 };

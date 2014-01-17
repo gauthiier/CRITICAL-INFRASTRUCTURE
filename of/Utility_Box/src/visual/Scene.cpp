@@ -86,16 +86,8 @@ void Scene::draw()
 	{
 		string newStr = ofToString(i) + " - " + graphManager.graphs[i]->info;
 		str += newStr + "\n";
-		//if (ofGetFrameNum() % 30 == 0)
-		//	printf("- str:%s\n- - - - - *** - - - - -\n", newStr.c_str());
 	}
-	//if (ofGetFrameNum() % 30 == 0)
-	//{
-	//	printf("\n\n\n\n");
-	//		printf("str(all):%s\n- - - - - *** - - - - -\n", str.c_str());
-	//	printf("\n\n\n\n");
-	//}
-	
+
 	text.drawString(str, legendTextPoint.x, legendTextPoint.y);
 	ofPopStyle();
 }

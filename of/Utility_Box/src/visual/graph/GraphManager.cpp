@@ -12,6 +12,8 @@ void GraphManager::setup()
 		graphs.push_back(graph);
 		reorderedGraphs.push_back(graph);
 	}
+
+	sender.setup(HOST, PORT);
 }
 
 
@@ -23,6 +25,15 @@ void GraphManager::update(ofVec3f ativeCamPos)
 		Graph *graph = graphs[i];
 		graph->update(ativeCamPos);
 	}
+
+	ofxOscMessage m;
+	m.setAddress("/utilityvalues");
+	for (int i = 0; i < graphs.size(); i++)
+	{
+		m.addStringArg(graphs[i]->info);
+		m.addFloatArg(graphs[i]->currentValue);
+	}
+	sender.sendMessage(m);
 
 	std::sort(reorderedGraphs.begin(), reorderedGraphs.end(), compareGraphByDistToCam());
 }

@@ -176,6 +176,12 @@ void Graph::addNewData(DataObject newData)
 	float xOffset = 0;
 	float outputMin = 0;
 	float outputMax = graphHeightMax;
+	
+	if (newData.value == -999) newData.value = 0;
+	if (newData.min == -999) newData.min = 0;
+	if (newData.max == -999) newData.max = 0;
+
+	currentValue = newData.value;
 
 	int graphMeshSize = graphMesh.getVertices().size();
 	vector<ofVec3f> *meshVertices = &graphMesh.getVertices();

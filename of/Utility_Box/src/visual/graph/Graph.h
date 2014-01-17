@@ -16,7 +16,6 @@ public:
 	void drawGraphBody();
 	void drawGraphText();
 	void addNewData(DataObject newData);
-	ofMesh getMesh(vector<DataObject> publisherData, float* col);
 	void setFboSettings();
 	void drawInfoToFbo();
 	void clear();
@@ -61,5 +60,5 @@ public:
 	string info;
 
 	ofMesh graphMesh;
-
+	float currentValue;
 };
