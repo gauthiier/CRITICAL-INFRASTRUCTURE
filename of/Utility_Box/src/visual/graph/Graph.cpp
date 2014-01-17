@@ -1,7 +1,6 @@
 //
 //  Created by James Alliban on 11/01/2014.
 //
-//
 
 #include "Graph.h"
 #include "testApp.h"
@@ -31,6 +30,7 @@ Graph::Graph(int _graphID)
 	graphID = _graphID;
 
 	isInfoTextSet = false;
+	graphMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
 
@@ -43,7 +43,6 @@ void Graph::update(ofVec3f activeCamPos)
 		isInfoTextSet = true;
 		drawInfoToFbo();
 	}
-
 
 	ofVec3f camPos = activeCamPos;
 	centre = ofVec3f(0.1, 0.1, ofMap(graphID, 0, 29, -zRange, zRange));
@@ -71,56 +70,46 @@ void Graph::drawGraphBody()
 {	
 	if (!isDrawBody) return;
 
-	if (publisher0Data.size() > 1)
-	{
-		ofMesh body0 = getMesh(publisher0Data, col0);
+	//if (publisher0Data.size() > 1)
+	//{
+		//ofMesh body0 = getMesh(publisher0Data, col0);
 
-		if (body0.getVertices().size() > 2)
-		{
-			currentPub0Point = ofPoint(body0.getVertex(body0.getVertices().size() - 2).x, body0.getVertex(body0.getVertices().size() - 2).y);
-		}
+		//float xOffset = 0;
+		//float outputMin = 0;
+		//float outputMax = graphHeightMax;
 
-		float xOffset = 0;
-		float outputMin = 0;
-		float outputMax = graphHeightMax;
+		//// draw lines
+		//ofPushStyle();
+		//ofPolyline poly0;
+		//for (int i = 0; i < publisher0Data.size() - 1; i++)
+		//{
+		//	if (i < publisher0Data.size() - 1)
+		//	{
+		//		ofSetLineWidth(lineThickness);
+		//		ofVec3f vec = ofVec3f(i * graphItemXGap - (maxGraphWidth * 0.5),
+		//			ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax),
+		//			centre.z);
 
-		// draw lines
+		//		if (isClampYValues) vec.y = ofClamp(vec.y, outputMin, outputMax);
+		//		
+		//		poly0.addVertex(vec);
+		//	}
+		//}
+		//
+		//int lineAlpha = 255;
+		//if (!isDrawLines) lineAlpha = 0;
+		
 		ofPushStyle();
-		ofPolyline poly0;
-		for (int i = 0; i < publisher0Data.size() - 1; i++)
-		{
-			if (i < publisher0Data.size() - 1)
-			{
-				ofSetLineWidth(lineThickness);
-				ofVec3f vec = ofVec3f(i * graphItemXGap - (maxGraphWidth * 0.5),
-					ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax),
-					centre.z);
+		
+		ofSetColor(255);
+		ofSetLineWidth(2);
+		
+		graphMesh.drawFaces();
+		//graphMesh.drawWireframe();
 
-				if (isClampYValues) vec.y = ofClamp(vec.y, outputMin, outputMax);
-				
-				poly0.addVertex(vec);
-			}
-		}
-		
-		ofVec2f centroid0 = poly0.getCentroid2D();
-
-		float av0;
-		for (int i = 0; i < poly0.size(); i++)
-			av0 += poly0[i].y;
-
-		av0 /= poly0.size();
-		
-		int lineAlpha = 255;
-		if (!isDrawLines) lineAlpha = 0;
-		
-		body0.drawFaces();
-		//body0.drawWireframe();
-		//ofSetColor(col0[0],col0[1],col0[2], lineAlpha);
-		
 		//poly0.draw();
 		
 		ofPopStyle();
-	}
 }
 
 
@@ -137,41 +126,6 @@ void Graph::drawGraphText()
 	ofPopStyle();
 }
 
-
-ofMesh Graph::getMesh(vector<DataObject> publisherData, float* col)
-{
-	ofMesh bodyMesh;
-	float xOffset = 0;
-	float outputMin = 0;
-	float outputMax = graphHeightMax;
-
-	// draw main part of graph (xOffset)
-	bodyMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-	for (int i = 0; i < publisherData.size() - 1; i++)
-	{
-		ofVec3f vecH = ofVec3f(
-			i * graphItemXGap - (maxGraphWidth * 0.5), 
-			ofMap(publisherData[i].value, publisherData[i].min, publisherData[i].max, outputMin, outputMax), 
-			centre.z);
-		
-		if (isClampYValues) vecH.y = ofClamp(vecH.y, outputMin, outputMax);
-		bodyMesh.addVertex(vecH);
-
-		bodyMesh.addVertex(ofVec3f(
-			i * graphItemXGap - (maxGraphWidth * 0.5), 
-			0, 
-			centre.z));
-			
-		ofColor tempCol = ofColor(ofMap(graphID, 0, 29, 0, 255), ofMap(graphID, 0, 29, 255, 0), ofMap(graphID, 0, 29, 150, 50), 255);
-		bodyMesh.addColor(tempCol);
-		bodyMesh.addColor(ofColor(tempCol.r, tempCol.g, tempCol.b, 0));
-		//bodyMesh.addColor(ofColor(col[0],col[1],col[2], 255));
-		//bodyMesh.addColor(ofColor(col[0],col[1],col[2], 0));
-	}
-
-	
-	return bodyMesh;
-}
 
 
 void Graph::setFboSettings()
@@ -218,15 +172,55 @@ void Graph::drawInfoToFbo()
 void Graph::addNewData(DataObject newData)
 {
 	info = explode("\n", newData.info)[0];
-	publisher0Data.push_back(newData);
-	while (publisher0Data.size() > maxData)
-		publisher0Data.erase(publisher0Data.begin());
+
+	float xOffset = 0;
+	float outputMin = 0;
+	float outputMax = graphHeightMax;
+
+	int graphMeshSize = graphMesh.getVertices().size();
+	vector<ofVec3f> *meshVertices = &graphMesh.getVertices();
+	vector<ofFloatColor> *meshColours = &graphMesh.getColors();
+	
+
+	// add new vertex and colour
+	float xTop = (graphMeshSize == 0) ? -(maxGraphWidth * 0.5) : (graphItemXGap * ((graphMeshSize * 0.5))) - (maxGraphWidth * 0.5);
+	float yTop = ofMap(newData.value, newData.min, newData.max, outputMin, outputMax);
+	if (isClampYValues) yTop = ofClamp(yTop, outputMin, outputMax);
+	
+	ofVec3f vertexTop = ofVec3f(xTop, yTop, centre.z);
+	ofVec3f vertexBottom = ofVec3f(xTop, 0, centre.z);
+	
+	graphMesh.addVertex(vertexTop);
+	graphMesh.addVertex(vertexBottom);
+
+	ofColor col = ofColor(ofMap(graphID, 0, 29, 0, 255), ofMap(graphID, 0, 29, 255, 0), ofMap(graphID, 0, 29, 150, 50), 255);
+	
+	//if (ofRandomuf() < 0.1) col = ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 255);
+
+	graphMesh.addColor(col);
+	graphMesh.addColor(ofColor(col.r, col.g, col.b, 0));
+
+	if (graphMeshSize * 0.5 >= maxData)
+	{
+		// loop through all vertices (apart from the last) and nudge them all to the left.
+		for (int i = 0; i < graphMeshSize; i += 2)
+		{
+			meshVertices->at(i).x -= graphItemXGap;
+			meshVertices->at(i + 1).x -= graphItemXGap;
+		}
+		graphMesh.removeVertex(0);
+		graphMesh.removeVertex(0);
+		graphMesh.removeColor(0);
+		graphMesh.removeColor(0);
+	}
+
+
 }
 
 
 void Graph::clear()
 {
-	publisher0Data.clear();
+	graphMesh.clear();
 	setFboSettings();
 	drawInfoToFbo();
 }

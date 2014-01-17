@@ -1,0 +1,60 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Item X Gap</Name>
+    <Value>11.809210777</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BarWidth</Name>
+    <Value>15.894737244</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Graph Height Max</Name>
+    <Value>0.569078922</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data send speed (seconds)</Name>
+    <Value>4.944078445</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 red</Name>
+    <Value>196.282897949</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 green</Name>
+    <Value>21.809211731</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 blue</Name>
+    <Value>67.944076538</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data0 alpha</Name>
+    <Value>158.536193848</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 red</Name>
+    <Value>208.026306152</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 green</Name>
+    <Value>196.282897949</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 blue</Name>
+    <Value>18.453947067</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Data1 alpha</Name>
+    <Value>209.703948975</Value>
+</Widget>

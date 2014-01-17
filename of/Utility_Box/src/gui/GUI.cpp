@@ -86,7 +86,7 @@ void GUI::addGraphDesignGUI()
 	gui->addSlider("Graph Width max", 1, 300, &Graph::maxGraphWidth, length, dim);
 	gui->addSlider("Graph Height Max", 0, 100, &Graph::graphHeightMax, length, dim);
 	gui->addSlider("Graph bottom end (percent)", 0, 20, &Graph::graphEndPercent, length, dim);
-	gui->addSlider("Data send speed (seconds)", 0.1, 20, &app->dataManager.sendDataSpeed, length, dim);
+	gui->addSlider("Data send speed (seconds)", 0.01, 10, &app->dataManager.sendDataSpeed, length, dim);
 	gui->addSlider("Line Thickness", 1, 20, &Graph::lineThickness, length, dim);
 
 	gui->addLabel("GRID");

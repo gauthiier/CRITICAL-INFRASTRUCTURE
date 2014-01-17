@@ -52,8 +52,6 @@ public:
 	static float textY;
 	static ofPoint textPnt;
 	
-	ofPoint currentPub0Point;
-
 	float col0[4];
 
 
@@ -61,5 +59,7 @@ public:
 	ofVec3f centre;
 
 	string info;
+
+	ofMesh graphMesh;
 
 };
