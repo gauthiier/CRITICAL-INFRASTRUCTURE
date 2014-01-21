@@ -19,7 +19,7 @@ public:
 	void setup();
 	void update(ofVec3f ativeCamPos);
 	void draw();
-	void addNewData(vector<DataObject> newData);
+	void addNewData(int i, DataObject newData);
 	void clearGraphData();
 	void updateInfoText();
 	void outputData();

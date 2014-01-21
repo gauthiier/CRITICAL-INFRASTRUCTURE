@@ -26,7 +26,7 @@ public:
     void draw();
 	void setViewport();
 	void drawTextBox(string copy, string align);
-	void addNewData(vector<DataObject> newData);
+	void addNewData(int i, DataObject newData);
 	void clearGraphData();
 	void keyPressed(int key);
 	void switchCamera();

@@ -53,9 +53,9 @@ void DataManager::update()
 				dataObject.max = 1;
 			
 				dataObjects.push_back(dataObject);
+				app->scene.addNewData(i, dataObject);
 			}
 
-			app->scene.addNewData(dataObjects);
 		}
 	}
 	else
@@ -64,25 +64,23 @@ void DataManager::update()
 		if (ofGetElapsedTimef() >= nextDataSendTime + sendDataSpeed)
 		{
 			nextDataSendTime += sendDataSpeed;
-			app->scene.addNewData(newData);
+			//app->scene.addNewData(newData);
 
 
-			ofstream logFile;
-			logFile.open(ofToDataPath("subscriber_log.txt").c_str());
-			string str;
+			//ofstream logFile;
+			//logFile.open(ofToDataPath("subscriber_log.txt").c_str());
+			//string str;
 
-			for (int i = 0; i < newData.size(); i++)
-			{
-				DataObject data = newData[i];
-				str += ofToString(i) + " = " + data.info + "\n";
+			//for (int i = 0; i < newData.size(); i++)
+			//{
+			//	DataObject data = newData[i];
+			//	str += ofToString(i) + " = " + data.info + "\n";
+			//}
+			//unsigned char buf = ofToChar(str);
+			//// write data to txt file
+			//logFile << str[0] << str <<"\n";
 
-			}
-			unsigned char buf = ofToChar(str);
-			// write data to txt file
-			logFile << str[0] << str <<"\n";
-
-			logFile.close();
-
+			//logFile.close();
 		}
 	}
 }
@@ -137,6 +135,7 @@ void DataManager::onMessage( Spacebrew::Message & m )
 		{
 			//isPublisher0DataReceived = true;
 			newData[i] = dataObject;
+			app->scene.addNewData(i, newData[i]);
 			//printf("- - - adding %s to dataObject %i, info:%s, min:%f \n", m.name.c_str(), i, newData[i].info.c_str(), newData[i].min);
 			
 		}

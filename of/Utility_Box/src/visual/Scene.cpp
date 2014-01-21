@@ -28,8 +28,6 @@ void Scene::setup()
 	isCamAutoSwap = true;
 
 	setViewport();
-
-	//setupTitleFbo();
 }
 
 
@@ -147,9 +145,9 @@ void Scene::setViewport()
 
 
 
-void Scene::addNewData(vector<DataObject> newData)
+void Scene::addNewData(int i, DataObject newData)
 {
-	graphManager.addNewData(newData);
+	graphManager.addNewData(i, newData);
 }
 
 

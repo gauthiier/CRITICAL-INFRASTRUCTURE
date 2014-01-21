@@ -51,13 +51,13 @@ void GraphManager::draw()
 
 
 
-void GraphManager::addNewData(vector<DataObject> newData)
+void GraphManager::addNewData(int i, DataObject newData)
 {
-	for (int i = 0; i < graphs.size(); i++)
-	{
+	//for (int i = 0; i < graphs.size(); i++)
+	//{
 		Graph *graph = graphs[i];
-		graph->addNewData(newData[i]);
-	}
+		graph->addNewData(newData);
+	//}
 }
 
 
