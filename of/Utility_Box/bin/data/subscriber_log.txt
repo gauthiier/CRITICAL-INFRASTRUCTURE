@@ -1,45 +1,61 @@
-00 = 
-1 = Gangnamstyle YouTube Video
+00 = Gangnamstyle YouTube Video
 (The Most Popular Video On YouTube)
 
-2 = 
-3 = Bitcoin EUR Price
+1 = Pitch of the Speaker
+On the stage
+Scaled value:0.0
+2 = Bitcoin EUR Price
 Cryptocurrency exchange rate on mtgox.com
 
-4 = 
-5 = Number of times transmediale.de has been shared on Facebook
+3 = Brightness of the Speaker
+On the stage
+Scaled
+4 = Number of times transmediale.de has been shared on Facebook
 
-6 = 
-7 = Number of likes of the transmediale fan page on Facebook
+5 = Coherence of the Speaker
+On the stage
+Scaled
+6 = Number of likes of the transmediale fan page on Facebook
 
-8 = 
-9 = Total twitter updates
+7 = Loudness of the Speaker
+On the stage
+Scaled
+8 = Total twitter updates
 
-10 = 
-11 = HUAWEI Guangdong Stock Price on the Shenzen Exchange
+9 = Thermal Camera Data
+From the Stage
+Temperature
+10 = HUAWEI Guangdong Stock Price on the Shenzen Exchange
 
-12 = 
-13 = Google Inc. Stock Price on the NASDAQ Exchange
+11 = Seizmic Vibration X
+Of the Stage
+Scaled
+12 = Google Inc. Stock Price on the NASDAQ Exchange
 
+13 = Seizmic Vibration Y
+Of the Stage
+Scaled
 14 = 
-15 = 
+15 = Seizmic Vibration Y
+Of the Stage
+Scaled
 16 = 
 17 = 
-18 = 
-19 = Percentage of books about media art out of all books on sale on ebay
+18 = Percentage of books about media art out of all books on sale on ebay
 
-20 = 
-21 = Number of photos tagged with berlin on Flickr
+19 = 
+20 = Number of photos tagged with berlin on Flickr
 
-22 = 
-23 = Number of photos tagged with berlin on Instagram
+21 = 
+22 = Number of photos tagged with berlin on Instagram
 
-24 = 
-25 = Number of photos tagged with transmediale on Instagram
+23 = 
+24 = Number of photos tagged with transmediale on Instagram
 
-26 = 
-27 = Number of downvotes on reddit.com/r/funny
+25 = 
+26 = Number of downvotes on reddit.com/r/funny
 
+27 = 
 28 = 
 29 = 
 

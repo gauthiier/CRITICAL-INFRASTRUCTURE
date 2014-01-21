@@ -21,6 +21,7 @@ class Scene
 {
 public:
     void setup();
+	void setupTitleFbo();
     void update();
     void draw();
 	void setViewport();
@@ -38,8 +39,13 @@ public:
 	ofVec3f lookAtVec;
 
 	ofRectangle viewport;
-
+	
 	ofxFTGLSimpleLayout text;
+	ofxFTGLSimpleLayout thinText;
+	ofFbo titleFbo;
+	ofImage targetImage;
+	float titleScale;
+
 	float legendTextSize;
 	float legendTextSpacing;
 	float legendTextLineLength;

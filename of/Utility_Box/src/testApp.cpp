@@ -2,10 +2,9 @@
 
 // TODO
 // ====
-// - optimise - don't calculate graph point values evey frame
-// - investigate backward graph animation (use alternating colours)
-// - OSC - send values each frame
-// - Colour range - tween between 2-3 points
+// - Add data points to graph as they arrive instead of at fixed points
+// - Animate new values
+// - Colour range - tween between 2 points
 // 
 //--------------------------------------------------------------
 void testApp::setup()
@@ -22,6 +21,7 @@ void testApp::setup()
 	scene.setup();
 	gui.setup();
 	scene.graphManager.updateInfoText();
+	scene.setupTitleFbo();
 
 	isPaused = false;
 }

@@ -50,6 +50,8 @@ void GUI::addKeyboardShortcutsGUI()
     gui->addLabel("'c' - CLEAR ALL GRAPH DATA", OFX_UI_FONT_SMALL);
     gui->addLabel("'t' - REDRAW TEXT FBOS", OFX_UI_FONT_SMALL);
     gui->addLabel("'o' - OUTPUT GRAPH DATA TO TXT", OFX_UI_FONT_SMALL);
+    gui->addLabel("'1-3' - CHANGE CURRENT CAMERA", OFX_UI_FONT_SMALL);
+    gui->addLabel("'a' - TOGGLE AUTO ROTATE CAM", OFX_UI_FONT_SMALL);
 
     
     finaliseCanvas(gui, true);
@@ -138,11 +140,16 @@ void GUI::addLegendTextGUI()
 	string title = "TITLE AND LEGEND TEXT";
     ofxUICanvas* gui = getNewGUI(title);
 	
+	gui->addLabel("TITLE");
+	gui->addSlider("Scale", 0.1, 2, &app->scene.titleScale, length, dim);
+
+	gui->addLabel("LEGEND");
 	gui->addSlider("Size", 10, 100, &app->scene.legendTextSize, length, dim);
 	gui->addSlider("Spacing", 0, 10, &app->scene.legendTextSpacing, length, dim);
 	gui->addSlider("Line Length", 20, 1000, &app->scene.legendTextLineLength, length, dim);
 	gui->addSlider("X", 0, 500, &app->scene.legendTextPoint.x, length, dim);
 	gui->addSlider("Y", 0, 500, &app->scene.legendTextPoint.y, length, dim);
+	
 
     finaliseCanvas(gui, true);
 }

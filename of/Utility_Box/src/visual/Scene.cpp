@@ -12,6 +12,7 @@
 void Scene::setup()
 {
 	text.loadFont("fonts/Roboto-Regular.ttf", 80);
+	thinText.loadFont("fonts/Roboto-Light.ttf", 80);
 
 	graphManager.setup();
 
@@ -28,6 +29,41 @@ void Scene::setup()
 
 	setViewport();
 
+	//setupTitleFbo();
+}
+
+
+void Scene::setupTitleFbo()
+{
+	ofFbo::Settings settings;
+	settings.width = 900;
+	settings.height = 180;
+	settings.internalformat = GL_RGBA;
+	titleFbo.allocate(settings);
+
+	targetImage.loadImage("images/TARGET_small_2.png");
+
+	titleFbo.begin();
+	ofClear(0, 0, 0, 0);
+	
+	ofPushStyle();
+	ofSetColor(255, 255);
+	thinText.setLineSpacing(legendTextSpacing);
+	thinText.setLineLength(700);
+	thinText.setSize(80);
+	thinText.setAlignment(FTGL_ALIGN_LEFT);
+	ofPushMatrix();
+	ofTranslate(195, -10);
+	ofRotateZ(90);
+	targetImage.draw(20, 20, 165, 165);
+	ofPopMatrix();
+	ofPushMatrix();
+	ofTranslate(200, 80);
+	thinText.drawString("CRITICAL INFRASTRUCTURE", 0, 0);
+	ofPopMatrix();
+	ofPopStyle();
+
+	titleFbo.end();
 }
 
 
@@ -74,7 +110,7 @@ void Scene::draw()
 	graphManager.draw();
 
 	activeCamera->end();
-
+	
 	ofPushStyle();
 	ofSetColor(255, 255);
 	text.setLineSpacing(legendTextSpacing);
@@ -89,6 +125,16 @@ void Scene::draw()
 	}
 
 	text.drawString(str, legendTextPoint.x, legendTextPoint.y);
+	ofPopStyle();
+
+	ofPushStyle();
+	ofSetColor(255);
+	ofPushMatrix();
+	ofTranslate(ofGetWidth() - (titleFbo.getHeight() * titleScale), ofGetHeight());
+	ofRotateZ(-90);
+	ofScale(titleScale, titleScale);
+	titleFbo.draw(0, 0);
+	ofPopMatrix();
 	ofPopStyle();
 }
 
@@ -115,6 +161,8 @@ void Scene::keyPressed(int key)
 		activeCamera = &cameras[1];
 	if (key == '3')
 		activeCamera = &cameras[2];
+	if (key == 'a')
+		isCamRotate = !isCamRotate;
 }
 
 
