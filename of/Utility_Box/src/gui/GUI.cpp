@@ -99,13 +99,15 @@ void GUI::addGraphDesignGUI()
 	gui->addSlider("Grid Blue", 0, 255, &app->scene.gridCol[2], length, dim);
 	gui->addSlider("Grid Alpha", 0, 255, &app->scene.gridCol[3], length, dim);
 	
-	
-	
-	//gui->addSpacer(length, 1);
-	//gui->addSlider("Data0 red", 0, 255, &app->scene.graphManager.col0[0], length, dim);
-	//gui->addSlider("Data0 green", 0, 255, &app->scene.graph.col0[1], length, dim);
-	//gui->addSlider("Data0 blue", 0, 255, &app->scene.graph.col0[2], length, dim);
-	//gui->addSlider("Data0 alpha", 0, 255, &app->scene.graph.col0[3], length, dim);
+	gui->addLabel("COLOUR");
+	gui->addSlider("Front red", 0, 255, &Graph::colFront[0], length, dim);
+	gui->addSlider("Front green", 0, 255, &Graph::colFront[1], length, dim);
+	gui->addSlider("Front blue", 0, 255, &Graph::colFront[2], length, dim);
+	gui->addSlider("Front alpha", 0, 255, &Graph::colFront[3], length, dim);
+	gui->addSlider("Back red", 0, 255, &Graph::colBack[0], length, dim);
+	gui->addSlider("Back green", 0, 255, &Graph::colBack[1], length, dim);
+	gui->addSlider("Back blue", 0, 255, &Graph::colBack[2], length, dim);
+	gui->addSlider("Back alpha", 0, 255, &Graph::colBack[3], length, dim);
 
 
     finaliseCanvas(gui, true);

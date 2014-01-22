@@ -15,6 +15,8 @@ float Graph::graphHeightMax;
 float Graph::graphEndPercent;
 float Graph::zRange;
 float Graph::graphTextZOffset;
+float Graph::colFront[4];
+float Graph::colBack[4];
 
 float Graph::lineLength;
 float Graph::lineSpacing;
@@ -43,6 +45,9 @@ void Graph::update(ofVec3f activeCamPos)
 		isInfoTextSet = true;
 		drawInfoToFbo();
 	}
+
+	if (hasColorChanged())
+		updateColours();
 
 	ofVec3f camPos = activeCamPos;
 	centre = ofVec3f(0.1, 0.1, ofMap(graphID, 0, 29, -zRange, zRange));
@@ -170,7 +175,19 @@ void Graph::addNewData(DataObject newData)
 	graphMesh.addVertex(vertexTop);
 	graphMesh.addVertex(vertexBottom);
 	
-	ofColor col = ofColor(ofMap(graphID, 0, 29, 0, 255), ofMap(graphID, 0, 29, 255, 0), ofMap(graphID, 0, 29, 150, 50), 255);
+
+	ofColor col;
+	col.r = (int)ofMap(graphID, 0, 29, colFront[0], colBack[0]);
+	col.g = (int)ofMap(graphID, 0, 29, colFront[1], colBack[1]);
+	col.b = (int)ofMap(graphID, 0, 29, colFront[2], colBack[2]);
+	col.a = (int)ofMap(graphID, 0, 29, colFront[3], colBack[3]);
+	
+	
+	//= ofColor(ofMap(
+	//	graphID, 0, 29, 0, 255), 
+	//	ofMap(graphID, 0, 29, 255, 0), 
+	//	ofMap(graphID, 0, 29, 150, 50), 
+	//	255);
 	
 	//if (ofRandomuf() < 0.1) col = ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 255);
 	
@@ -229,4 +246,33 @@ vector<string> Graph::explode(const string &delimiter, const string &str)
     }
     arr.push_back(  str.substr(k, i-k) );
     return arr;
+}
+
+
+
+
+bool Graph::hasColorChanged()
+{
+	if (colFront[0] != colBack[0] || colFront[1] != colBack[1] || colFront[2] != colBack[2] || colFront[3] != colBack[3])
+		return true;
+	else
+		return false;
+}
+
+
+
+void Graph::updateColours()
+{
+	ofColor col;
+	col.r = (int)ofMap(graphID, 0, 29, colFront[0], colBack[0]);
+	col.g = (int)ofMap(graphID, 0, 29, colFront[1], colBack[1]);
+	col.b = (int)ofMap(graphID, 0, 29, colFront[2], colBack[2]);
+	col.a = (int)ofMap(graphID, 0, 29, colFront[3], colBack[3]);
+
+
+	for (int i = 0; i < graphMesh.getColors().size(); i+=2)
+	{
+		graphMesh.setColor(i, col);
+		graphMesh.setColor(i+1, ofColor(col.r, col.g, col.b, 0));
+	}
 }

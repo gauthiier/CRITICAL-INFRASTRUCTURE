@@ -20,6 +20,8 @@ public:
 	void drawInfoToFbo();
 	void clear();
 	vector<string> explode(const string &delimiter, const string &str);
+	bool hasColorChanged();
+	void updateColours();
 
 	testApp *app;
 	int graphID;
@@ -41,6 +43,10 @@ public:
 	static float graphEndPercent;
 	static float zRange;
 	static float graphTextZOffset;
+	static float colFront[4];
+	static float colBack[4];
+	static float prevColFront[4];
+	static float prevColBack[4];
 	
 	static float lineLength;
 	static float lineSpacing;
