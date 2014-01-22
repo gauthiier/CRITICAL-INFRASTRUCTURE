@@ -38,7 +38,7 @@ Graph::Graph(int _graphID)
 
 void Graph::update(ofVec3f activeCamPos)
 {
-	if (publisher0Data.size() > 0 && publisher0Data.back().info != "" && !isInfoTextSet)
+	if (!isInfoTextSet)
 	{
 		isInfoTextSet = true;
 		drawInfoToFbo();
@@ -70,46 +70,17 @@ void Graph::drawGraphBody()
 {	
 	if (!isDrawBody) return;
 
-	//if (publisher0Data.size() > 1)
-	//{
-		//ofMesh body0 = getMesh(publisher0Data, col0);
-
-		//float xOffset = 0;
-		//float outputMin = 0;
-		//float outputMax = graphHeightMax;
-
-		//// draw lines
-		//ofPushStyle();
-		//ofPolyline poly0;
-		//for (int i = 0; i < publisher0Data.size() - 1; i++)
-		//{
-		//	if (i < publisher0Data.size() - 1)
-		//	{
-		//		ofSetLineWidth(lineThickness);
-		//		ofVec3f vec = ofVec3f(i * graphItemXGap - (maxGraphWidth * 0.5),
-		//			ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax),
-		//			centre.z);
-
-		//		if (isClampYValues) vec.y = ofClamp(vec.y, outputMin, outputMax);
-		//		
-		//		poly0.addVertex(vec);
-		//	}
-		//}
-		//
-		//int lineAlpha = 255;
-		//if (!isDrawLines) lineAlpha = 0;
+	ofPushStyle();
 		
-		ofPushStyle();
+	ofSetColor(255);
+	ofSetLineWidth(2);
 		
-		ofSetColor(255);
-		ofSetLineWidth(2);
-		
-		graphMesh.drawFaces();
-		//graphMesh.drawWireframe();
+	graphMesh.drawFaces();
+	//graphMesh.drawWireframe();
 
-		//poly0.draw();
+	//poly0.draw();
 		
-		ofPopStyle();
+	ofPopStyle();
 }
 
 
@@ -139,12 +110,6 @@ void Graph::setFboSettings()
 
 void Graph::drawInfoToFbo()
 {
-	string infoText = "";
-
-	if (publisher0Data.size() > 0) 
-	{
-		infoText = info;
-	}
 
 	//printf("---- infoText = %s \n", infoText.c_str());
 
@@ -181,13 +146,19 @@ void Graph::addNewData(DataObject newData)
 	if (newData.min == -999) newData.min = 0;
 	if (newData.max == -999) newData.max = 0;
 
-	currentValue = newData.value;
+	if (newData.min != currentMin || newData.max != currentMax)
+	{
+		if (graphMesh.getVertices().size() > 0) clear();
+	}
 
+	currentValue = newData.value;
+	currentMin = newData.min;
+	currentMax = newData.max;
+	
 	int graphMeshSize = graphMesh.getVertices().size();
 	vector<ofVec3f> *meshVertices = &graphMesh.getVertices();
 	vector<ofFloatColor> *meshColours = &graphMesh.getColors();
 	
-
 	// add new vertex and colour
 	float xTop = (graphMeshSize == 0) ? -(maxGraphWidth * 0.5) : (graphItemXGap * ((graphMeshSize * 0.5))) - (maxGraphWidth * 0.5);
 	float yTop = ofMap(newData.value, newData.min, newData.max, outputMin, outputMax);
@@ -198,14 +169,14 @@ void Graph::addNewData(DataObject newData)
 	
 	graphMesh.addVertex(vertexTop);
 	graphMesh.addVertex(vertexBottom);
-
+	
 	ofColor col = ofColor(ofMap(graphID, 0, 29, 0, 255), ofMap(graphID, 0, 29, 255, 0), ofMap(graphID, 0, 29, 150, 50), 255);
 	
 	//if (ofRandomuf() < 0.1) col = ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 255);
-
+	
 	graphMesh.addColor(col);
 	graphMesh.addColor(ofColor(col.r, col.g, col.b, 0));
-
+	
 	if (graphMeshSize * 0.5 >= maxData)
 	{
 		// loop through all vertices (apart from the last) and nudge them all to the left.
@@ -219,8 +190,6 @@ void Graph::addNewData(DataObject newData)
 		graphMesh.removeColor(0);
 		graphMesh.removeColor(0);
 	}
-
-
 }
 
 
@@ -228,7 +197,7 @@ void Graph::clear()
 {
 	graphMesh.clear();
 	setFboSettings();
-	drawInfoToFbo();
+	//drawInfoToFbo();
 }
 
 vector<string> Graph::explode(const string &delimiter, const string &str)

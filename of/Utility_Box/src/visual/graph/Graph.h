@@ -24,7 +24,6 @@ public:
 	testApp *app;
 	int graphID;
 
-	vector<DataObject> publisher0Data;
 	int maxData; // calculated from graphWidth and graphItemXGap
 	
 	ofFbo infoTextFbo;
@@ -61,4 +60,6 @@ public:
 
 	ofMesh graphMesh;
 	float currentValue;
+	float currentMin;
+	float currentMax;
 };

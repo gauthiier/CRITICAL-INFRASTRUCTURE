@@ -92,27 +92,27 @@ void GraphManager::outputData()
 
 	string str;
 
-	for (int i = 0; i < graphs.size(); i++)
-	{
-		Graph *graph = graphs[i];
-		str += graph->publisher0Data[graph->publisher0Data.size() - 1].info + "\n";
+	//for (int i = 0; i < graphs.size(); i++)
+	//{
+	//	Graph *graph = graphs[i];
+	//	str += graph->publisher0Data[graph->publisher0Data.size() - 1].info + "\n";
 
-		// print values
-		str += "\nVALUES:\n\n";
-		for (int j = 0; j < graph->publisher0Data.size(); j++)
-			str += ofToString(j) + " = " + ofToString(graph->publisher0Data[j].value) + "\n";
-		
-		str += "\nMIN\n\n";
-		for (int j = 0; j < graph->publisher0Data.size(); j++)
-			str += ofToString(j) + " = " + ofToString(graph->publisher0Data[j].min) + "\n";
-		
-		str += "\nMAX\n\n";
-		for (int j = 0; j < graph->publisher0Data.size(); j++)
-			str += ofToString(j) + " = " + ofToString(graph->publisher0Data[j].max) + "\n";
-		
+	//	// print values
+	//	str += "\nVALUES:\n\n";
+	//	for (int j = 0; j < graph->publisher0Data.size(); j++)
+	//		str += ofToString(j) + " = " + ofToString(graph->publisher0Data[j].value) + "\n";
+	//	
+	//	str += "\nMIN\n\n";
+	//	for (int j = 0; j < graph->publisher0Data.size(); j++)
+	//		str += ofToString(j) + " = " + ofToString(graph->publisher0Data[j].min) + "\n";
+	//	
+	//	str += "\nMAX\n\n";
+	//	for (int j = 0; j < graph->publisher0Data.size(); j++)
+	//		str += ofToString(j) + " = " + ofToString(graph->publisher0Data[j].max) + "\n";
+	//	
 
-		str += "\n\n\n\n";
-	}
+	//	str += "\n\n\n\n";
+	//}
 
 
 
