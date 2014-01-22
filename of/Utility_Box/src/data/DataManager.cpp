@@ -16,6 +16,7 @@ void DataManager::setup()
 		newData.push_back(dataObject);
 	}
 
+	subscriberDevName = "";
 	setupSpacebrew();
 }
 
@@ -23,12 +24,12 @@ void DataManager::setup()
 void DataManager::setupSpacebrew()
 {
     string host = "54.194.189.129"; // Spacebrew::SPACEBREW_CLOUD; // "localhost";
-	string name = "CRITICAL INFRASTRUCTURE UTILITY BOX DEV";
+	string name = "CRITICAL INFRASTRUCTURE UTILITY BOX" + subscriberDevName;
     string description = "Description goes here. Not sure why. Let me know if you see this and tell me if you need it";
 
 	for (int i = 0; i < 30; i++)
 	{
-		spacebrew.addSubscribe("utilitydev_" + ofToString(i), Spacebrew::TYPE_STRING);
+		spacebrew.addSubscribe("utility_" + subscriberDevName + ofToString(i), Spacebrew::TYPE_STRING);
 	}
 	spacebrew.connect(host, name, description);
 	
@@ -131,7 +132,7 @@ void DataManager::onMessage( Spacebrew::Message & m )
 
 	for (int i = 0; i < 30; i++)
 	{
-		if (m.name == "utilitydev_" + ofToString(i))
+		if (m.name == "utility" + subscriberDevName + "_" + ofToString(i))
 		{
 			//isPublisher0DataReceived = true;
 			newData[i] = dataObject;

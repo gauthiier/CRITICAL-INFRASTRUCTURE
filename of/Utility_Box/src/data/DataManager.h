@@ -50,4 +50,5 @@ class DataManager
 		float simulationSpeed;
 
 		float nextDataSendTime;
+		string subscriberDevName;
 };

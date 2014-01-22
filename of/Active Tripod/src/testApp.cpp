@@ -32,7 +32,11 @@ void testApp::update()
 
 	dataManager.update();
 	scene.update();
-	//if (gui.isVisible()) 
+
+	if(gui.getVisible()) 
+		ofShowCursor();
+	else 
+		ofHideCursor();
 }
 
 
