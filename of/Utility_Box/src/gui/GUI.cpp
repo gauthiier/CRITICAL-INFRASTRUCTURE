@@ -82,6 +82,9 @@ void GUI::addGraphDesignGUI()
     ofxUICanvas* gui = getNewGUI(title);
 	
 	gui->addToggle("Toggle Graph animation", &Graph::isAnimating, toggleDim, toggleDim);
+	gui->addToggle("Toggle New Min/Max clear", &Graph::isClearOnNewMinMax, toggleDim, toggleDim);
+	gui->addSpacer(length, 1);
+	
 	gui->addToggle("Toggle Draw Body", &Graph::isDrawBody, toggleDim, toggleDim);
 	gui->addToggle("Toggle Draw Lines", &Graph::isDrawLines, toggleDim, toggleDim);
 	gui->addToggle("Toggle Clamp Y Values", &Graph::isClampYValues, toggleDim, toggleDim);

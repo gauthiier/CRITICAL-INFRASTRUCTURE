@@ -27,6 +27,7 @@ float Graph::textY;
 ofPoint Graph::textPnt;
 
 bool Graph::isAnimating;
+bool Graph::isClearOnNewMinMax;
 
 Graph::Graph(int _graphID)
 {
@@ -179,9 +180,12 @@ void Graph::addNewData(DataObject newData)
 	if (newData.min == -999) newData.min = 0;
 	if (newData.max == -999) newData.max = 0;
 
-	if (newData.min != currentMin || newData.max != currentMax)
+	if (isClearOnNewMinMax)
 	{
-		if (graphMesh.getVertices().size() > 0) clear();
+		if (newData.min != currentMin || newData.max != currentMax)
+		{
+			if (graphMesh.getVertices().size() > 0) clear();
+		}
 	}
 
 	currentValue = newData.value;

@@ -56,6 +56,7 @@ public:
 	static float textY;
 	static ofPoint textPnt;
 	static bool isAnimating;
+	static bool isClearOnNewMinMax;
 	
 	float col0[4];
 
@@ -69,7 +70,6 @@ public:
 	float currentValue;
 	float currentMin;
 	float currentMax;
-
 	
 	float millisSinceLastPoint;
 	float millisGap;
