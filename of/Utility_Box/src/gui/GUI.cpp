@@ -20,6 +20,7 @@ void GUI::setup()
     addKeyboardShortcutsGUI();
 	addGraphGlobalGUI();
 	addGraphDesignGUI();
+	addGraphColourGUI();
 	addGraphTextGUI();
 	addLegendTextGUI();
 	addGraphSimulationGUI();
@@ -80,6 +81,7 @@ void GUI::addGraphDesignGUI()
 	string title = "GRAPH DESIGN";
     ofxUICanvas* gui = getNewGUI(title);
 	
+	gui->addToggle("Toggle Graph animation", &Graph::isAnimating, toggleDim, toggleDim);
 	gui->addToggle("Toggle Draw Body", &Graph::isDrawBody, toggleDim, toggleDim);
 	gui->addToggle("Toggle Draw Lines", &Graph::isDrawLines, toggleDim, toggleDim);
 	gui->addToggle("Toggle Clamp Y Values", &Graph::isClampYValues, toggleDim, toggleDim);
@@ -98,7 +100,15 @@ void GUI::addGraphDesignGUI()
 	gui->addSlider("Grid Green", 0, 255, &app->scene.gridCol[1], length, dim);
 	gui->addSlider("Grid Blue", 0, 255, &app->scene.gridCol[2], length, dim);
 	gui->addSlider("Grid Alpha", 0, 255, &app->scene.gridCol[3], length, dim);
-	
+
+    finaliseCanvas(gui, true);
+}
+
+void GUI::addGraphColourGUI()
+{
+	string title = "GRAPH COLOUR";
+    ofxUICanvas* gui = getNewGUI(title);
+		
 	gui->addLabel("COLOUR");
 	gui->addSlider("Front red", 0, 255, &Graph::colFront[0], length, dim);
 	gui->addSlider("Front green", 0, 255, &Graph::colFront[1], length, dim);
@@ -109,10 +119,8 @@ void GUI::addGraphDesignGUI()
 	gui->addSlider("Back blue", 0, 255, &Graph::colBack[2], length, dim);
 	gui->addSlider("Back alpha", 0, 255, &Graph::colBack[3], length, dim);
 
-
     finaliseCanvas(gui, true);
 }
-
 
 void GUI::addGraphTextGUI()
 {

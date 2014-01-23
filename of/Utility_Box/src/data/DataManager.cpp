@@ -16,7 +16,7 @@ void DataManager::setup()
 		newData.push_back(dataObject);
 	}
 
-	subscriberDevName = "";
+	subscriberDevName = "";  // dev2
 	setupSpacebrew();
 }
 
@@ -29,7 +29,7 @@ void DataManager::setupSpacebrew()
 
 	for (int i = 0; i < 30; i++)
 	{
-		spacebrew.addSubscribe("utility_" + subscriberDevName + ofToString(i), Spacebrew::TYPE_STRING);
+		spacebrew.addSubscribe("utility" + subscriberDevName + "_" + ofToString(i), Spacebrew::TYPE_STRING);
 	}
 	spacebrew.connect(host, name, description);
 	
@@ -132,6 +132,7 @@ void DataManager::onMessage( Spacebrew::Message & m )
 
 	for (int i = 0; i < 30; i++)
 	{
+		//printf("m.nme:%s, compare:%s \n", m.name.c_str(), ("utility" + subscriberDevName + "_" + ofToString(i)).c_str());
 		if (m.name == "utility" + subscriberDevName + "_" + ofToString(i))
 		{
 			//isPublisher0DataReceived = true;

@@ -22,6 +22,7 @@ public:
     void addKeyboardShortcutsGUI();
 	void addGraphGlobalGUI();
 	void addGraphDesignGUI();
+	void addGraphColourGUI();
 	void addGraphTextGUI();
 	void addLegendTextGUI();
 	void addGraphSimulationGUI();

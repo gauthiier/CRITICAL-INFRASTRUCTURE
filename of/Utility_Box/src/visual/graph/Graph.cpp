@@ -26,6 +26,8 @@ float Graph::fboH;
 float Graph::textY;
 ofPoint Graph::textPnt;
 
+bool Graph::isAnimating;
+
 Graph::Graph(int _graphID)
 {
 	app = (testApp*)ofGetAppPtr();
@@ -33,6 +35,9 @@ Graph::Graph(int _graphID)
 
 	isInfoTextSet = false;
 	graphMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
+	millisSinceLastPoint = 0;
+	isAnimating = false;
 }
 
 
@@ -48,6 +53,26 @@ void Graph::update(ofVec3f activeCamPos)
 
 	if (hasColorChanged())
 		updateColours();
+	
+	if (isAnimating)
+	{
+		if (graphMesh.getVertices().size() >= 4)
+		{
+		
+			float normalisedTimeInc = ofMap(ofGetElapsedTimeMillis(), millisSinceLastPoint, millisSinceLastPoint + millisGap, 0, 1);
+
+			if (normalisedTimeInc > 0 && normalisedTimeInc < 1)
+			{
+				ofVec3f lastButOneTopVec = graphMesh.getVertices()[graphMesh.getVertices().size() - 4];
+				ofVec3f lastVecTopVec = graphMesh.getVertices()[graphMesh.getVertices().size() - 2];
+
+				lastVecTopVec = lastButOneTopVec.getInterpolated(lastVecTarget, normalisedTimeInc);
+				graphMesh.setVertex(graphMesh.getVertices().size() - 2, lastVecTopVec);
+				graphMesh.setVertex(graphMesh.getVertices().size() - 1, ofVec3f(lastVecTopVec.x, 0, lastVecTopVec.z));
+			}
+		}
+		
+	}
 
 	ofVec3f camPos = activeCamPos;
 	centre = ofVec3f(0.1, 0.1, ofMap(graphID, 0, 29, -zRange, zRange));
@@ -141,6 +166,9 @@ void Graph::drawInfoToFbo()
 
 void Graph::addNewData(DataObject newData)
 {
+	millisGap = ofGetElapsedTimeMillis() - millisSinceLastPoint;
+	millisSinceLastPoint = ofGetElapsedTimeMillis();
+
 	info = explode("\n", newData.info)[0];
 
 	float xOffset = 0;
@@ -171,7 +199,21 @@ void Graph::addNewData(DataObject newData)
 	
 	ofVec3f vertexTop = ofVec3f(xTop, yTop, centre.z);
 	ofVec3f vertexBottom = ofVec3f(xTop, 0, centre.z);
-	
+
+
+	if (isAnimating)
+	{
+		ofVec3f temp = vertexTop;
+
+		if (graphMesh.getVertices().size() > 0)
+		{
+			graphMesh.setVertex(graphMesh.getVertices().size() - 2, lastVecTarget);
+			graphMesh.setVertex(graphMesh.getVertices().size() - 1, ofVec3f(lastVecTarget.x, 0, lastVecTarget.z));
+		
+			vertexTop = graphMesh.getVertices().back() - 1;
+		}
+		lastVecTarget = temp;
+	}
 	graphMesh.addVertex(vertexTop);
 	graphMesh.addVertex(vertexBottom);
 	
