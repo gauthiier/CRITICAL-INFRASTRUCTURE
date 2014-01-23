@@ -76,17 +76,20 @@ void Scene::drawGraphValues()
 
 	ofPoint val0 = activeGraph->currentPub0Point;
 	ofPoint val1 = activeGraph->currentPub1Point;
+	
+	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, 4);
+	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, 4);
 
 	ofPushStyle();
 	text.setAlignment(FTGL_ALIGN_LEFT);
 	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
 	text.setSize(graphTextSize);
 	text.drawString(
-		activeGraph->publisher0Data.back().stringValue + " " + activeGraph->publisher0Data.back().unitMeasure, 
+		stringVal0 + " " + activeGraph->publisher0Data.back().unitMeasure, 
 		val0.x + 10, 
 		val0.y);
 	text.drawString(
-		activeGraph->publisher1Data.back().stringValue + " " + activeGraph->publisher1Data.back().unitMeasure, 
+		stringVal1 + " " + activeGraph->publisher1Data.back().unitMeasure, 
 		val1.x + 10, 
 		val1.y);
 	ofPopStyle();
@@ -157,6 +160,10 @@ void Scene::drawHUDCopy()
 	vector<DataObject> *p1Data = &activeGraph->publisher1Data;
 	
 
+	if (activeGraph->publisher0Data.size() == 0) return;
+	
+	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, 4);
+	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, 4);
 
 
 	int amountToAverage = MIN(p0Data->size(), averageAmount);
@@ -165,59 +172,67 @@ void Scene::drawHUDCopy()
 		if (p0Data->back().longlongIntValue > 0)
 		{
 			long long int average0 = 0;
-			for (int i = 0; i < (int)amountToAverage; i++)
+			for (int i = 0; i < amountToAverage; i++)
 				average0 += p0Data->at(p0Data->size() - i - 1).value;
-			average0 /= (int)amountToAverage;
-
+			average0 /= amountToAverage;
+			
+			printf("l average0:%llu\n", average0);
 			string valueWithCommas = addCommasToNumberString(ofToString(average0));
+			printf("l av valueWithCommas:%s\n", valueWithCommas.c_str());
 
 			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
-				"Current Value: " + p0Data->back().stringValue + "\n" + 
-				"Running average: " + valueWithCommas;
+				"Current Value: " + stringVal0 + "\n" + 
+				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
 			drawTextBox(blStr, "BOTTOM LEFT");
 		}
 		else
 		{
 			float average0 = 0;
-			for (int i = 0; i < (int)amountToAverage; i++)
+			for (int i = 0; i < amountToAverage; i++)
 				average0 += p0Data->at(p0Data->size() - i - 1).value;
-			average0 /= (int)amountToAverage;
+			average0 /= amountToAverage;
 			
+			printf("f average0:%f\n", average0);
 			string valueWithCommas = (average0 > 999) ? addCommasToNumberString(ofToString(average0)) : ofToString(average0);
+			printf("f av valueWithCommas:%s\n", valueWithCommas.c_str());
 
 			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
-				"Current Value: " + p0Data->back().stringValue + "\n" + 
-				"Running average: " + valueWithCommas;
+				"Current Value: " + stringVal0 + "\n" + 
+				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
 			drawTextBox(blStr, "BOTTOM LEFT");
 		}
 
 
 		if (p1Data->back().longlongIntValue > 0)
 		{
-			float average1 = 0;
-			for (int i = 0; i < (int)amountToAverage; i++)
+			long long int average1 = 0;
+			for (int i = 0; i < amountToAverage; i++)
 				average1 += p1Data->at(p1Data->size() - i - 1).value;
-			average1 /= (int)amountToAverage;
+			average1 /= amountToAverage;
 			
+			printf("l average0:%llu\n", average1);
 			string valueWithCommas = addCommasToNumberString(ofToString(average1));
+			printf("l av valueWithCommas:%s\n", valueWithCommas.c_str());
 
 			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
-				"Current Value: " + p1Data->back().stringValue + "\n" + 
-				"Running average: " + valueWithCommas;
+				"Current Value: " + stringVal1 + "\n" + 
+				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
 			drawTextBox(brStr, "BOTTOM RIGHT");
 		}
 		else
 		{
-			long long int average1 = 0;
-			for (int i = 0; i < (int)amountToAverage; i++)
+			float average1 = 0;
+			for (int i = 0; i < amountToAverage; i++)
 				average1 += p1Data->at(p1Data->size() - i - 1).value;
-			average1 /= (int)amountToAverage;
+			average1 /= amountToAverage;
 			
+			printf("f average1:%f\n", average1);
 			string valueWithCommas = (average1 > 999) ? addCommasToNumberString(ofToString(average1)) : ofToString(average1);
+			printf("f av valueWithCommas:%s\n", valueWithCommas.c_str());
 
 			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
-				"Current Value: " + p1Data->back().stringValue + "\n" + 
-				"Running average: " + valueWithCommas;
+				"Current Value: " + stringVal1 + "\n" + 
+				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
 			drawTextBox(brStr, "BOTTOM RIGHT");
 		}
 	}
@@ -287,8 +302,8 @@ void Scene::addNewData(vector<DataObject> newData)
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
 	
-	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + ofToString(newData[0].stringValue);
-	trStr = newData[1].info + newData[1].unitMeasure + "\n" + ofToString(newData[1].stringValue);
+	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[0].stringValue), 4);
+	trStr = newData[1].info + newData[1].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[1].stringValue), 4);
 }
 
 
@@ -342,4 +357,26 @@ string Scene::addCommasToNumberString(string num)
         temp = integral.substr(0, 3+i) + temp;
     }
     return temp + fractional;
+}
+
+
+string Scene::reduceDecimalCount(string num, int maxDecimal)
+{
+	string temp;
+	string integral = num;
+	string fractional;
+    int decimalLocation = integral.find('.');
+
+	if (decimalLocation != -1)
+	{
+		integral = integral.substr(0, decimalLocation);
+		fractional = num.substr(decimalLocation + 1);
+		if (fractional.size() > maxDecimal) fractional = fractional.substr(0, maxDecimal);
+		
+		return integral + "." + fractional;
+	}
+	else
+	{
+		return num;
+	}
 }

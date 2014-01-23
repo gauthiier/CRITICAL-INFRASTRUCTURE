@@ -28,6 +28,7 @@ public:
 	void clearGraphData();
 	void keyPressed(int key);
 	string addCommasToNumberString(string num);
+	string reduceDecimalCount(string num, int maxDecimal);
 	
 	BarGraph barGraph;
 	BodyGraph bodyGraph;
