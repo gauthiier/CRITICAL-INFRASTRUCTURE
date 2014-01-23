@@ -21,6 +21,8 @@ void Scene::setup()
 	separateBodyGraph.setup();
 
     text.loadFont("fonts/Roboto-Light.ttf", 8);
+
+	isTestScrambleMinMaxData = false;
 }
 
 
@@ -298,6 +300,19 @@ void Scene::drawHUDColourBars()
 
 void Scene::addNewData(vector<DataObject> newData)
 {
+	if (barGraph.publisher0Data.size() > 0)
+	{
+		if (newData[0].min != barGraph.publisher0Data.back().min || 
+			newData[0].max != barGraph.publisher0Data.back().max || 
+			newData[1].min != barGraph.publisher1Data.back().min || 
+			newData[1].max != barGraph.publisher1Data.back().max) 
+		{
+			barGraph.clear();
+			bodyGraph.clear();
+			separateBodyGraph.clear();
+		}
+	}
+
 	barGraph.addNewData(newData);
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
