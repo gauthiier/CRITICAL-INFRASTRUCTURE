@@ -319,8 +319,8 @@ void Scene::addNewData(vector<DataObject> newData)
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
 	
-	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[0].stringValue), valDecimalPoints0);
-	trStr = newData[1].info + newData[1].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[1].stringValue), valDecimalPoints1);
+	tlStr = newData[0].info + "\n" + newData[0].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[0].stringValue), valDecimalPoints0);
+	trStr = newData[1].info + "\n" + newData[1].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[1].stringValue), valDecimalPoints1);
 }
 
 
