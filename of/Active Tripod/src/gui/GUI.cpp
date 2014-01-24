@@ -75,7 +75,8 @@ void GUI::addGraphGlobalGUI()
     gui->addLabel("GRAPH TEXT");
 	gui->addSpacer(length, 1);
 	gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
-	gui->addSlider("Decimal points (All)", 1, 10, &app->scene.valDecimalPoints, length, dim);
+	gui->addSlider("Decimal points 0", 1, 10, &app->scene.valDecimalPoints0, length, dim);
+	gui->addSlider("Decimal points 1", 1, 10, &app->scene.valDecimalPoints1, length, dim);
 	gui->addSlider("Red", 0, 255, &app->scene.graphTextColour[0], length, dim);
 	gui->addSlider("Green", 0, 255, &app->scene.graphTextColour[1], length, dim);
 	gui->addSlider("Blue", 0, 255, &app->scene.graphTextColour[2], length, dim);
