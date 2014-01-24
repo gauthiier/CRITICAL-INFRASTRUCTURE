@@ -89,6 +89,27 @@ void Scene::drawGraphValues()
 	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, valDecimalPoints0);
 	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, valDecimalPoints1);
 
+	if (activeGraph->graphName == "BODY" || activeGraph->graphName == "SEPARATE_BODY")
+	{
+		//std::stringstream sstr(activeGraph->animatedVal0LLI);
+		//__int64 val;
+		//sstr >> val;
+		//printf("val:%lld\n", val);
+
+		if (activeGraph->animatedVal0LLI > 100000)
+			stringVal0 = reduceDecimalCount(ofToString(activeGraph->animatedVal0LLI), valDecimalPoints0);
+		else
+			stringVal0 = reduceDecimalCount(ofToString(activeGraph->animatedVal0), valDecimalPoints0);
+		if (activeGraph->animatedVal1LLI > 100000)
+			stringVal1 = reduceDecimalCount(ofToString(activeGraph->animatedVal1LLI), valDecimalPoints1);
+		else
+			stringVal1 = reduceDecimalCount(ofToString(activeGraph->animatedVal1), valDecimalPoints1);
+
+		stringVal0 = addCommasToNumberString(stringVal0);
+		stringVal1 = addCommasToNumberString(stringVal1);
+	}
+	
+
 	ofPushStyle();
 	text.setAlignment(FTGL_ALIGN_LEFT);
 	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
@@ -178,12 +199,6 @@ void Scene::drawHUDBG()
 
 void Scene::drawHUDCopy()
 {
-	text.setLineLength(lineLength);
-    text.setLineSpacing(lineSpacing);
-	text.setSize(textSize);
-
-	drawTextBox(tlStr, "TOP LEFT");
-	drawTextBox(trStr, "TOP RIGHT");
 	
 	vector<DataObject> *p0Data = &activeGraph->publisher0Data;
 	vector<DataObject> *p1Data = &activeGraph->publisher1Data;
@@ -193,6 +208,35 @@ void Scene::drawHUDCopy()
 	
 	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, valDecimalPoints0);
 	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, valDecimalPoints1);
+
+	
+	
+
+	if (activeGraph->graphName == "BODY" || activeGraph->graphName == "SEPARATE_BODY")
+	{
+		if (activeGraph->animatedVal0LLI > 100000)
+			stringVal0 = reduceDecimalCount(ofToString(activeGraph->animatedVal0LLI), valDecimalPoints0);
+		else
+			stringVal0 = reduceDecimalCount(ofToString(activeGraph->animatedVal0), valDecimalPoints0);
+		if (activeGraph->animatedVal1LLI > 100000)
+			stringVal1 = reduceDecimalCount(ofToString(activeGraph->animatedVal1LLI), valDecimalPoints1);
+		else
+			stringVal1 = reduceDecimalCount(ofToString(activeGraph->animatedVal1), valDecimalPoints1);
+
+		stringVal0 = addCommasToNumberString(stringVal0);
+		stringVal1 = addCommasToNumberString(stringVal1);
+	}
+	
+	tlStr = p0Data->back().info + "\n" + p0Data->back().unitMeasure + "\n" + stringVal0;
+	trStr = p0Data->back().info + "\n" + p0Data->back().unitMeasure + "\n" + stringVal1;
+	
+	text.setLineLength(lineLength);
+    text.setLineSpacing(lineSpacing);
+	text.setSize(textSize);
+
+	drawTextBox(tlStr, "TOP LEFT");
+	drawTextBox(trStr, "TOP RIGHT");
+
 
 
 	int amountToAverage = MIN(p0Data->size(), averageAmount);
@@ -338,9 +382,6 @@ void Scene::addNewData(vector<DataObject> newData)
 	barGraph.addNewData(newData);
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
-	
-	tlStr = newData[0].info + "\n" + newData[0].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[0].stringValue), valDecimalPoints0);
-	trStr = newData[1].info + "\n" + newData[1].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[1].stringValue), valDecimalPoints1);
 }
 
 
@@ -373,7 +414,7 @@ string Scene::addCommasToNumberString(string num)
 	if (decimalLocation != -1)
 	{
 		integral = integral.substr(0 , decimalLocation);
-		fractional = integral.substr(decimalLocation);
+		fractional = num.substr(decimalLocation);
 	}
 	else
 	{

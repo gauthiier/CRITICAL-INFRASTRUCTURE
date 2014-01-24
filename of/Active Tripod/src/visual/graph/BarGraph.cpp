@@ -31,6 +31,12 @@ void BarGraph::draw()
 		float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
 		float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
 
+
+		
+		ofPushMatrix();
+		//if (publisher0Data.size() >= maxData) 
+		//ofTranslate(ofMap(normalisedTimeInc, 0, 1, 0, -graphItemXGap*0.5), 0);
+
 		for (int i = 0; i < publisher0Data.size() - 1; i++)
 		{
 			ofPushStyle();
@@ -73,6 +79,8 @@ void BarGraph::draw()
 
 			ofPopStyle();
 		}
+
+		ofPopMatrix();
 	}
 }
 

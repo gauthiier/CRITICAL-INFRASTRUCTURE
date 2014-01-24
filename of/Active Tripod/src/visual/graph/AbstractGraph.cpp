@@ -14,6 +14,8 @@ float AbstractGraph::maxGraphPercent;
 void AbstractGraph::setup()
 {
 	millisSinceLastPoint = 0;
+	animatedVal0LLI = 0;
+	animatedVal1LLI = 0;
 }
 
 

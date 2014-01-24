@@ -13,7 +13,7 @@ public:
     virtual void update();
     virtual void draw();
 	virtual void addNewData(vector<DataObject> newData);
-	ofMesh getMesh(vector<DataObject> publisherData, float* col);
+	ofMesh getMesh(vector<DataObject> publisherData, float* col, int graphID);
 
 	testApp *app;
 

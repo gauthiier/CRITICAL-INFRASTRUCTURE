@@ -77,6 +77,16 @@ void BodyGraph::draw()
 						endPoint1.x, 
 						endPoint1.y, 
 						0));
+
+					//float mahousive = 1000000000;
+					//animatedVal0 = ofMap(endPoint0.y * mahousive, outputMin * mahousive, outputMax * mahousive, publisher0Data.back().min * mahousive, publisher0Data.back().max * mahousive);
+					//animatedVal0LLI = ofMap(endPoint0.y * mahousive, outputMin * mahousive, outputMax * mahousive, publisher0Data.back().min * mahousive, publisher0Data.back().max * mahousive);
+					animatedVal0 = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
+					animatedVal0LLI = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
+					
+					animatedVal1 = ofMap(endPoint1.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
+					animatedVal1LLI = ofMap(endPoint1.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
+					
 				}
 				body.addColor(ofColor(col0[0],col0[1],col0[2], col0[3]));
 				body.addColor(ofColor(col1[0],col1[1],col1[2], col1[3]));

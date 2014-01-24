@@ -31,8 +31,8 @@ void SeparateBodyGraph::draw()
 
 	if (publisher0Data.size() > 1)
 	{
-		ofMesh body0 = getMesh(publisher0Data, col0);
-		ofMesh body1 = getMesh(publisher1Data, col1);
+		ofMesh body0 = getMesh(publisher0Data, col0, 0);
+		ofMesh body1 = getMesh(publisher1Data, col1, 1);
 
 		if (body0.getVertices().size() > 2)
 		{
@@ -43,6 +43,7 @@ void SeparateBodyGraph::draw()
 		float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
 		float outputMin = (ofGetHeight() * 0.5) - ((ofGetHeight() * 0.5) * graphHeightMax);
 		float outputMax = (ofGetHeight() * 0.5) + ((ofGetHeight() * 0.5) * graphHeightMax);
+		
 
 		// draw lines
 		ofPushStyle();
@@ -114,7 +115,7 @@ void SeparateBodyGraph::draw()
 }
 
 
-ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col)
+ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col, int graphID)
 {
 	ofMesh bodyMesh;
 	float xOffset = ofGetWidth() * AbstractGraph::minGraphPercent;
@@ -142,6 +143,19 @@ ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col)
 			float prevY0 = ofMap(publisherData[i-1].value, publisherData[i-1].min, publisherData[i-1].max, outputMin, outputMax);
 			endPoint0.y = ofMap(normalisedTimeInc, 0, 1, prevY0, targetY0);
 			endPoint0.x = (i-1) * graphItemXGap + xOffset + (graphItemXGap * normalisedTimeInc);
+			
+			if (graphID == 0)
+			{
+				animatedVal0 = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
+				animatedVal0LLI = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
+				//animatedVal0 = 99111222333;
+				//animatedVal0LLI = 99111222333;
+			}
+			else
+			{
+				animatedVal1 = ofMap(endPoint0.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
+				animatedVal1LLI = ofMap(endPoint0.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
+			}
 
 			bodyMesh.addVertex(ofVec3f(
 				endPoint0.x, 

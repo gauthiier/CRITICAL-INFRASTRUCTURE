@@ -53,4 +53,9 @@ public:
 	
 	ofPoint graphTextPnt0;
 	ofPoint graphTextPnt1;
+	
+	float animatedVal0;
+	float animatedVal1;
+	long long int animatedVal0LLI;
+	long long int animatedVal1LLI;
 };

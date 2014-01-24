@@ -1,12 +1,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Item X Gap</Name>
-    <Value>9.144737244</Value>
+    <Value>8.848684311</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BarWidth</Name>
-    <Value>15.894737244</Value>
+    <Value>6.263157845</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -16,7 +16,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Data send speed (seconds)</Name>
-    <Value>4.485855103</Value>
+    <Value>1.671052575</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
