@@ -93,4 +93,6 @@ public:
 	float topColourBoxXOffset;
 	float bottomColourBoxXOffset;
 	float colourBoxThickness;
+
+	float valDecimalPoints;
 };

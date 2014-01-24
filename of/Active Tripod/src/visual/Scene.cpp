@@ -86,8 +86,8 @@ void Scene::drawGraphValues()
 		val1 = activeGraph->graphTextPnt1;
 	}
 	
-	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, 4);
-	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, 4);
+	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, valDecimalPoints);
+	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, valDecimalPoints);
 
 	ofPushStyle();
 	text.setAlignment(FTGL_ALIGN_LEFT);
@@ -171,8 +171,8 @@ void Scene::drawHUDCopy()
 
 	if (activeGraph->publisher0Data.size() == 0) return;
 	
-	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, 4);
-	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, 4);
+	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, valDecimalPoints);
+	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, valDecimalPoints);
 
 
 	int amountToAverage = MIN(p0Data->size(), averageAmount);
@@ -189,7 +189,7 @@ void Scene::drawHUDCopy()
 			
 			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal0 + "\n" + 
-				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
+				"Running average: " + reduceDecimalCount(valueWithCommas, valDecimalPoints);
 			drawTextBox(blStr, "BOTTOM LEFT");
 		}
 		else
@@ -203,7 +203,7 @@ void Scene::drawHUDCopy()
 			
 			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal0 + "\n" + 
-				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
+				"Running average: " + reduceDecimalCount(valueWithCommas, valDecimalPoints);
 			drawTextBox(blStr, "BOTTOM LEFT");
 		}
 
@@ -219,7 +219,7 @@ void Scene::drawHUDCopy()
 			
 			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal1 + "\n" + 
-				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
+				"Running average: " + reduceDecimalCount(valueWithCommas, valDecimalPoints);
 			drawTextBox(brStr, "BOTTOM RIGHT");
 		}
 		else
@@ -233,7 +233,7 @@ void Scene::drawHUDCopy()
 			
 			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal1 + "\n" + 
-				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
+				"Running average: " + reduceDecimalCount(valueWithCommas, valDecimalPoints);
 			drawTextBox(brStr, "BOTTOM RIGHT");
 		}
 	}
@@ -319,8 +319,8 @@ void Scene::addNewData(vector<DataObject> newData)
 	bodyGraph.addNewData(newData);
 	separateBodyGraph.addNewData(newData);
 	
-	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[0].stringValue), 4);
-	trStr = newData[1].info + newData[1].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[1].stringValue), 4);
+	tlStr = newData[0].info + newData[0].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[0].stringValue), valDecimalPoints);
+	trStr = newData[1].info + newData[1].unitMeasure + "\n" + reduceDecimalCount(ofToString(newData[1].stringValue), valDecimalPoints);
 }
 
 
