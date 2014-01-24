@@ -87,6 +87,8 @@ public:
 	string brStr;
 	float averageAmount;
 
+	bool isClearOnNewMinMax;
+
 	// text colour boxes
 	float topColourBoxXOffset;
 	float bottomColourBoxXOffset;

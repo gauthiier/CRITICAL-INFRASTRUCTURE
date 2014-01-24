@@ -41,4 +41,16 @@ public:
 	string graphName;
 	float sendDataSpeed;
 
+
+	float millisSinceLastPoint;
+	float millisGap;
+	//ofVec3f lastVecTarget0;
+	//ofVec3f lastVecTarget1;
+	float normalisedTimeInc;
+	
+	ofPoint endPoint0;
+	ofPoint endPoint1;
+	
+	ofPoint graphTextPnt0;
+	ofPoint graphTextPnt1;
 };

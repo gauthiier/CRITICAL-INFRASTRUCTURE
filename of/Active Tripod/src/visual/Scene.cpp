@@ -22,7 +22,8 @@ void Scene::setup()
 
     text.loadFont("fonts/Roboto-Light.ttf", 8);
 
-	isTestScrambleMinMaxData = false;
+	//isTestScrambleMinMaxData = false;
+	isClearOnNewMinMax = false;
 }
 
 
@@ -78,6 +79,12 @@ void Scene::drawGraphValues()
 
 	ofPoint val0 = activeGraph->currentPub0Point;
 	ofPoint val1 = activeGraph->currentPub1Point;
+
+	if (activeGraph->graphName == "BODY" || activeGraph->graphName == "SEPARATE_BODY")
+	{
+		val0 = activeGraph->graphTextPnt0;
+		val1 = activeGraph->graphTextPnt1;
+	}
 	
 	string stringVal0 = reduceDecimalCount(activeGraph->publisher0Data.back().stringValue, 4);
 	string stringVal1 = reduceDecimalCount(activeGraph->publisher1Data.back().stringValue, 4);
@@ -178,10 +185,8 @@ void Scene::drawHUDCopy()
 				average0 += p0Data->at(p0Data->size() - i - 1).value;
 			average0 /= amountToAverage;
 			
-			printf("l average0:%llu\n", average0);
 			string valueWithCommas = addCommasToNumberString(ofToString(average0));
-			printf("l av valueWithCommas:%s\n", valueWithCommas.c_str());
-
+			
 			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal0 + "\n" + 
 				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
@@ -194,10 +199,8 @@ void Scene::drawHUDCopy()
 				average0 += p0Data->at(p0Data->size() - i - 1).value;
 			average0 /= amountToAverage;
 			
-			printf("f average0:%f\n", average0);
 			string valueWithCommas = (average0 > 999) ? addCommasToNumberString(ofToString(average0)) : ofToString(average0);
-			printf("f av valueWithCommas:%s\n", valueWithCommas.c_str());
-
+			
 			blStr = "Increase: " + ofToString(p0Data->back().value - p0Data->at(p0Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal0 + "\n" + 
 				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
@@ -212,10 +215,8 @@ void Scene::drawHUDCopy()
 				average1 += p1Data->at(p1Data->size() - i - 1).value;
 			average1 /= amountToAverage;
 			
-			printf("l average0:%llu\n", average1);
 			string valueWithCommas = addCommasToNumberString(ofToString(average1));
-			printf("l av valueWithCommas:%s\n", valueWithCommas.c_str());
-
+			
 			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal1 + "\n" + 
 				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
@@ -228,10 +229,8 @@ void Scene::drawHUDCopy()
 				average1 += p1Data->at(p1Data->size() - i - 1).value;
 			average1 /= amountToAverage;
 			
-			printf("f average1:%f\n", average1);
 			string valueWithCommas = (average1 > 999) ? addCommasToNumberString(ofToString(average1)) : ofToString(average1);
-			printf("f av valueWithCommas:%s\n", valueWithCommas.c_str());
-
+			
 			brStr = "Increase: " + ofToString(p1Data->back().value - p1Data->at(p1Data->size() - 2).value) + "\n" +
 				"Current Value: " + stringVal1 + "\n" + 
 				"Running average: " + reduceDecimalCount(valueWithCommas, 4);
@@ -300,16 +299,19 @@ void Scene::drawHUDColourBars()
 
 void Scene::addNewData(vector<DataObject> newData)
 {
-	if (barGraph.publisher0Data.size() > 0)
+	if (isClearOnNewMinMax)
 	{
-		if (newData[0].min != barGraph.publisher0Data.back().min || 
-			newData[0].max != barGraph.publisher0Data.back().max || 
-			newData[1].min != barGraph.publisher1Data.back().min || 
-			newData[1].max != barGraph.publisher1Data.back().max) 
+		if (barGraph.publisher0Data.size() > 0)
 		{
-			barGraph.clear();
-			bodyGraph.clear();
-			separateBodyGraph.clear();
+			if (newData[0].min != barGraph.publisher0Data.back().min || 
+				newData[0].max != barGraph.publisher0Data.back().max || 
+				newData[1].min != barGraph.publisher1Data.back().min || 
+				newData[1].max != barGraph.publisher1Data.back().max) 
+			{
+				barGraph.clear();
+				bodyGraph.clear();
+				separateBodyGraph.clear();
+			}
 		}
 	}
 

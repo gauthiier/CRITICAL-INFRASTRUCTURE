@@ -16,7 +16,7 @@ void DataManager::setup()
 		newData.push_back(dataObject);
 	}
 
-	subscriberDevName = "";  // dev2
+	subscriberDevName = "dev2";  // dev2
 	setupSpacebrew();
 }
 

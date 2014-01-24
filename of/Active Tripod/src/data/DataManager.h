@@ -38,6 +38,8 @@ class DataManager
 
 		int appId;
 
+		string nameConcat;
+
         // create your spacebrew object
         Spacebrew::Connection spacebrew;
 		

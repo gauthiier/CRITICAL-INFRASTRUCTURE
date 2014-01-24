@@ -6,65 +6,65 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Item X Gap</Name>
-    <Value>5.000000000</Value>
+    <Value>10.032894135</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line width</Name>
-    <Value>1.000000000</Value>
+    <Value>4.546052933</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Graph Height Max</Name>
-    <Value>0.000000000</Value>
+    <Value>0.398026317</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Graph bottom end (percent)</Name>
-    <Value>0.000000000</Value>
+    <Value>1.039473653</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data send speed (seconds)</Name>
-    <Value>0.100000001</Value>
+    <Value>4.682236671</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 red</Name>
-    <Value>0.000000000</Value>
+    <Value>167.763153076</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 green</Name>
-    <Value>0.000000000</Value>
+    <Value>33.552631378</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 blue</Name>
-    <Value>0.000000000</Value>
+    <Value>135.888153076</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data0 alpha</Name>
-    <Value>0.000000000</Value>
+    <Value>140.921051025</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 red</Name>
-    <Value>0.000000000</Value>
+    <Value>31.875000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 green</Name>
-    <Value>0.000000000</Value>
+    <Value>213.898025513</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 blue</Name>
-    <Value>0.000000000</Value>
+    <Value>52.006576538</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Data1 alpha</Name>
-    <Value>0.000000000</Value>
+    <Value>104.013153076</Value>
 </Widget>

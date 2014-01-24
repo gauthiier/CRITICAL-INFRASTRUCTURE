@@ -23,8 +23,11 @@ void DataManager::setup()
 
 	//isPublisher0DataReceived = false;
 	//isPublisher1DataReceived = false;
+	
+	nameConcat = " dev";
 
 	setupSpacebrew();
+
 
 	nextDataSendTime = 0.1;
 }
@@ -33,7 +36,7 @@ void DataManager::setup()
 void DataManager::setupSpacebrew()
 {
     string host = "54.194.189.129"; // Spacebrew::SPACEBREW_CLOUD; // "localhost";
-	string name = "Active Tripod " + ofToString(appId);
+	string name = "Active Tripod " + ofToString(appId) + nameConcat;
     string description = "Description goes here. Not sure why. Let me know if you see this and tell me if you need it";
 
 	spacebrew.addSubscribe(publisher0Name, Spacebrew::TYPE_STRING);

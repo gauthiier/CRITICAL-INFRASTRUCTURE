@@ -1,7 +1,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Bar graph</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -11,12 +11,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Separate Body graph</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toggle New Min/Max clear</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Graph X begin/end (percent)</Name>
-    <HighValue>0.786184192</HighValue>
+    <HighValue>0.779605269</HighValue>
     <LowValue>0.059210528</LowValue>
 </Widget>
 <Widget>

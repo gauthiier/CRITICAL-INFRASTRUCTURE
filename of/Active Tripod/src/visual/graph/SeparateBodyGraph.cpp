@@ -53,19 +53,11 @@ void SeparateBodyGraph::draw()
 			if (i < publisher0Data.size() - 1)
 			{
 				ofSetLineWidth(lineWidth);
-				poly0.addVertex(ofPoint(
-					i * graphItemXGap + xOffset,
-					ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax)));
-				
-				
-				poly1.addVertex(ofPoint(
-					i * graphItemXGap + xOffset,
-					ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax)));
+				poly0.addVertex(body0.getVertex(i*2));
+				poly1.addVertex(body1.getVertex(i*2));
 			}
 		}
-		
 
-		
 		ofVec2f centroid0 = poly0.getCentroid2D();
 		ofVec2f centroid1 = poly1.getCentroid2D();
 
@@ -82,7 +74,19 @@ void SeparateBodyGraph::draw()
 		
 		int lineAlpha = 255;
 		if (!isDrawLines) lineAlpha = 0;
+		
+		graphTextPnt0 = currentPub0Point;
+		graphTextPnt1 = currentPub1Point;
 
+		ofPushMatrix();
+		if (publisher0Data.size() >= maxData) 
+		{
+			float meshXOffset = ofMap(normalisedTimeInc, 0, 1, 0, -graphItemXGap);
+			ofTranslate(meshXOffset, 0);
+			graphTextPnt0.x += meshXOffset;
+			graphTextPnt1.x += meshXOffset;
+		}
+		
 		if (av0 < av1)
 		{
 			body0.drawFaces();
@@ -103,6 +107,7 @@ void SeparateBodyGraph::draw()
 			ofSetColor(col0[0],col0[1],col0[2], lineAlpha);
 			poly0.draw();
 		}
+		ofPopMatrix();
 		
 		ofPopStyle();
 	}
@@ -120,14 +125,34 @@ ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col)
 	bodyMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	for (int i = 0; i < publisherData.size() - 1; i++)
 	{
-		bodyMesh.addVertex(ofVec3f(
-			i * graphItemXGap + xOffset, 
-			ofMap(publisherData[i].value, publisherData[i].min, publisherData[i].max, outputMin, outputMax), 
-			0));
-		bodyMesh.addVertex(ofVec3f(
-			i * graphItemXGap + xOffset, 
-			ofGetHeight() * graphEndPercent, 
-			0));
+		if (i < publisherData.size() - 2)
+		{
+			bodyMesh.addVertex(ofVec3f(
+				i * graphItemXGap + xOffset, 
+				ofMap(publisherData[i].value, publisherData[i].min, publisherData[i].max, outputMin, outputMax), 
+				0));
+			bodyMesh.addVertex(ofVec3f(
+				i * graphItemXGap + xOffset, 
+				ofGetHeight() * graphEndPercent, 
+				0));
+		}
+		else
+		{
+			float targetY0 = ofMap(publisherData[i].value, publisherData[i].min, publisherData[i].max, outputMin, outputMax);
+			float prevY0 = ofMap(publisherData[i-1].value, publisherData[i-1].min, publisherData[i-1].max, outputMin, outputMax);
+			endPoint0.y = ofMap(normalisedTimeInc, 0, 1, prevY0, targetY0);
+			endPoint0.x = (i-1) * graphItemXGap + xOffset + (graphItemXGap * normalisedTimeInc);
+
+			bodyMesh.addVertex(ofVec3f(
+				endPoint0.x, 
+				endPoint0.y, 
+				0));
+			bodyMesh.addVertex(ofVec3f(
+				endPoint0.x, 
+				ofGetHeight() * graphEndPercent, 
+				0));
+		}
+
 			
 		bodyMesh.addColor(ofColor(col[0],col[1],col[2], col[3]));
 		bodyMesh.addColor(ofColor(col[0],col[1],col[2], 0));

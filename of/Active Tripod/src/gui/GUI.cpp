@@ -67,6 +67,9 @@ void GUI::addGraphGlobalGUI()
 	gui->addRadio("Graph Selection", graphNames, OFX_UI_ORIENTATION_VERTICAL, dim*2, dim*2);
 	
 	gui->addSpacer(length, 1);
+	gui->addToggle("Toggle New Min/Max clear", &app->scene.isClearOnNewMinMax, toggleDim, toggleDim);
+
+	gui->addSpacer(length, 1);
 	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &AbstractGraph::minGraphPercent, &AbstractGraph::maxGraphPercent, length, dim);
 	
     gui->addLabel("GRAPH TEXT");
