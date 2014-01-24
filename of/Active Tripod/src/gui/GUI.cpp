@@ -72,15 +72,23 @@ void GUI::addGraphGlobalGUI()
 	gui->addSpacer(length, 1);
 	gui->addRangeSlider("Graph X begin/end (percent)", 0, 1, &AbstractGraph::minGraphPercent, &AbstractGraph::maxGraphPercent, length, dim);
 	
+	gui->addSpacer(length, 1);
+	gui->addSlider("Decimal points 0", 1, 10, &app->scene.valDecimalPoints0, length, dim);
+	gui->addSlider("Decimal points 1", 1, 10, &app->scene.valDecimalPoints1, length, dim);
+
     gui->addLabel("GRAPH TEXT");
 	gui->addSpacer(length, 1);
 	gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
-	gui->addSlider("Decimal points 0", 1, 10, &app->scene.valDecimalPoints0, length, dim);
-	gui->addSlider("Decimal points 1", 1, 10, &app->scene.valDecimalPoints1, length, dim);
 	gui->addSlider("Red", 0, 255, &app->scene.graphTextColour[0], length, dim);
 	gui->addSlider("Green", 0, 255, &app->scene.graphTextColour[1], length, dim);
 	gui->addSlider("Blue", 0, 255, &app->scene.graphTextColour[2], length, dim);
 	gui->addSlider("Alpha", 0, 255, &app->scene.graphTextColour[3], length, dim);
+	gui->addSpacer(length, 1);
+	gui->addSlider("Graph Text Rect Margin", 1, 30, &app->scene.hudTextRectMargin, length, dim);
+	gui->addSlider("Graph Text RectRed", 0, 255, &app->scene.graphTextRectCol[0], length, dim);
+	gui->addSlider("Graph Text RectGreen", 0, 255, &app->scene.graphTextRectCol[1], length, dim);
+	gui->addSlider("Graph Text RectBlue", 0, 255, &app->scene.graphTextRectCol[2], length, dim);
+	gui->addSlider("Graph Text RectAlpha", 0, 255, &app->scene.graphTextRectCol[3], length, dim);
 
     ofAddListener(gui->newGUIEvent, this, &GUI::graphGlobalGUIEvent);
     finaliseCanvas(gui, true);

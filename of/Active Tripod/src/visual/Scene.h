@@ -29,6 +29,7 @@ public:
 	void keyPressed(int key);
 	string addCommasToNumberString(string num);
 	string reduceDecimalCount(string num, int maxDecimal);
+	bool doesStringContainDescender(string copy);
 	
 	BarGraph barGraph;
 	BodyGraph bodyGraph;
@@ -86,6 +87,9 @@ public:
 	string blStr;
 	string brStr;
 	float averageAmount;
+
+	float hudTextRectMargin;
+	float graphTextRectCol[4];
 
 	bool isClearOnNewMinMax;
 

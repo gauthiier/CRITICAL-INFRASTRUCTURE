@@ -93,14 +93,34 @@ void Scene::drawGraphValues()
 	text.setAlignment(FTGL_ALIGN_LEFT);
 	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
 	text.setSize(graphTextSize);
-	text.drawString(
-		stringVal0 + " " + activeGraph->publisher0Data.back().unitMeasure, 
-		val0.x + 10, 
-		val0.y);
-	text.drawString(
-		stringVal1 + " " + activeGraph->publisher1Data.back().unitMeasure, 
-		val1.x + 10, 
-		val1.y);
+
+	string copy0 = stringVal0 + " " + activeGraph->publisher0Data.back().unitMeasure;
+	bool isDescender = doesStringContainDescender(copy0);
+	ofRectangle rect = text.getStringBoundingBox(copy0, val0.x + 10, val0.y);
+	ofSetColor(graphTextRectCol[0], graphTextRectCol[1], graphTextRectCol[2], graphTextRectCol[3]);
+
+	ofRect(rect.x - hudTextRectMargin,
+		rect.y - rect.height - hudTextRectMargin - ((isDescender) ? text.getDescender() : 0), 
+		rect.width + (hudTextRectMargin*2), 
+		rect.height + (hudTextRectMargin*2) - ((isDescender) ? text.getDescender()*0.5 : 0));	
+
+	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
+	text.drawString(copy0, val0.x + 10, val0.y);
+
+
+	string copy1 = stringVal1 + " " + activeGraph->publisher1Data.back().unitMeasure;
+	isDescender = doesStringContainDescender(copy1);
+	rect = text.getStringBoundingBox(copy1, val1.x + 10, val1.y);
+	ofSetColor(graphTextRectCol[0], graphTextRectCol[1], graphTextRectCol[2], graphTextRectCol[3]);
+	
+	ofRect(rect.x - hudTextRectMargin,
+		rect.y - rect.height - hudTextRectMargin - ((isDescender) ? text.getDescender() : 0), 
+		rect.width + (hudTextRectMargin*2), 
+		rect.height + (hudTextRectMargin*2) - ((isDescender) ? text.getDescender()*0.5 : 0));
+
+	ofSetColor(graphTextColour[0], graphTextColour[1], graphTextColour[2], graphTextColour[3]);
+	text.drawString(copy1, val1.x + 10, val1.y);
+
 	ofPopStyle();
 }
 
@@ -396,4 +416,38 @@ string Scene::reduceDecimalCount(string num, int maxDecimal)
 	{
 		return num;
 	}
+}
+
+
+
+bool Scene::doesStringContainDescender(string copy)
+{
+        //if (letter == 'b' ||
+        //        letter == 'd' ||
+        //        letter == 'f' ||
+        //        letter == 'h' ||
+        //        letter == 'i' ||
+        //        letter == 'j' ||
+        //        letter == 'k' ||
+        //        letter == 'l' ||
+        //        letter == 't' ||
+        //        ((int)letter > 32 && (int)letter < 91))
+        //{
+        //        doesTextContainAscender = true;
+        //}
+        
+	for (int i = 0; i < copy.size(); i++)
+	{
+		char letter = copy[i];
+		//printf("letter:%c\n", letter);
+        if (letter == 'g' ||
+                letter == 'j' ||
+                letter == 'p' ||
+                letter == 'q' ||
+                letter == 'y')
+        {
+                return true;
+        }
+	}
+	return false;
 }
