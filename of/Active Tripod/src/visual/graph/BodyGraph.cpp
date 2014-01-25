@@ -49,21 +49,21 @@ void BodyGraph::draw()
 				{
 					body.addVertex(ofVec3f(
 						i * graphItemXGap + xOffset, 
-						ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax), 
+						ofMap(publisher0Data[i].value, publisher0Data[i].max, publisher0Data[i].min, outputMin, outputMax), 
 						0));
 					body.addVertex(ofVec3f(
 						i * graphItemXGap + xOffset, 
-						ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax), 
+						ofMap(publisher1Data[i].value, publisher1Data[i].max, publisher1Data[i].min, outputMin, outputMax), 
 						0));
 				}
 				else
 				{
-					float targetY0 = ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax);
-					float prevY0 = ofMap(publisher0Data[i-1].value, publisher0Data[i-1].min, publisher0Data[i-1].max, outputMin, outputMax);
+					float targetY0 = ofMap(publisher0Data[i].value, publisher0Data[i].max, publisher0Data[i].min, outputMin, outputMax);
+					float prevY0 = ofMap(publisher0Data[i-1].value, publisher0Data[i-1].max, publisher0Data[i-1].min, outputMin, outputMax);
 					endPoint0.y = ofMap(normalisedTimeInc, 0, 1, prevY0, targetY0);
 					
-					float targetY1 = ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax);
-					float prevY1 = ofMap(publisher1Data[i-1].value, publisher1Data[i-1].min, publisher1Data[i-1].max, outputMin, outputMax);
+					float targetY1 = ofMap(publisher1Data[i].value, publisher1Data[i].max, publisher1Data[i].min, outputMin, outputMax);
+					float prevY1 = ofMap(publisher1Data[i-1].value, publisher1Data[i-1].max, publisher1Data[i-1].min, outputMin, outputMax);
 					endPoint1.y = ofMap(normalisedTimeInc, 0, 1, prevY1, targetY1);
 					
 					endPoint0.x = (i-1) * graphItemXGap + xOffset + (graphItemXGap * normalisedTimeInc);
@@ -81,11 +81,11 @@ void BodyGraph::draw()
 					//float mahousive = 1000000000;
 					//animatedVal0 = ofMap(endPoint0.y * mahousive, outputMin * mahousive, outputMax * mahousive, publisher0Data.back().min * mahousive, publisher0Data.back().max * mahousive);
 					//animatedVal0LLI = ofMap(endPoint0.y * mahousive, outputMin * mahousive, outputMax * mahousive, publisher0Data.back().min * mahousive, publisher0Data.back().max * mahousive);
-					animatedVal0 = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
-					animatedVal0LLI = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
+					animatedVal0 = ofMap(endPoint0.y, outputMax, outputMin, publisher0Data.back().min, publisher0Data.back().max);
+					animatedVal0LLI = ofMap(endPoint0.y, outputMax, outputMin, publisher0Data.back().min, publisher0Data.back().max);
 					
-					animatedVal1 = ofMap(endPoint1.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
-					animatedVal1LLI = ofMap(endPoint1.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
+					animatedVal1 = ofMap(endPoint1.y, outputMax, outputMin, publisher1Data.back().min, publisher1Data.back().max);
+					animatedVal1LLI = ofMap(endPoint1.y, outputMax, outputMin, publisher1Data.back().min, publisher1Data.back().max);
 					
 				}
 				body.addColor(ofColor(col0[0],col0[1],col0[2], col0[3]));
@@ -128,12 +128,12 @@ void BodyGraph::draw()
 					{
 						poly0.addVertex(ofPoint(
 							i * graphItemXGap + xOffset,
-							ofMap(publisher0Data[i].value, publisher0Data[i].min, publisher0Data[i].max, outputMin, outputMax)));
+							ofMap(publisher0Data[i].value, publisher0Data[i].max, publisher0Data[i].min, outputMin, outputMax)));
 				
 				
 						poly1.addVertex(ofPoint(
 							i * graphItemXGap + xOffset,
-							ofMap(publisher1Data[i].value, publisher1Data[i].min, publisher1Data[i].max, outputMin, outputMax)));
+							ofMap(publisher1Data[i].value, publisher1Data[i].max, publisher1Data[i].min, outputMin, outputMax)));
 					}
 					else
 					{

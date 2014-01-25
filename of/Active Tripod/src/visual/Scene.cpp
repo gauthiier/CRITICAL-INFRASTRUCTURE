@@ -228,7 +228,7 @@ void Scene::drawHUDCopy()
 	}
 	
 	tlStr = p0Data->back().info + "\n" + p0Data->back().unitMeasure + "\n" + stringVal0;
-	trStr = p0Data->back().info + "\n" + p0Data->back().unitMeasure + "\n" + stringVal1;
+	trStr = p1Data->back().info + "\n" + p1Data->back().unitMeasure + "\n" + stringVal1;
 	
 	text.setLineLength(lineLength);
     text.setLineSpacing(lineSpacing);

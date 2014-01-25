@@ -130,7 +130,7 @@ ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col, 
 		{
 			bodyMesh.addVertex(ofVec3f(
 				i * graphItemXGap + xOffset, 
-				ofMap(publisherData[i].value, publisherData[i].min, publisherData[i].max, outputMin, outputMax), 
+				ofMap(publisherData[i].value, publisherData[i].max, publisherData[i].min, outputMin, outputMax), 
 				0));
 			bodyMesh.addVertex(ofVec3f(
 				i * graphItemXGap + xOffset, 
@@ -139,22 +139,22 @@ ofMesh SeparateBodyGraph::getMesh(vector<DataObject> publisherData, float* col, 
 		}
 		else
 		{
-			float targetY0 = ofMap(publisherData[i].value, publisherData[i].min, publisherData[i].max, outputMin, outputMax);
-			float prevY0 = ofMap(publisherData[i-1].value, publisherData[i-1].min, publisherData[i-1].max, outputMin, outputMax);
+			float targetY0 = ofMap(publisherData[i].value, publisherData[i].max, publisherData[i].min, outputMin, outputMax);
+			float prevY0 = ofMap(publisherData[i-1].value, publisherData[i-1].max, publisherData[i-1].min, outputMin, outputMax);
 			endPoint0.y = ofMap(normalisedTimeInc, 0, 1, prevY0, targetY0);
 			endPoint0.x = (i-1) * graphItemXGap + xOffset + (graphItemXGap * normalisedTimeInc);
 			
 			if (graphID == 0)
 			{
-				animatedVal0 = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
-				animatedVal0LLI = ofMap(endPoint0.y, outputMin, outputMax, publisher0Data.back().min, publisher0Data.back().max);
+				animatedVal0 = ofMap(endPoint0.y, outputMax, outputMin, publisher0Data.back().min, publisher0Data.back().max);
+				animatedVal0LLI = ofMap(endPoint0.y, outputMax, outputMin, publisher0Data.back().min, publisher0Data.back().max);
 				//animatedVal0 = 99111222333;
 				//animatedVal0LLI = 99111222333;
 			}
 			else
 			{
-				animatedVal1 = ofMap(endPoint0.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
-				animatedVal1LLI = ofMap(endPoint0.y, outputMin, outputMax, publisher1Data.back().min, publisher1Data.back().max);
+				animatedVal1 = ofMap(endPoint0.y, outputMax, outputMin, publisher1Data.back().min, publisher1Data.back().max);
+				animatedVal1LLI = ofMap(endPoint0.y, outputMax, outputMin, publisher1Data.back().min, publisher1Data.back().max);
 			}
 
 			bodyMesh.addVertex(ofVec3f(
