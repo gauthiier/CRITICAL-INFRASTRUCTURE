@@ -64,6 +64,11 @@ void GUI::addGraphGlobalGUI()
 	string title = "GRAPH GLOBAL";
     ofxUICanvas* gui = getNewGUI(title);
  //   gui->addLabel("GRAPH TEXT");
+	
+	gui->addSpacer(length, 1);
+	gui->addSlider("Reconnect Frequency", 1000, 60000, &app->dataManager.reconnectFrequency, length, dim);
+
+
 	//gui->addSpacer(length, 1);
 	//gui->addSlider("Size", 5, 50, &app->scene.graphTextSize, length, dim);
 	//gui->addSlider("Red", 0, 255, &app->scene.graphTextColour[0], length, dim);

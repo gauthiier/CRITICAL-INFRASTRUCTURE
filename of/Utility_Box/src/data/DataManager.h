@@ -38,7 +38,7 @@ class DataManager
 
         // create your spacebrew object
         Spacebrew::Connection spacebrew;
-		
+		float reconnectFrequency;
 		vector<DataObject> newData;
 
 		//bool isPublisher0DataReceived;

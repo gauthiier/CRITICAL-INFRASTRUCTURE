@@ -51,6 +51,8 @@ class DataManager
 		//bool isPublisher0DataReceived;
 		//bool isPublisher1DataReceived;
 
+		float reconnectFrequency;
+
 		bool isDataSimulated;
 		float perlinXScale;
 		float perlinYScale;

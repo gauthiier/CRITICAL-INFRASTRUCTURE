@@ -90,6 +90,9 @@ void GUI::addGraphGlobalGUI()
 	gui->addSlider("Graph Text RectBlue", 0, 255, &app->scene.graphTextRectCol[2], length, dim);
 	gui->addSlider("Graph Text RectAlpha", 0, 255, &app->scene.graphTextRectCol[3], length, dim);
 
+	gui->addSpacer(length, 1);
+	gui->addSlider("Reconnect Frequency", 1000, 60000, &app->dataManager.reconnectFrequency, length, dim);
+
     ofAddListener(gui->newGUIEvent, this, &GUI::graphGlobalGUIEvent);
     finaliseCanvas(gui, true);
 }

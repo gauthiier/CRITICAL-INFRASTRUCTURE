@@ -26,6 +26,9 @@ void DataManager::setupSpacebrew()
     string host = "54.194.189.129"; // Spacebrew::SPACEBREW_CLOUD; // "localhost";
 	string name = "CRITICAL INFRASTRUCTURE UTILITY BOX" + subscriberDevName;
     string description = "Description goes here. Not sure why. Let me know if you see this and tell me if you need it";
+	
+	spacebrew.setAutoReconnect(true);
+	spacebrew.setReconnectRate(reconnectFrequency);
 
 	for (int i = 0; i < 30; i++)
 	{
